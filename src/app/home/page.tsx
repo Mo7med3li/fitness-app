@@ -7,7 +7,9 @@ export default function HomePAge() {
   return (
     <div className="container text-center space-y-5">
       <h1 className="text-3xl font-bold">Fitnes App</h1>
-      <Button onClick={() => toast.success("hello")}>Button</Button>
+      <Button className="px-5" onClick={() => toast.success("hello")}>
+        Button
+      </Button>
       <ModeToggle />
       <Input />
     </div>
