@@ -1,22 +1,90 @@
-import * as React from "react"
+"use client";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
+import { Eye, EyeOff, Lock, Mail, Search, User } from "lucide-react";
+import * as React from "react";
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
+const baseClasses =
+  "flex w-full bg-transparent rounded-[20px] border border-grayNeutral py-2 py-4 text-base text-grayLight shadow-xs transition-colors placeholder:text-sm placeholder:text-grayLight placeholder:capitalize hover:border-main focus-visible:border-main focus-visible:outline-none disabled:cursor-not-allowed disabled:border-gray-100 disabled:bg-gray-100 md:text-sm";
+const iconClassBasses =
+  "absolute top-1/2 z-50 size-5 -translate-y-1/2 cursor-pointer";
+function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  // state
+  const [hide, setHide] = React.useState(true);
+
+  // Functions
+  const toggleType = () => {
+    setHide(!hide);
+  };
+  // Input type search
+  if (type === "search") {
     return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    )
+      <div className="relative">
+        <input
+          type={type}
+          data-slot="input"
+          className={cn(baseClasses, "relative ps-10", className)}
+          {...props}
+        />
+        <Search className={cn(iconClassBasses, "start-3", props.disabled)} />
+      </div>
+    );
   }
-)
-Input.displayName = "Input"
+  if (type === "text") {
+    return (
+      <div className="relative">
+        <input
+          type={type}
+          data-slot="input"
+          className={cn(baseClasses, "relative ps-10", className)}
+          {...props}
+        />
+        <User className={cn(iconClassBasses, "start-3", props.disabled)} />
+      </div>
+    );
+  }
 
-export { Input }
+  // Input type password
+  if (type === "password") {
+    return (
+      <div className="relative">
+        <Lock className={cn(iconClassBasses, "start-3", props.disabled)} />
+        <input
+          type={hide ? "password" : "text"}
+          data-slot="input"
+          className={cn(baseClasses, "relative ps-10", className)}
+          {...props}
+        />
+        {hide ? (
+          <Eye
+            className={cn(iconClassBasses, "end-4", props.disabled)}
+            onClick={toggleType}
+          />
+        ) : (
+          <EyeOff
+            className={cn(iconClassBasses, "end-4", props.disabled)}
+            onClick={toggleType}
+          />
+        )}
+      </div>
+    );
+  }
+  if (type === "email") {
+    return (
+      <div className="relative">
+        <input
+          type={type}
+          data-slot="input"
+          className={cn(baseClasses, "relative ps-10", className)}
+          {...props}
+        />
+        <Mail className={cn(iconClassBasses, "start-3", props.disabled)} />
+      </div>
+    );
+  }
+  return (
+    <input type={type} className={cn(baseClasses, className)} {...props} />
+  );
+}
+
+export { Input };
