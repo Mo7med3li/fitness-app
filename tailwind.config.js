@@ -19,6 +19,7 @@ export default {
         main: "#ff4100",
         grayLight: "#D3D3D3",
         grayNeutral: "#D9D9D9",
+        grayExtra: "#F3F3F4",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

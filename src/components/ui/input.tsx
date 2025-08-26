@@ -7,7 +7,7 @@ import * as React from "react";
 const baseClasses =
   "flex w-full bg-transparent rounded-[20px] border border-grayNeutral py-2 py-4 text-base text-grayLight shadow-xs transition-colors placeholder:text-sm placeholder:text-grayLight placeholder:capitalize hover:border-main focus-visible:border-main focus-visible:outline-none disabled:cursor-not-allowed disabled:border-gray-100 disabled:bg-gray-100 md:text-sm";
 const iconClassBasses =
-  "absolute top-1/2 z-50 size-5 -translate-y-1/2 cursor-pointer";
+  "absolute top-1/2 z-50 size-5 -translate-y-1/2 cursor-pointer text-grayLight";
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   // state
   const [hide, setHide] = React.useState(true);
@@ -69,6 +69,8 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
       </div>
     );
   }
+
+  // Input type email
   if (type === "email") {
     return (
       <div className="relative">
