@@ -68,6 +68,9 @@ export default {
           5: "hsl(var(--chart-5))",
         },
       },
+      backgroundImage: {
+        "hero-pattern": "url('/public/assets/background.png')",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

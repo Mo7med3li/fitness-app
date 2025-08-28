@@ -2,30 +2,49 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./app/layout.tsx";
-import HomePage from "./app/home/page.tsx";
-import "./i18n";
-import AuthLayout from "./app/auth/layout.tsx";
-import KYC from "@/app/auth/KYC/page.tsx";
+import HomePAge from "./app/pages/home/page";
+import About from "./app/pages/about/About.tsx";
 import Providers from "./components/providers/index.tsx";
+import PagesLayout from "./app/pages/PagesLayout.tsx";
+import AuthLayout from "./app/auth/AuthLayout.tsx";
+import Login from "./app/auth/login/Login.tsx";
+import ForgetPass from "./app/auth/forget-password/ForgetPass.tsx";
+import OTP from "./app/auth/otp/OTP.tsx";
+import CreatePass from "./app/auth/Create-password/CreatePass.tsx";
+import KYC from "@/app/auth/KYC/page.tsx";
 
-// Routes
 const router = createBrowserRouter([
   {
-    element: <RootLayout />,
+    path: "",
+    element: <PagesLayout />,
     children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
+      { path: "", element: <HomePAge /> },
+      { path: "about", element: <About /> },
     ],
   },
   {
+    path: "auth",
     element: <AuthLayout />,
     children: [
       {
         path: "/auth/kyc",
         element: <KYC />,
+      },
+      {
+        path: "/auth/login",
+        element: <Login />,
+      },
+      {
+        path: "/auth/forget-password",
+        element: <ForgetPass />,
+      },
+      {
+        path: "/auth/OTP",
+        element: <OTP />,
+      },
+      {
+        path: "/auth/create-password",
+        element: <CreatePass />,
       },
     ],
   },
@@ -36,5 +55,5 @@ createRoot(document.getElementById("root")!).render(
     <Providers>
       <RouterProvider router={router} />
     </Providers>
-  </StrictMode>
+  </StrictMode>,
 );
