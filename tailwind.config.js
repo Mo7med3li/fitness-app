@@ -4,6 +4,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        baloo: ["'Baloo Thambi 2'", "cursive"],
+      },
       screens: {
         "2xl": "1536px",
       },
@@ -60,6 +63,9 @@ export default {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+      },
+      backgroundImage: {
+        "hero-pattern": "url('/public/assets/background.png')",
       },
     },
   },

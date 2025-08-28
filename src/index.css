@@ -69,3 +69,7 @@
     color: hsl(var(--foreground));
   }
 }
+
+body {
+  font-family: "Baloo Thambi 2", cursive;
+}
