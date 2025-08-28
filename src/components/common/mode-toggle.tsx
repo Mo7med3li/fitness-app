@@ -1,37 +1,27 @@
-import { Moon, Sun } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { useTheme } from "../providers/components/theme-provider";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
-
+  const [isDark, setIsDark] = useState(false);
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div
+      className={cn(
+        " w-9 h-5 rounded-xl cursor-pointer transition-colors duration-500",
+        isDark ? "bg-black" : "bg-white"
+      )}
+      onClick={() => {
+        setIsDark(!isDark);
+        setTheme(isDark ? "light" : "dark");
+      }}
+    >
+      <div
+        className={cn(
+          "w-5 h-full rounded-full  transition-all duration-700 ease-in-out -translate-x-full ",
+          isDark ? "-translate-x-full bg-white" : "translate-x-0 bg-black"
+        )}
+      ></div>
+    </div>
   );
 }
