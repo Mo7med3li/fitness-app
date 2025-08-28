@@ -8,26 +8,26 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { useTranslation } from "react-i18next";
+import { TranslationToggle } from "@/components/common/translation-toggle";
 
 export default function HomePAge() {
+  // Translation
+  const { t } = useTranslation();
   return (
     <div className="container text-center space-y-5 space-x-5">
-      <h1 className="text-3xl font-bold">Fitnes App</h1>
-      <Button className="px-5" onClick={() => toast.success("hello")}>
-        Get Started
+      <TranslationToggle />
+      <h1 className="text-3xl font-bold">{t("fitnes-app")}</h1>
+      <Button className="px-5" onClick={() => toast.success(t("hello"))}>
+        {t("get-started")}
       </Button>
-      <Button
-        variant={"link"}
-        className="px-5"
-        onClick={() => toast.success("hello")}
-      >
-        Exlore more
+      <Button variant={"link"} className="px-5">
+        {t("explore-more")}
       </Button>
       <Button variant={"ghost"} icon={() => <ArrowUp />} className="p-4">
-        ghost
+        {t("ghost")}
       </Button>
-
-      <Input type="password" placeholder="password" />
+      <Input type="password" placeholder={t("password")} />
       <Input type="email" />
       <Input type="text" />
       <ModeToggle />
