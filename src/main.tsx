@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./app/layout.tsx";
 import HomePage from "./app/home/page.tsx";
 import "./i18n";
+import AuthLayout from "./app/auth/layout.tsx";
+import KYC from "@/app/auth/KYC/page.tsx";
 
 // Routes
 const router = createBrowserRouter([
@@ -17,10 +19,21 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/auth/kyc",
+        element: <KYC />,
+      },
+    ],
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <div className="bg-zinc-50 dark:bg-red-800">
+      <RouterProvider router={router} />
+    </div>
   </StrictMode>
 );

@@ -1,3 +1,3 @@
 export default function Page() {
-  return <>know your customer</>;
+  return <div className="dark:bg-black">know your customer</div>;
 }
