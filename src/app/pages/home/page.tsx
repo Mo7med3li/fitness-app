@@ -3,6 +3,7 @@ import { Button } from "../../../components/ui/button";
 import { toast } from "sonner";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ArrowUp } from "lucide-react";
+<<<<<<< HEAD
 import {
   InputOTP,
   InputOTPGroup,
@@ -10,6 +11,9 @@ import {
 } from "@/components/ui/input-otp";
 import { useTranslation } from "react-i18next";
 import { TranslationToggle } from "@/components/common/translation-toggle";
+=======
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+>>>>>>> 395993e (feat(auth) : add all func fetch)
 
 export default function HomePage() {
   // Translation
@@ -21,8 +25,13 @@ export default function HomePage() {
       <Button className="px-5" onClick={() => toast.success(t("hello"))}>
         {t("get-started")}
       </Button>
+<<<<<<< HEAD
       <Button variant={"link"} className="px-5">
         {t("explore-more")}
+=======
+      <Button variant={"link"} className="px-5" onClick={() => toast.success("hello")}>
+        Exlore more
+>>>>>>> 395993e (feat(auth) : add all func fetch)
       </Button>
       <Button variant={"ghost"} icon={() => <ArrowUp />} className="p-4">
         {t("ghost")}
