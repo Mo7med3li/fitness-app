@@ -19,6 +19,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { useContext, useState } from "react";
 import { Loader } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // schemes
 import { LoginSchema } from "@/lib/schemes/login.schema";
@@ -30,6 +31,7 @@ export default function Login() {
   // Hook
   const navigate = useNavigate();
   const [loading, isLoading] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   // get setUserLogin to use on success Api
   const userContext = useContext(UserContext);
@@ -73,20 +75,20 @@ export default function Login() {
   }
 
   return (
-    <div className="w-full h-full text-white text-3xl grid grid-cols-2">
+    <div className="w-full min-h-screen text-white text-3xl grid grid-cols-1 lg:grid-cols-2">
       {/* left side */}
-      <div className="col-span-1 flex flex-col items-center justify-center gap-20 my-36 ml-8">
-        <img src={logo} alt="logo super fitness" className="w-44" />
-        <img src={fitImage} alt="fit Image" className="w-[500px]" />
+      <div className="hidden lg:flex flex-col items-center justify-center gap-20 p-8">
+        <img src={logo} alt="logo super fitness" className="w-32 lg:w-44" />
+        <img src={fitImage} alt="fit Image" className="w-72 lg:w-[500px]" />
       </div>
 
       {/* right side */}
-      <div className="col-span-1 flex flex-col items-center justify-center gap-20 my-36 ml-8">
+      <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* form header */}
-        <div className="text-center">
-          <h3 className="text-5xl font-extrabold flex flex-col gap-3">
-            <span className="text-lg font-normal">Hey There,</span>
-            WELCOME BACK!
+        <div className="text-center mb-10">
+          <h3 className="text-3xl lg:text-5xl font-extrabold flex flex-col gap-2">
+            <span className="text-base lg:text-lg font-normal">{t("auth.hey-there")}</span>
+            {t("auth.welcome-back")}
           </h3>
         </div>
 
@@ -94,9 +96,9 @@ export default function Login() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-6 p-10 border w-3/4 rounded-[50px] bg-black/30"
+            className="flex flex-col gap-6 w-full max-w-md p-6 sm:p-10 border rounded-3xl bg-black/40 backdrop-blur-md shadow-xl"
           >
-            <h3 className="text-2xl text-center font-extrabold">Login</h3>
+            <h3 className="text-xl lg:text-2xl text-center font-extrabold">{t("auth.login")}</h3>
 
             {/* Email */}
             <FormField
@@ -105,7 +107,13 @@ export default function Login() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input {...field} type="email" placeholder="Email" required autoFocus />
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder={t("auth.email")}
+                      required
+                      autoFocus
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -119,7 +127,7 @@ export default function Login() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input {...field} type="password" placeholder="Password" required />
+                    <Input {...field} type="password" placeholder={t("password")} required />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -129,23 +137,23 @@ export default function Login() {
             {/* Forget Password */}
             <Link
               to="/auth/forget-password"
-              className="text-main text-right underline text-base font-bold block"
+              className="text-main text-right underline text-sm font-bold block"
             >
-              Forget Password ?
+              {t("auth.forget-password")}
             </Link>
 
             {/* Or */}
-            <div className="flex justify-center items-center gap-5 text-grayLight">
-              <hr className="w-28" />
-              <span className="text-sm">Or</span>
-              <hr className="w-28" />
+            <div className="flex justify-center items-center gap-4 text-gray-400">
+              <hr className="w-20 border-gray-600" />
+              <span className="text-xs">{t("or")}</span>
+              <hr className="w-20 border-gray-600" />
             </div>
 
             {/* Social icons */}
             <div className="flex justify-center gap-4">
-              <img src={facebook} alt="facebook login" />
-              <img src={Google} alt="google login" />
-              <img src={Apple} alt="apple login" />
+              <img src={facebook} alt="facebook login" className="w-8 cursor-pointer" />
+              <img src={Google} alt="google login" className="w-8 cursor-pointer" />
+              <img src={Apple} alt="apple login" className="w-8 cursor-pointer" />
             </div>
 
             {/* Login button */}
@@ -159,15 +167,15 @@ export default function Login() {
                   <Loader />
                 </span>
               ) : (
-                "Login"
+                t("auth.login")
               )}
             </Button>
 
             {/* Register */}
-            <div className="flex justify-center gap-4 text-base">
-              <p>Dont have an account yet ?</p>
+            <div className="flex justify-center gap-2 text-sm sm:text-base">
+              <p>{t("auth.dont-have-an-account-yet")}</p>
               <a href="#" className="text-main underline">
-                Register
+                {t("auth.register")}
               </a>
             </div>
           </form>

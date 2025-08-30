@@ -16,6 +16,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
 import type z from "zod";
+import { useTranslation } from "react-i18next";
 
 // schemes
 import { ForgetPassSchema } from "@/lib/schemes/forget-password.schema";
@@ -24,6 +25,7 @@ export default function ForgetPass() {
   // Hook
   const navigate = useNavigate();
   const [loading, isLoading] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   // React hook form
   const form = useForm<z.infer<typeof ForgetPassSchema>>({
@@ -43,7 +45,7 @@ export default function ForgetPass() {
       .then((data) => {
         if ((data.data.message = "success")) {
           isLoading(false);
-          toast.success("OTP has been sent to your email.");
+          toast.success(t("auth.otp-has-been-sent-to-your-email"));
           localStorage.setItem("email", values.email);
           navigate("/auth/OTP");
         }
@@ -56,58 +58,63 @@ export default function ForgetPass() {
   }
 
   return (
-    <div className="w-full h-full text-white text-3xl grid grid-cols-2">
+    <div className="w-full min-h-screen text-white grid grid-cols-1 lg:grid-cols-2">
       {/* left side */}
-      <div className="col-span-1 flex flex-col items-center justify-center gap-20 my-36 ml-8">
-        <img src={logo} alt="logo super fitness" className="w-44" />
-        <img src={fitImage} alt="fit Image" className="w-[500px]" />
+      <div className="hidden lg:flex flex-col items-center justify-center gap-16 p-8">
+        <img src={logo} alt="logo super fitness" className="w-32 lg:w-44" />
+        <img src={fitImage} alt="fit Image" className="w-72 lg:w-[500px]" />
       </div>
 
       {/* right side */}
-      <div className="col-span-1 flex flex-col items-center justify-center gap-20 my-36 ml-8">
+      <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* form header */}
-        <div className="text-center">
-          <h3 className="text-5xl font-extrabold flex flex-col gap-3">Forget password</h3>
+        <div className="text-center mb-8">
+          <h3 className="text-3xl lg:text-5xl font-extrabold">{t("auth.forget-password")}</h3>
         </div>
 
         <Form {...form}>
-          {/* form */}
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-2 p-10 border w-3/4 rounded-[50px] bg-black/30"
+            className="flex flex-col gap-6 w-full max-w-md p-6 sm:p-10 border rounded-3xl bg-black/40 backdrop-blur-md shadow-xl"
           >
-            <div className="flex flex-col gap-6">
-              <h3 className="text-lg text-center font-normal">Enter Your Email</h3>
+            <h3 className="text-sm sm:text-lg text-center font-normal text-gray-300">
+              {t("auth.enter-your-email")}
+            </h3>
 
-              {/* Input */}
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input {...field} type="email" placeholder="Email" required autoFocus />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            {/* Email Input */}
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder={t("auth.email")}
+                      required
+                      autoFocus
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              {/* btn Sent OTP */}
-              <Button
-                disabled={loading || !form.watch("email")}
-                className="w-full disabled:bg-slate-600"
-                type="submit"
-              >
-                {loading ? (
-                  <span className="animate-spin">
-                    <Loader />
-                  </span>
-                ) : (
-                  "Sent OTP"
-                )}
-              </Button>
-            </div>
+            {/* Submit Button */}
+            <Button
+              disabled={loading || !form.watch("email")}
+              className="w-full disabled:bg-slate-600"
+              type="submit"
+            >
+              {loading ? (
+                <span className="animate-spin">
+                  <Loader />
+                </span>
+              ) : (
+                t("auth.sent-otp")
+              )}
+            </Button>
           </form>
         </Form>
       </div>
