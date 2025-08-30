@@ -3,25 +3,32 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
-  const [isDark, setIsDark] = useState(false);
+  // Theme
+  const { setTheme, theme } = useTheme();
+
+  // State
+  const [isDark, setIsDark] = useState(theme == "dark");
+
   return (
     <div
       className={cn(
-        " w-9 h-5 rounded-xl cursor-pointer transition-colors duration-500",
+        "w-9 h-5 rounded-xl cursor-pointer transition-colors duration-500",
         isDark ? "bg-black" : "bg-white"
       )}
       onClick={() => {
-        setIsDark(!isDark);
-        setTheme(isDark ? "light" : "dark");
+        const newDark = !isDark;
+        setIsDark(newDark);
+        setTheme(newDark ? "dark" : "light");
       }}
     >
       <div
         className={cn(
-          "w-5 h-full rounded-full  transition-all duration-700 ease-in-out -translate-x-full ",
-          isDark ? "-translate-x-full bg-white" : "translate-x-0 bg-black"
+          "w-5 h-full rounded-full transition-all duration-700 ease-in-out",
+          isDark
+            ? "translate-x-full rtl:translate-x-0 bg-white"
+            : "translate-x-0 rtl:-translate-x-full bg-black"
         )}
-      ></div>
+      />
     </div>
   );
 }
