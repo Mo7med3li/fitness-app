@@ -12,6 +12,7 @@ import ForgetPass from "./app/auth/forget-password/ForgetPass.tsx";
 import OTP from "./app/auth/otp/OTP.tsx";
 import CreatePass from "./app/auth/Create-password/CreatePass.tsx";
 import ProtectedRoute from "./components/common/ProtectedRoute/ProtectedRoute.tsx";
+import "./i18n";
 
 const router = createBrowserRouter([
   {
