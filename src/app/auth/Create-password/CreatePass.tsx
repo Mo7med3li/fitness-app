@@ -16,6 +16,7 @@ import type z from "zod";
 import axios from "axios";
 import { toast } from "sonner";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // schemes
 import { ChangePasswordSchema } from "@/lib/schemes/change-password.schema";
@@ -24,6 +25,7 @@ export default function CreatePass() {
   // Hook
   const navigate = useNavigate();
   const [loading, isLoading] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   // React hook form
   const form = useForm<z.infer<typeof ChangePasswordSchema>>({
@@ -48,7 +50,7 @@ export default function CreatePass() {
       .then((data) => {
         if (data.data.message === "success") {
           isLoading(false);
-          toast.success("Password changed successfully.");
+          toast.success(t("auth.password-changed-successfully"));
           localStorage.removeItem("email");
           navigate("/auth/login");
         }
@@ -61,82 +63,87 @@ export default function CreatePass() {
   }
 
   return (
-    <div className="w-full h-full text-white text-3xl grid grid-cols-2">
+    <div className="w-full min-h-screen text-white grid grid-cols-1 lg:grid-cols-2">
       {/* left side */}
-      <div className="col-span-1 flex flex-col items-center justify-center gap-20 my-36 ml-8">
-        <img src={logo} alt="logo super fitness" className="w-44" />
-        <img src={fitImage} alt="fit Image" className="w-[500px]" />
+      <div className="hidden lg:flex flex-col items-center justify-center gap-16 p-8">
+        <img src={logo} alt="logo super fitness" className="w-32 lg:w-44" />
+        <img src={fitImage} alt="fit Image" className="w-72 lg:w-[500px]" />
       </div>
 
       {/* right side */}
-      <div className="col-span-1 flex flex-col items-center justify-center gap-20 my-36 ml-8">
+      <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* form header */}
-        <div className="text-center">
-          <h3 className="text-5xl font-extrabold flex flex-col gap-3">create new password</h3>
+        <div className="text-center mb-8">
+          <h3 className="text-3xl lg:text-5xl font-extrabold">{t("auth.create-new-password")}</h3>
         </div>
 
         {/* form */}
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-2 p-10 border w-3/4 rounded-[50px] bg-black/30"
+            className="flex flex-col gap-6 w-full max-w-md p-6 sm:p-10 border rounded-3xl bg-black/40 backdrop-blur-md shadow-xl"
           >
-            <div className="flex flex-col gap-6">
-              <h3 className="text-lg text-center font-normal">
-                Make sure to create a strong password!
-              </h3>
+            <h3 className="text-sm sm:text-lg text-center font-normal text-gray-300">
+              {t("auth.make-sure-to-create-a-strong-password")}
+            </h3>
 
-              {/* Input */}
-              <FormField
-                control={form.control}
-                name="newPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input {...field} type="password" placeholder="New password" required />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="confirmPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        type="password"
-                        placeholder="Confirm New Password"
-                        required
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            {/* New Password */}
+            <FormField
+              control={form.control}
+              name="newPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder={t("auth.new-password")}
+                      required
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              {/* btn change */}
-              <Button
-                disabled={
-                  loading ||
-                  !form.watch("newPassword") ||
-                  !form.watch("confirmPassword") ||
-                  form.getValues("newPassword") !== form.getValues("confirmPassword")
-                }
-                className="w-full disabled:bg-slate-600"
-                type="submit"
-              >
-                {loading ? (
-                  <span className="animate-spin">
-                    <Loader />
-                  </span>
-                ) : (
-                  "change"
-                )}
-              </Button>
-            </div>
+            {/* Confirm Password */}
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder={t("auth.confirm-new-password")}
+                      required
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Change Password Button */}
+            <Button
+              disabled={
+                loading ||
+                !form.watch("newPassword") ||
+                !form.watch("confirmPassword") ||
+                form.getValues("newPassword") !== form.getValues("confirmPassword")
+              }
+              className="w-full disabled:bg-slate-600"
+              type="submit"
+            >
+              {loading ? (
+                <span className="animate-spin">
+                  <Loader />
+                </span>
+              ) : (
+                t("change")
+              )}
+            </Button>
           </form>
         </Form>
       </div>

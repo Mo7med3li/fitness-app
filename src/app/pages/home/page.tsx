@@ -28,6 +28,7 @@ export default function HomePAge() {
       <Input type="text" />
       <div className="flex items-center justify-center bg-gray-400 ">
         <ModeToggle />
+        <TranslationToggle />
       </div>
       <div className="p-6 bg-grayExtra flex items-center justify-center">
         <InputOTP maxLength={6} type="number">
