@@ -3,11 +3,7 @@ import { Button } from "../../../components/ui/button";
 import { toast } from "sonner";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ArrowUp } from "lucide-react";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 
 export default function HomePAge() {
   return (
@@ -16,11 +12,7 @@ export default function HomePAge() {
       <Button className="px-5" onClick={() => toast.success("hello")}>
         Get Started
       </Button>
-      <Button
-        variant={"link"}
-        className="px-5"
-        onClick={() => toast.success("hello")}
-      >
+      <Button variant={"link"} className="px-5" onClick={() => toast.success("hello")}>
         Exlore more
       </Button>
       <Button variant={"ghost"} icon={() => <ArrowUp />} className="p-4">

@@ -11,14 +11,29 @@ import Login from "./app/auth/login/Login.tsx";
 import ForgetPass from "./app/auth/forget-password/ForgetPass.tsx";
 import OTP from "./app/auth/otp/OTP.tsx";
 import CreatePass from "./app/auth/Create-password/CreatePass.tsx";
+import ProtectedRoute from "./components/common/ProtectedRoute/ProtectedRoute.tsx";
 
 const router = createBrowserRouter([
   {
     path: "",
     element: <PagesLayout />,
     children: [
-      { path: "", element: <HomePAge /> },
-      { path: "about", element: <About /> },
+      {
+        path: "",
+        element: (
+          <ProtectedRoute>
+            <HomePAge />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "about",
+        element: (
+          <ProtectedRoute>
+            <About />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
   {
@@ -50,5 +65,5 @@ createRoot(document.getElementById("root")!).render(
     <Providers>
       <RouterProvider router={router} />
     </Providers>
-  </StrictMode>
+  </StrictMode>,
 );
