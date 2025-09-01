@@ -39,40 +39,46 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  isLoading?: boolean;
+  icon?: () => React.ReactNode;
 }
 
-const Button = React.forwardRef<
-  HTMLButtonElement,
-  ButtonProps & { icon?: () => React.ReactNode; spinner?: boolean } & {
-    isLoading?: boolean;
-  }
->(function (
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
     className,
     variant,
     size,
     icon,
     isLoading,
-    spinner,
     asChild = false,
+    children,
+    disabled,
     ...props
   },
   ref
 ) {
   const Comp = asChild ? Slot : "button";
 
+  const renderIcon = () => {
+    if (isLoading) {
+      return <LoaderCircle className="mt-[2px] size-[20px] animate-spin" />;
+    }
+
+    if (icon) {
+      return (
+        <div className="absolute bg-main rounded-full size-8 border-2 border-grayExtra text-grayExtra flex items-center justify-center -right-5 top-1/2 -translate-y-1/2 rotate-45">
+          {icon()}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   const content = (
     <>
-      {props.children}
-      {spinner ? (
-        <LoaderCircle className="mt-[2px] size-[20px] animate-spin-fast" />
-      ) : (
-        icon?.() && (
-          <div className="absolute bg-main rounded-full size-8 border-2 border-grayExtra text-grayExtra flex items-center justify-center -right-5 top-1/2 -translate-y-1/2 rotate-45">
-            {icon?.()}
-          </div>
-        )
-      )}
+      {children}
+      {renderIcon()}
     </>
   );
 
@@ -80,10 +86,10 @@ const Button = React.forwardRef<
     <Comp
       className={cn(buttonVariants({ variant, size, className }))}
       ref={ref}
+      disabled={isLoading || disabled}
       {...props}
-      disabled={isLoading || props.disabled}
     >
-      {asChild ? props.children : content}
+      {asChild ? children : content}
     </Comp>
   );
 });
