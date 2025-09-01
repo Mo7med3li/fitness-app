@@ -61,5 +61,6 @@
   "auth.password-changed-successfully": "تم تغيير كلمة المرور بنجاح.",
   "auth.confirm-new-password": "تأكيد كلمة مرور جديدة",
   "auth.new-password": "كلمة المرور الجديدة",
-  "change": "تغيير"
+  "change": "تغيير",
+  "auth.resend-code": "إعادة تقديم رمز"
 }
