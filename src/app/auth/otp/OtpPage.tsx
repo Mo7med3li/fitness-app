@@ -2,29 +2,22 @@
 import { Button } from "@/components/ui/button";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 
-// Images
-import fitImage from "../../../../public/assets/O15_36.png";
-import logo from "../../../../public/assets/fit 1.png";
-
 // lib
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
-import { toast } from "sonner";
 import type z from "zod";
 import { Loader } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 // schemes
 import { OTPSchema } from "@/lib/schemes/OTP.schema";
+import useForgetPass from "@/hooks/auth/useForgetPassword";
+import LeftSideImage from "../_components/left-side-image";
+import useOtp from "@/hooks/auth/useOtp";
 
-export default function OTP() {
+export default function OtpPage() {
   // Hook
-  const navigate = useNavigate();
-  const [loading, isLoading] = useState<boolean>(false);
   const { t } = useTranslation();
   // React hook form
   const form = useForm<z.infer<typeof OTPSchema>>({
@@ -33,35 +26,18 @@ export default function OTP() {
       resetCode: "",
     },
   });
-
+  const { mutateAsync: resetCode, isPending } = useOtp();
+  const { mutateAsync: forgetPassword } = useForgetPass();
   // Submit function
   function onSubmit(values: z.infer<typeof OTPSchema>) {
     // Send a POST request
-    isLoading(true);
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/auth/verifyResetCode`, values)
-      // on Success
-      .then((data) => {
-        if ((data.data.message = "success")) {
-          isLoading(false);
-          toast.success(t("auth.the-code-has-been-verified-successfully"));
-          navigate("/auth/create-password");
-        }
-      })
-      // on Error
-      .catch((error) => {
-        isLoading(false);
-        toast.error(error?.response?.data?.error);
-      });
+    resetCode(values);
   }
 
   return (
     <div className="w-full min-h-screen text-white grid grid-cols-1 lg:grid-cols-2">
       {/* left side */}
-      <div className="hidden lg:flex flex-col items-center justify-center gap-16 p-8">
-        <img src={logo} alt="logo super fitness" className="w-32 lg:w-44" />
-        <img src={fitImage} alt="fit Image" className="w-72 lg:w-[500px]" />
-      </div>
+      <LeftSideImage />
 
       {/* Right Side */}
       <div className="flex flex-col items-center justify-center p-6 sm:p-12">
@@ -114,11 +90,11 @@ export default function OTP() {
 
             {/* Confirm button */}
             <Button
-              disabled={loading || form.watch("resetCode").length < 6}
+              disabled={isPending || form.watch("resetCode").length < 6}
               className="w-full disabled:bg-slate-600 rounded-xl py-6 text-lg font-semibold"
               type="submit"
             >
-              {loading ? (
+              {isPending ? (
                 <span className="animate-spin">
                   <Loader />
                 </span>
@@ -135,20 +111,8 @@ export default function OTP() {
               <button
                 type="button"
                 onClick={() => {
-                  axios
-                    .post(`${import.meta.env.VITE_API_URL}/auth/forgotPassword`, {
-                      email: localStorage.getItem("email"),
-                    })
-                    .then((data) => {
-                      if (data.data.message === "success") {
-                        isLoading(false);
-                        toast.success(t("auth.otp-has-been-sent-to-your-email"));
-                      }
-                    })
-                    .catch((error) => {
-                      isLoading(false);
-                      toast.error(error?.response?.data?.error);
-                    });
+                  const x = localStorage.getItem("email");
+                  forgetPassword({ email: x });
                 }}
                 className="text-main hover:text-main/80 underline font-bold text-sm sm:text-base mt-2 transition-colors"
               >

@@ -34,5 +34,6 @@
   "auth.make-sure-to-create-a-strong-password": "Make sure to create a strong password!",
   "auth.new-password": "New password",
   "auth.confirm-new-password": "Confirm New Password",
-  "change": "change"
+  "change": "change",
+  "auth.resend-code": "Resend Code"
 }

@@ -4,8 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 
 // Images
-import fitImage from "../../../../public/assets/O15_36.png";
-import logo from "../../../../public/assets/fit 1.png";
 import Apple from "../../../../public/assets/Apple.png";
 import Google from "../../../../public/assets/Google.png";
 import facebook from "../../../../public/assets/facebook.png";
@@ -14,33 +12,18 @@ import facebook from "../../../../public/assets/facebook.png";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { toast } from "sonner";
-import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { Loader } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-// schemes
+// schemes & custom hook
 import { LoginSchema } from "@/lib/schemes/login.schema";
+import useLogin from "@/hooks/auth/uselogin";
+import LeftSideImage from "../_components/left-side-image";
 
-// context
-import { UserContext } from "@/context/UserContext";
-
-export default function Login() {
+export default function LoginPage() {
   // Hook
-  const navigate = useNavigate();
-  const [loading, isLoading] = useState<boolean>(false);
   const { t } = useTranslation();
-
-  // get setUserLogin to use on success Api
-  const userContext = useContext(UserContext);
-  if (!userContext) {
-    throw new Error(
-      "UserContext is undefined. Make sure you are using Login inside a UserContext.Provider.",
-    );
-  }
-  const { setUserLogin } = userContext;
 
   // React hook form
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -52,35 +35,15 @@ export default function Login() {
   });
 
   // Submit function
+  const { mutate: login, isPending } = useLogin();
   function onSubmit(values: z.infer<typeof LoginSchema>) {
-    // Send a POST request
-    isLoading(true);
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/auth/signin`, values)
-      // on Success
-      .then((data) => {
-        if ((data.data.message = "success")) {
-          localStorage.setItem("userToken", data.data.token);
-          setUserLogin(data.data.token);
-          isLoading(false);
-          toast.success(data.data.message);
-          navigate("/");
-        }
-      })
-      // on Error
-      .catch((error) => {
-        isLoading(false);
-        toast.error(error?.response?.data?.error);
-      });
+    login(values);
   }
 
   return (
     <div className="w-full min-h-screen text-white text-3xl grid grid-cols-1 lg:grid-cols-2">
       {/* left side */}
-      <div className="hidden lg:flex flex-col items-center justify-center gap-20 p-8">
-        <img src={logo} alt="logo super fitness" className="w-32 lg:w-44" />
-        <img src={fitImage} alt="fit Image" className="w-72 lg:w-[500px]" />
-      </div>
+      <LeftSideImage />
 
       {/* right side */}
       <div className="flex flex-col items-center justify-center p-6 sm:p-12">
@@ -158,11 +121,11 @@ export default function Login() {
 
             {/* Login button */}
             <Button
-              disabled={loading || !form.watch("email") || !form.watch("password")}
+              disabled={isPending || !form.watch("email") || !form.watch("password")}
               className="w-full disabled:bg-slate-600"
               type="submit"
             >
-              {loading ? (
+              {isPending ? (
                 <span className="animate-spin">
                   <Loader />
                 </span>

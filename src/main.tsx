@@ -2,17 +2,19 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePAge from "./app/pages/home/page";
-import About from "./app/pages/about/About.tsx";
 import Providers from "./components/providers/index.tsx";
-import PagesLayout from "./app/pages/PagesLayout.tsx";
-import AuthLayout from "./app/auth/AuthLayout.tsx";
-import Login from "./app/auth/login/Login.tsx";
-import ForgetPass from "./app/auth/forget-password/ForgetPass.tsx";
-import OTP from "./app/auth/otp/OTP.tsx";
-import CreatePass from "./app/auth/Create-password/CreatePass.tsx";
 import ProtectedRoute from "./components/common/ProtectedRoute/ProtectedRoute.tsx";
 import "./i18n";
+
+// pages
+import LoginPage from "./app/auth/login/LoginPage.tsx";
+import ForgetPasswordPage from "./app/auth/forget-password/ForgetPasswordPage.tsx";
+import CreatePasswordPage from "./app/auth/Create-password/CreatePasswordPage.tsx";
+import OtpPage from "./app/auth/otp/OtpPage.tsx";
+import HomePAge from "./app/pages/home/page";
+import About from "./app/pages/about/About.tsx";
+import PagesLayout from "./app/pages/PagesLayout.tsx";
+import AuthLayout from "./app/auth/AuthLayout.tsx";
 
 const router = createBrowserRouter([
   {
@@ -43,19 +45,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "login",
-        element: <Login />,
+        element: <LoginPage />,
       },
       {
         path: "forget-password",
-        element: <ForgetPass />,
+        element: <ForgetPasswordPage />,
       },
       {
         path: "OTP",
-        element: <OTP />,
+        element: <OtpPage />,
       },
       {
         path: "create-password",
-        element: <CreatePass />,
+        element: <CreatePasswordPage />,
       },
     ],
   },
