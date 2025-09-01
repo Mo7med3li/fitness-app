@@ -7,6 +7,7 @@ import HomePage from "./app/home/page.tsx";
 import "./i18n";
 import AuthLayout from "./app/auth/layout.tsx";
 import KYC from "@/app/auth/KYC/page.tsx";
+import Providers from "./components/providers/index.tsx";
 
 // Routes
 const router = createBrowserRouter([
@@ -32,8 +33,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="bg-zinc-50 dark:bg-red-800">
-      <RouterProvider router={router} />
-    </div>
+    <Providers>
+      <div className="">
+        <RouterProvider router={router} />
+      </div>
+    </Providers>
   </StrictMode>
 );
