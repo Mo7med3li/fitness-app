@@ -11,7 +11,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { TranslationToggle } from "@/components/common/translation-toggle";
 
-export default function HomePAge() {
+export default function HomePage() {
   // Translation
   const { t } = useTranslation();
   return (
