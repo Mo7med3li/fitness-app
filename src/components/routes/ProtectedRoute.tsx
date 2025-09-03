@@ -2,9 +2,11 @@ import type { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ children }: { children: ReactNode }) {
-  if (localStorage.getItem("userToken") !== null) {
+  const token = localStorage.getItem("userToken");
+
+  if (token) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/auth/login" />;
+    return <Navigate to="/auth/login" replace />;
   }
 }

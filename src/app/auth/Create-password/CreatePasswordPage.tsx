@@ -32,7 +32,14 @@ export default function CreatePasswordPage() {
   const { mutate: createNewPss, isPending } = useNewPass();
   // Submit function
   function onSubmit(values: z.infer<typeof ChangePasswordSchema>) {
-    createNewPss({ email: values.email, newPassword: values.newPassword });
+    createNewPss(
+      { email: values.email, newPassword: values.newPassword },
+      {
+        onSuccess() {
+          localStorage.removeItem("email");
+        },
+      },
+    );
   }
 
   return (

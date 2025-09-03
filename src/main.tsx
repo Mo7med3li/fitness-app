@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Providers from "./components/providers/index.tsx";
-import ProtectedRoute from "./components/common/ProtectedRoute/ProtectedRoute.tsx";
+import ProtectedRoute from "./components/routes/ProtectedRoute.tsx";
 import "./i18n";
 
 // pages
@@ -15,6 +15,7 @@ import HomePAge from "./app/pages/home/page";
 import About from "./app/pages/about/About.tsx";
 import PagesLayout from "./app/pages/PagesLayout.tsx";
 import AuthLayout from "./app/auth/AuthLayout.tsx";
+import GuestRoute from "./components/routes/GuestRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -45,19 +46,36 @@ const router = createBrowserRouter([
     children: [
       {
         path: "login",
-        element: <LoginPage />,
+        element: (
+          <GuestRoute>
+            {" "}
+            <LoginPage />
+          </GuestRoute>
+        ),
       },
       {
         path: "forget-password",
-        element: <ForgetPasswordPage />,
+        element: (
+          <GuestRoute>
+            <ForgetPasswordPage />
+          </GuestRoute>
+        ),
       },
       {
         path: "OTP",
-        element: <OtpPage />,
+        element: (
+          <GuestRoute>
+            <OtpPage />
+          </GuestRoute>
+        ),
       },
       {
         path: "create-password",
-        element: <CreatePasswordPage />,
+        element: (
+          <GuestRoute>
+            <CreatePasswordPage />
+          </GuestRoute>
+        ),
       },
     ],
   },
