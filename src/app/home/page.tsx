@@ -11,13 +11,13 @@ import {
 import { useTranslation } from "react-i18next";
 import { TranslationToggle } from "@/components/common/translation-toggle";
 
-export default function HomePAge() {
+export default function HomePage() {
   // Translation
   const { t } = useTranslation();
   return (
-    <div className="container text-center space-y-5 space-x-5 dark:bg-gray-700">
+    <div className="container text-center space-y-5 font-rubik space-x-5 dark:bg-gray-700">
       <TranslationToggle />
-      <h1 className="text-3xl font-bold">{t("fitnes-app")}</h1>
+      <h1 className="text-3xl font-bold ">{t("fitnes-app")}</h1>
       <Button className="px-5" onClick={() => toast.success(t("hello"))}>
         {t("get-started")}
       </Button>

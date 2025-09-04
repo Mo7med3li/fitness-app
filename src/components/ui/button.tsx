@@ -39,44 +39,60 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  isLoading?: boolean;
+  icon?: () => React.ReactNode;
 }
 
-const Button = React.forwardRef<
-  HTMLButtonElement,
-  ButtonProps & { icon?: () => React.ReactNode; spinner?: boolean }
->(
-  (
-    { className, variant, size, icon, spinner, asChild = false, ...props },
-    ref
-  ) => {
-    const Comp = asChild ? Slot : "button";
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    className,
+    variant,
+    size,
+    icon,
+    isLoading,
+    asChild = false,
+    children,
+    disabled,
+    ...props
+  },
+  ref
+) {
+  const Comp = asChild ? Slot : "button";
 
-    const content = (
-      <>
-        {props.children}
-        {spinner ? (
-          <LoaderCircle className="mt-[2px] size-[20px] animate-spin-fast" />
-        ) : (
-          icon?.() && (
-            <div className="absolute bg-main rounded-full size-8 border-2 border-grayExtra text-grayExtra flex items-center justify-center -right-5 top-1/2 -translate-y-1/2 rotate-45">
-              {icon?.()}
-            </div>
-          )
-        )}
-      </>
-    );
+  const renderIcon = () => {
+    if (isLoading) {
+      return <LoaderCircle className="mt-[2px] size-[20px] animate-spin" />;
+    }
 
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      >
-        {asChild ? props.children : content}
-      </Comp>
-    );
-  }
-);
+    if (icon) {
+      return (
+        <div className="absolute bg-main rounded-full size-8 border-2 border-grayExtra text-grayExtra flex items-center justify-center -right-5 top-1/2 -translate-y-1/2 rotate-45">
+          {icon()}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
+  const content = (
+    <>
+      {children}
+      {renderIcon()}
+    </>
+  );
+
+  return (
+    <Comp
+      className={cn(buttonVariants({ variant, size, className }))}
+      ref={ref}
+      disabled={isLoading || disabled}
+      {...props}
+    >
+      {asChild ? children : content}
+    </Comp>
+  );
+});
 
 Button.displayName = "Button";
 

@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: "Baloo Thambi 2";
+    src: url("./fonts/BalooThambi2-Regular.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;

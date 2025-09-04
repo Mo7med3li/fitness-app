@@ -4,6 +4,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        baloo: ['"Baloo Thambi 2"', "cursive"],
+        rubik: ['"Rubik"', "sans-serif"],
+      },
       screens: {
         "2xl": "1536px",
       },
