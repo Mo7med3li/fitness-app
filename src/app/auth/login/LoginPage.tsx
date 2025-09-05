@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 
 // Images
-import Apple from "../../../../public/assets/Apple.png";
-import Google from "../../../../public/assets/Google.png";
-import facebook from "../../../../public/assets/facebook.png";
+import Apple from "../../../../public/assets/Apple.webp";
+import Google from "../../../../public/assets/Google.webp";
+import facebook from "../../../../public/assets/facebook.webp";
 
 // lib
 import { zodResolver } from "@hookform/resolvers/zod";
