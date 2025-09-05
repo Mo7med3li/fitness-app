@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 // schemes & custom hook
 import { ForgetPassSchema } from "@/lib/schemes/forget-password.schema";
-import useForgetPassword from "@/hooks/auth/useForgetPassword";
+import useForgetPassword from "./hooks/useForgetPassword";
 
 export default function ForgetPasswordPage() {
   // Hook

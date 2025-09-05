@@ -12,8 +12,8 @@ import { useTranslation } from "react-i18next";
 
 // schemes
 import { OTPSchema } from "@/lib/schemes/OTP.schema";
-import useForgetPass from "@/hooks/auth/useForgetPassword";
-import useOtp from "@/hooks/auth/useOtp";
+import useForgetPass from "@/app/auth/forget-password/hooks/useForgetPassword";
+import useOtp from "./hooks/useOtp";
 
 export default function OtpPage() {
   // Hook

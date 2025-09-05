@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 // schemes
 import { ChangePasswordSchema } from "@/lib/schemes/change-password.schema";
-import useNewPass from "@/hooks/auth/useNewPass";
+import useNewPass from "./hooks/useNewPass";
 
 export default function CreatePasswordPage() {
   // Hook

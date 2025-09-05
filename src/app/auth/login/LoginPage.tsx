@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
 
 // schemes & custom hook
 import { LoginSchema } from "@/lib/schemes/login.schema";
-import useLogin from "@/hooks/auth/uselogin";
+import useLogin from "./hooks/uselogin";
 
 export default function LoginPage() {
   // Hook
