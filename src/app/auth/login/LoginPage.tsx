@@ -18,8 +18,7 @@ import { useTranslation } from "react-i18next";
 
 // schemes & custom hook
 import { LoginSchema } from "@/lib/schemes/login.schema";
-import useLogin from "@/hooks/auth/uselogin";
-import LeftSideImage from "../_components/left-side-image";
+import useLogin from "./hooks/uselogin";
 
 export default function LoginPage() {
   // Hook
@@ -42,9 +41,6 @@ export default function LoginPage() {
 
   return (
     <div className="w-full min-h-screen text-white text-3xl grid grid-cols-1 lg:grid-cols-2">
-      {/* left side */}
-      <LeftSideImage />
-
       {/* right side */}
       <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* form header */}

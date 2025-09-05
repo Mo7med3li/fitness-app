@@ -12,8 +12,7 @@ import { useTranslation } from "react-i18next";
 
 // schemes
 import { ChangePasswordSchema } from "@/lib/schemes/change-password.schema";
-import useNewPass from "@/hooks/auth/useNewPass";
-import LeftSideImage from "../_components/left-side-image";
+import useNewPass from "./hooks/useNewPass";
 
 export default function CreatePasswordPage() {
   // Hook
@@ -37,9 +36,6 @@ export default function CreatePasswordPage() {
 
   return (
     <div className="w-full min-h-screen text-white grid grid-cols-1 lg:grid-cols-2">
-      {/* left side */}
-      <LeftSideImage />
-
       {/* right side */}
       <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* form header */}
