@@ -34,8 +34,6 @@ export default function OtpPage() {
   }
 
   return (
-    <div className="w-full min-h-screen text-white grid grid-cols-1 lg:grid-cols-2">
-      {/* Right Side */}
       <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* Form Header */}
         <div className="text-center mb-8 space-y-2">
@@ -118,6 +116,5 @@ export default function OtpPage() {
           </form>
         </Form>
       </div>
-    </div>
   );
 }

@@ -23,7 +23,7 @@ export default function AuthLayout() {
           <img src={Logo} alt="" className="mx-auto mb-20" />
           <img src={Figure} alt="" className="mx-auto w-full" />
         </div>
-        <div className="col-span-1 flex justify-center items-center">
+        <div className="col-span-1 flex justify-center items-center text-white">
           <Outlet />
         </div>
       </div>

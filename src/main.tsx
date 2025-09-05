@@ -14,8 +14,8 @@ import OtpPage from "./app/auth/otp/OtpPage.tsx";
 import HomePAge from "./app/pages/home/page";
 import About from "./app/pages/about/About.tsx";
 import PagesLayout from "./app/pages/PagesLayout.tsx";
-import AuthLayout from "./app/auth/AuthLayout.tsx";
 import KYC from "@/app/auth/KYC/page.tsx";
+import AuthLayout from "./app/auth/layout.tsx";
 
 const router = createBrowserRouter([
   {

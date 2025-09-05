@@ -35,8 +35,6 @@ export default function CreatePasswordPage() {
   }
 
   return (
-    <div className="w-full min-h-screen text-white grid grid-cols-1 lg:grid-cols-2">
-      {/* right side */}
       <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* form header */}
         <div className="text-center mb-8">
@@ -113,6 +111,5 @@ export default function CreatePasswordPage() {
           </form>
         </Form>
       </div>
-    </div>
   );
 }
