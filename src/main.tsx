@@ -41,20 +41,18 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "auth",
     element: <AuthLayout />,
     children: [
       {
-        path: "login",
+        path: "/auth/login",
         element: (
           <GuestRoute>
-            {" "}
             <LoginPage />
           </GuestRoute>
         ),
       },
       {
-        path: "forget-password",
+        path: "/auth/forget-password",
         element: (
           <GuestRoute>
             <ForgetPasswordPage />
@@ -62,7 +60,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "OTP",
+        path: "/auth/OTP",
         element: (
           <GuestRoute>
             <OtpPage />
@@ -70,7 +68,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "create-password",
+        path: "/auth/create-password",
         element: (
           <GuestRoute>
             <CreatePasswordPage />

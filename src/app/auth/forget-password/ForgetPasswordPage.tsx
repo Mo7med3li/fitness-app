@@ -13,7 +13,6 @@ import { useTranslation } from "react-i18next";
 // schemes & custom hook
 import { ForgetPassSchema } from "@/lib/schemes/forget-password.schema";
 import useForgetPassword from "@/hooks/auth/useForgetPassword";
-import LeftSideImage from "../_components/left-side-image";
 
 export default function ForgetPasswordPage() {
   // Hook
@@ -40,9 +39,6 @@ export default function ForgetPasswordPage() {
 
   return (
     <div className="w-full min-h-screen text-white grid grid-cols-1 lg:grid-cols-2">
-      {/* left side */}
-      <LeftSideImage />
-
       {/* right side */}
       <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* form header */}

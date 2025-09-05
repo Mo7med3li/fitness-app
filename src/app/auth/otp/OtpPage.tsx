@@ -13,7 +13,6 @@ import { useTranslation } from "react-i18next";
 // schemes
 import { OTPSchema } from "@/lib/schemes/OTP.schema";
 import useForgetPass from "@/hooks/auth/useForgetPassword";
-import LeftSideImage from "../_components/left-side-image";
 import useOtp from "@/hooks/auth/useOtp";
 
 export default function OtpPage() {
@@ -36,9 +35,6 @@ export default function OtpPage() {
 
   return (
     <div className="w-full min-h-screen text-white grid grid-cols-1 lg:grid-cols-2">
-      {/* left side */}
-      <LeftSideImage />
-
       {/* Right Side */}
       <div className="flex flex-col items-center justify-center p-6 sm:p-12">
         {/* Form Header */}
