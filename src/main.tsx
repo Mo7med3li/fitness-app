@@ -16,6 +16,7 @@ import About from "./app/pages/about/About.tsx";
 import PagesLayout from "./app/pages/PagesLayout.tsx";
 import KYC from "@/app/auth/KYC/page.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
+import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -45,23 +46,43 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/auth/kyc",
-        element: <KYC />,
+        element: (
+          <GuestRoute>
+            <KYC />
+          </GuestRoute>
+        ),
       },
       {
         path: "/auth/login",
-        element: <LoginPage />,
+        element: (
+          <GuestRoute>
+            <LoginPage />
+          </GuestRoute>
+        ),
       },
       {
         path: "/auth/forget-password",
-        element: <ForgetPasswordPage />,
+        element: (
+          <GuestRoute>
+            <ForgetPasswordPage />
+          </GuestRoute>
+        ),
       },
       {
         path: "/auth/OTP",
-        element: <OtpPage />,
+        element: (
+          <GuestRoute>
+            <OtpPage />
+          </GuestRoute>
+        ),
       },
       {
         path: "/auth/create-password",
-        element: <CreatePasswordPage />,
+        element: (
+          <GuestRoute>
+            <CreatePasswordPage />
+          </GuestRoute>
+        ),
       },
     ],
   },
