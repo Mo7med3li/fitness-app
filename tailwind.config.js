@@ -4,6 +4,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "exercise-section":
+          "linear-gradient(rgba(36,36,36,0.9), rgba(36,36,36,0.9)), url('./public/assets/traidmails.jpg')",
+      },
       fontFamily: {
         baloo: ['"Baloo Thambi 2"', "cursive"],
         rubik: ['"Rubik"', "sans-serif"],

@@ -1,0 +1,14 @@
+import { JSON_HEADER } from "@/lib/constants/api.const";
+import axios from "axios";
+
+export const fetchExercises = async (pageParam: number) => {
+  const res = await axios.get<ExercisesResponse>(
+    `https://fitness.elevateegy.com/api/v1/exercises?page=${pageParam}&limit=1800`,
+    {
+      headers: {
+        ...JSON_HEADER,
+      },
+    }
+  );
+  return res.data;
+};
