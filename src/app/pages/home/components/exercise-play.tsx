@@ -1,5 +1,5 @@
 import { useState } from "react";
-import exersiceImage from "../../../../public/assets/fitness-9180669_1280.jpg";
+import exersiceImage from "../../../../../public/assets/fitness-9180669_1280.jpg";
 import ReactPlayer from "react-player";
 import { Play } from "lucide-react";
 

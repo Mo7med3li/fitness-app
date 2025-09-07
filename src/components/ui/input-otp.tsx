@@ -12,7 +12,7 @@ const InputOTP = React.forwardRef<
     ref={ref}
     containerClassName={cn(
       "flex items-center gap-2 has-[:disabled]:opacity-50",
-      containerClassName
+      containerClassName,
     )}
     className={cn("disabled:cursor-not-allowed", className)}
     {...props}
@@ -24,13 +24,10 @@ const InputOTPGroup = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex items-center gap-3", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn("flex flex-wrap justify-center gap-3", className)} {...props} />
 ));
 InputOTPGroup.displayName = "InputOTPGroup";
+
 const InputOTPSlot = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div"> & { index: number }
@@ -42,11 +39,11 @@ const InputOTPSlot = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "relative flex h-14 w-14 items-center justify-center text-2xl font-bold transition-colors",
+        "relative flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center text-xl sm:text-2xl font-bold transition-colors",
         "border-b-2",
         char ? "border-main text-main" : "border-white text-white",
         isActive && "ring-0 border-main",
-        className
+        className,
       )}
       {...props}
     >

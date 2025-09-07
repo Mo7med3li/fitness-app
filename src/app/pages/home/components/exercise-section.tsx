@@ -111,7 +111,7 @@ const ExerciseSection = () => {
   }, [payload, searchParams]);
 
   return (
-    <div className="container h-screen text-center space-y-6 font-rubik dark:bg-gray-700 p-4 backdrop-blur-xl bg-exercise-section bg-cover">
+    <div className="container h-screen text-center space-y-6 font-rubik dark:bg-gray-700 p-4 backdrop-blur-xl bg-exercise-section linear-gradient(rgba(36,36,36,0.9), rgba(36,36,36,0.9)), url('./public/assets/traidmails.jpg') bg-cover">
       {/* Muscles Group */}
       <MusclesGroup />
 

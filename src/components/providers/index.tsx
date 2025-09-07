@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "./components/theme-provider";
 import { Toaster } from "../ui/sonner";
+import UserContextProvider from "@/context/UserContext";
 
 type ProviderProps = {
   children: React.ReactNode;
@@ -23,7 +24,7 @@ export default function Providers({ children }: ProviderProps) {
       {/* App Content */}
       <>
         <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-          {children}
+          <UserContextProvider>{children}</UserContextProvider>
           <Toaster />
         </ThemeProvider>
       </>

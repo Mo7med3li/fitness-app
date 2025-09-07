@@ -18,6 +18,9 @@ export default {
       container: {
         center: true,
       },
+      boxShadow: {
+        auth: "0 4px 79.8px 47px rgba(0,0,0,0.25)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -68,6 +71,9 @@ export default {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+      },
+      backgroundImage: {
+        "hero-pattern": "url('/public/assets/background.png')",
       },
     },
   },

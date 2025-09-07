@@ -2,19 +2,87 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./app/layout.tsx";
-import HomePage from "./app/home/page.tsx";
-import "./i18n";
 import Providers from "./components/providers/index.tsx";
+import ProtectedRoute from "./components/common/ProtectedRoute/ProtectedRoute.tsx";
+import "./i18n";
 
-// Routes
+// pages
+import LoginPage from "./app/auth/login/LoginPage.tsx";
+import ForgetPasswordPage from "./app/auth/forget-password/ForgetPasswordPage.tsx";
+import CreatePasswordPage from "./app/auth/Create-password/CreatePasswordPage.tsx";
+import OtpPage from "./app/auth/otp/OtpPage.tsx";
+import HomePAge from "./app/pages/home/page";
+import About from "./app/pages/about/About.tsx";
+import PagesLayout from "./app/pages/PagesLayout.tsx";
+import KYC from "@/app/auth/KYC/page.tsx";
+import AuthLayout from "./app/auth/layout.tsx";
+import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
+
 const router = createBrowserRouter([
   {
-    element: <RootLayout />,
+    path: "",
+    element: <PagesLayout />,
     children: [
       {
-        index: true,
-        element: <HomePage />,
+        path: "",
+        element: (
+          <ProtectedRoute>
+            <HomePAge />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "about",
+        element: (
+          <ProtectedRoute>
+            <About />
+          </ProtectedRoute>
+        ),
+      },
+    ],
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/auth/kyc",
+        element: (
+          <GuestRoute>
+            <KYC />
+          </GuestRoute>
+        ),
+      },
+      {
+        path: "/auth/login",
+        element: (
+          <GuestRoute>
+            <LoginPage />
+          </GuestRoute>
+        ),
+      },
+      {
+        path: "/auth/forget-password",
+        element: (
+          <GuestRoute>
+            <ForgetPasswordPage />
+          </GuestRoute>
+        ),
+      },
+      {
+        path: "/auth/OTP",
+        element: (
+          <GuestRoute>
+            <OtpPage />
+          </GuestRoute>
+        ),
+      },
+      {
+        path: "/auth/create-password",
+        element: (
+          <GuestRoute>
+            <CreatePasswordPage />
+          </GuestRoute>
+        ),
       },
     ],
   },
@@ -25,5 +93,5 @@ createRoot(document.getElementById("root")!).render(
     <Providers>
       <RouterProvider router={router} />
     </Providers>
-  </StrictMode>
+  </StrictMode>,
 );
