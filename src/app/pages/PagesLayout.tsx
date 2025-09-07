@@ -1,15 +1,12 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 const PagesLayout = () => {
   return (
-    <>
-      <nav className="p-4 bg-gray-200 flex gap-4">
-        <Link to={""}>Home</Link>
-        <Link to={"about"}>About</Link>
-        <Link to={"auth/login"}>Auth</Link>
-      </nav>
+    <main className="container flex flex-col gap-4">
+      <Navbar />
       <Outlet />
-    </>
+    </main>
   );
 };
 export default PagesLayout;
