@@ -1,11 +1,7 @@
 import { Dumbbell } from "lucide-react";
 import WOrkouts from "./../../../../public/assets/WOrkouts.webp";
-import useMuscles from "./Hooks/getMuscles";
-import { TranslationToggle } from "@/components/common/translation-toggle";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import ClassesFilter from "../components/ClassesFilter";
-import ClassesExplore from "./components/ClassesExplore";
+import { ClassesExplore } from "./components/ClassesExplore";
+import ClassesFilter from "../../../components/common/ClassesFilter";
 
 export default function ClassessPage() {
   return (
@@ -24,7 +20,7 @@ export default function ClassessPage() {
         {/* header */}
         <div className="w-2/4 mx-auto">
           <h3 className="text-4xl font-bold text-center">
-            Transform Your Body with Our Dynamic{" "}
+            Transform Your Body with Our Dynamic
             <span className="text-main">Upcoming Workouts</span>
           </h3>
         </div>

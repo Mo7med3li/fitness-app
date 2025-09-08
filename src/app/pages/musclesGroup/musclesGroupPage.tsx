@@ -1,6 +1,6 @@
 import { Dumbbell } from "lucide-react";
 import WOrkouts from "./../../../../public/assets/WOrkouts.webp";
-import ClassesFilter from "../components/ClassesFilter";
+import ClassesFilter from "../../../components/common/ClassesFilter";
 
 export default function MsclesGroupPage() {
   return (

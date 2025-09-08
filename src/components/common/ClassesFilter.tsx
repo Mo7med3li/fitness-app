@@ -1,7 +1,7 @@
 import type { Muscles } from "@/lib/types/muscles";
 import { cn } from "@/lib/utils";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
-import useMuscles from "../classes/Hooks/getMuscles";
+import useMuscles from "../../app/pages/classes/Hooks/getMuscles";
 
 export default function ClassesFilter() {
   // hooks
