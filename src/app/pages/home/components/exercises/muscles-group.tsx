@@ -19,8 +19,8 @@ const MusclesGroup = () => {
             });
           }}
           className={cn(
-            "p-2 border-none text-grayLight rounded-[20px] bg-transparent font-bold text-xl",
-            searchParams.get("muscle") === muscle.name && "bg-main text-white"
+            "px-2 py-1 border-none text-grayLight rounded-[20px] bg-transparent font-bold text-xl",
+            searchParams.get("muscle") === muscle.name && "bg-main text-white",
           )}
         >
           {muscle.name}

@@ -1,5 +1,4 @@
-import ExerciseSection from "./components/exercise-section";
-
+import ExerciseSection from "./components/exercises/exercise-section";
 
 const HomePage = () => {
   return <ExerciseSection />;
