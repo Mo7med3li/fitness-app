@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`sticky w-full z-50 top-0 start-0 py-8 transition-colors duration-300 ${
+      className={`static w-full z-50 top-0 start-0 py-8 transition-colors duration-300 ${
         isScrolled ? "bg-black shadow-md" : "bg-transparent"
       }`}
     >
