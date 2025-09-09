@@ -1,16 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { levels } from "@/lib/constants/exercises/exercise.const";
+import { useLevels } from "@/lib/constants/exercises/exercise.const";
 import { useSearchParams } from "react-router-dom";
 
 const Levels = () => {
   // Search params
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // Variables
+  const levels = useLevels();
+
   return (
     <div className="flex gap-2 col-span-1 items-center justify-center">
       {levels.map((level) => (
         <Button
-          key={level.id}
+          key={level.name}
           onClick={() => {
             setSearchParams({
               level: level.name,

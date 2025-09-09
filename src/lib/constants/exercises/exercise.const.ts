@@ -1,54 +1,80 @@
 // Variables
-export const muscles = [
-  {
-    name: "FullBody",
-  },
-  {
-    name: "chest",
-  },
-  {
-    name: "Arm",
-  },
-  {
-    name: "Shoulder",
-  },
-  {
-    name: "Back",
-  },
-  {
-    name: "Stomach",
-  },
-  {
-    name: "Leg",
-  },
-];
 
-export const levels = [
-  {
-    name: "Beginner",
-    id: "67c797e226895f87ce0aa94b",
-  },
-  {
-    name: "Intermediate",
-    id: "67c797e226895f87ce0aa94c",
-  },
-  {
-    name: "Advanced",
-    id: "67c797e226895f87ce0aa94d",
-  },
-];
+import { useTranslation } from "react-i18next";
+export const useMuscles = () => {
+  // Translation
+  const { t } = useTranslation();
 
-export const exercisesMeals = [
-  {
-    name: "Breakfast",
-    image: "/assets/breakfast.png",
-  },
-  {
-    name: "Lunch",
-    image: "/assets/lunch.png",
-  },
-  {
-    name: "Dinner",
-    image: "/assets/dinner.jpg",
-  },
-];
+  return [
+    {
+      name: t("fullbody"),
+    },
+    {
+      name: t("chest"),
+    },
+    {
+      name: t("arm"),
+    },
+    {
+      name: t("shoulder"),
+    },
+    {
+      name: t("back"),
+    },
+    {
+      name: t("stomach"),
+    },
+    {
+      name: t("leg"),
+    },
+  ];
+};
+
+export const useLevels = () => {
+  // Translation
+  const { t } = useTranslation();
+
+  return [
+    {
+      name: t("beginner"),
+    },
+    {
+      name: t("intermediate"),
+    },
+    {
+      name: t("advanced"),
+    },
+  ];
+};
+
+const useExercisesMeals = () => {
+  // Translation
+  const { t } = useTranslation();
+
+  return [
+    {
+      name: t("breakfast"),
+      image: "/assets/breakfast.png",
+    },
+    {
+      name: t("lunch"),
+      image: "/assets/lunch.png",
+    },
+    {
+      name: t("dinner"),
+      image: "/assets/dinner.jpg",
+    },
+  ];
+};
+export default useExercisesMeals;
+
+export function getWorkoutTaglines() {
+  // Translation
+  const { t } = useTranslation();
+
+  return [
+    { text: t("expertly-designed-workout") },
+    { text: t("professionally-plan") },
+    { text: t("scientifically-program") },
+  ];
+}

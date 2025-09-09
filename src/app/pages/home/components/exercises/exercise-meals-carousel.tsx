@@ -1,4 +1,3 @@
-import { exercisesMeals } from "@/lib/constants/exercises/exercise.const";
 import {
   Carousel,
   CarouselContent,
@@ -9,7 +8,10 @@ import {
 import AutoScroll from "embla-carousel-auto-scroll";
 import React from "react";
 import RecommendedMeals from "./recommended-meals";
+import i18n from "@/i18n";
+import useExercisesMeals from "@/lib/constants/exercises/exercise.const";
 const ExerciseMealsCarousel = () => {
+  const exercisesMeals = useExercisesMeals();
   // Plugins
   const plugin = React.useRef(
     AutoScroll({
@@ -25,6 +27,7 @@ const ExerciseMealsCarousel = () => {
       opts={{
         align: "start",
         loop: true,
+        direction: i18n.language === "ar" ? "rtl" : "ltr",
       }}
       plugins={[plugin.current]}
       onMouseEnter={plugin.current.stop}

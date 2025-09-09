@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { muscles } from "@/lib/constants/exercises/exercise.const";
+import { useMuscles } from "@/lib/constants/exercises/exercise.const";
+
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "react-router-dom";
 
 const MusclesGroup = () => {
   // Search params
   const [searchParams, setSearchParams] = useSearchParams();
+
+  // Variables
+  const muscles = useMuscles();
 
   return (
     <div className="flex justify-center rounded-xl gap-9 ">

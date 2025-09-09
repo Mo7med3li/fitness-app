@@ -12,10 +12,16 @@ import { fetchExercises } from "../../api/fetch-exercises";
 import ExerciseSkeleton from "@/components/skeletons/exercises/exercises.skeleton";
 import ExercisesExpertly from "./exercises-expertly";
 import ExerciseMealsCarousel from "./exercise-meals-carousel";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n";
+import { getWorkoutTaglines } from "@/lib/constants/exercises/exercise.const";
 
 const ExerciseSection = () => {
   // Search params
   const [searchParams, setSearchParams] = useSearchParams();
+
+  // Translation
+  const { t } = useTranslation();
 
   // States
   const [allExercises, setAllExercises] = useState<Exercise[]>([]);
@@ -56,30 +62,30 @@ const ExerciseSection = () => {
     );
     let exercisesFiltered: Exercise[] = [];
 
-    if (muscleParam === "fullBody" || muscleParam === "FullBody") {
+    if (muscleParam === t("fullbody")) {
       exercisesFiltered = levelFilteres.filter((exercise) => exercise.body_region === "Full Body");
-    } else if (muscleParam === "Leg") {
+    } else if (muscleParam === t("leg")) {
       exercisesFiltered = levelFilteres.filter((exercise) => exercise.body_region === "Lower Body");
-    } else if (muscleParam === "Stomach") {
+    } else if (muscleParam === t("stomach")) {
       exercisesFiltered = levelFilteres.filter((exercise) => exercise.body_region === "Midsection");
-    } else if (muscleParam === "Back") {
+    } else if (muscleParam === t("back")) {
       exercisesFiltered = levelFilteres.filter(
-        (exercise) => exercise.target_muscle_group === "Back",
+        (exercise) => exercise.target_muscle_group === t("back"),
       );
-    } else if (muscleParam === "Shoulder") {
+    } else if (muscleParam === t("shoulder")) {
       exercisesFiltered = levelFilteres.filter(
-        (exercise) => exercise.target_muscle_group === "Shoulders",
+        (exercise) => exercise.target_muscle_group === t("shoulder"),
       );
-    } else if (muscleParam === "Arm") {
+    } else if (muscleParam === t("arm")) {
       exercisesFiltered = levelFilteres.filter(
         (exercise) =>
-          exercise.target_muscle_group === "Biceps" ||
-          exercise.target_muscle_group === "Triceps" ||
-          exercise.target_muscle_group === "Forearms",
+          exercise.target_muscle_group === t("biceps") ||
+          exercise.target_muscle_group === t("triceps") ||
+          exercise.target_muscle_group === t("forearms"),
       );
-    } else if (muscleParam === "chest") {
+    } else if (muscleParam === t("chest")) {
       exercisesFiltered = levelFilteres.filter(
-        (exercise) => exercise.target_muscle_group === "Chest",
+        (exercise) => exercise.target_muscle_group === t("chest"),
       );
     }
     setAllExercises(exercisesFiltered);
@@ -87,17 +93,18 @@ const ExerciseSection = () => {
 
   // Effects
   useEffect(() => {
-    if (!searchParams.get("level") || !searchParams.get("muscle")) {
-      setSearchParams({
-        level: "Beginner",
-        muscle: "FullBody",
-      });
-    }
-  }, []);
+    setSearchParams({
+      level: t("beginner"),
+      muscle: t("fullbody"),
+    });
+  }, [i18n.language]);
 
   useEffect(() => {
     handleExercise();
   }, [payload, searchParams]);
+
+  // Variables
+  const workoutTaglines = getWorkoutTaglines();
 
   return (
     <div className="container space-y-4 font-rubik p-2 backdrop-blur-[84px] bg-[linear-gradient(#24242499,#242424),url('/assets/traidmails.jpg')] bg-cover">
@@ -153,10 +160,10 @@ const ExerciseSection = () => {
             isLoading={isFetchingNextPage || isLoading}
           >
             {isFetchingNextPage
-              ? "Loading Exercises..."
+              ? t("loading-exercises")
               : !hasNextPage
-                ? "No More Exercises"
-                : "Load More Exercises"}
+                ? t("no-more-exercises")
+                : t("load-more-exercises")}
           </Button>
         </section>
         <section className="lg:col-span-3 md:col-span-2 col-span-4 space-y-6">
@@ -165,13 +172,13 @@ const ExerciseSection = () => {
             <ExercisePlay exercise={isSelected ? selectedExercise : allExercises[0]} />
             {/* Exercises Expertly */}
             <section className="flex justify-between flex-col lg:flex-row gap-6 lg:gap-0">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <ExercisesExpertly key={index} />
+              {workoutTaglines.map((tagline) => (
+                <ExercisesExpertly key={tagline.text} tagline={tagline.text} />
               ))}
             </section>
           </section>
           <section className="space-y-4">
-            <h2 className="font-medium text-3xl text-grayExtra">Recommendation For You</h2>
+            <h2 className="font-medium text-3xl text-grayExtra">{t("recommendation-for-you")}</h2>
             {/* Recommended Meals */}
             <ExerciseMealsCarousel />
           </section>

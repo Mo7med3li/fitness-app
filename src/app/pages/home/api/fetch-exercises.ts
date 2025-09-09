@@ -1,3 +1,4 @@
+import i18n from "@/i18n";
 import { JSON_HEADER } from "@/lib/constants/api.const";
 import axios from "axios";
 
@@ -7,8 +8,9 @@ export const fetchExercises = async (pageParam: number) => {
     {
       headers: {
         ...JSON_HEADER,
+        "Accept-Language": i18n.language,
       },
-    }
+    },
   );
   return res.data;
 };
