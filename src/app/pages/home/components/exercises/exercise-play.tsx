@@ -9,7 +9,7 @@ const ExercisePlay = ({ exercise }: { exercise: Exercise | null }) => {
   return (
     <div
       className="relative h-[400px] rounded-2xl overflow-hidden shadow-lg bg-[linear-gradient(#0000001A,#242424),url('/assets/fitness-9180669_1280.jpg')] 
-                    bg-cover bg-center backdrop-blur-2xl"
+                 bg-cover bg-center backdrop-blur-2xl"
     >
       <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center p-2">
         {!showVideo && exercise && (

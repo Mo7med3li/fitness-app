@@ -11,6 +11,7 @@ import MusclesGroup from "./muscles-group";
 import { fetchExercises } from "../../api/fetch-exercises";
 import ExerciseSkeleton from "@/components/skeletons/exercises/exercises.skeleton";
 import ExercisesExpertly from "./exercises-expertly";
+import ExerciseMealsCarousel from "./exercise-meals-carousel";
 
 const ExerciseSection = () => {
   // Search params
@@ -99,14 +100,14 @@ const ExerciseSection = () => {
   }, [payload, searchParams]);
 
   return (
-    <div className="container h-screen text-center space-y-3 font-rubik p-2 backdrop-blur-[84px] bg-[linear-gradient(#24242499,#24242499),url('/assets/traidmails.jpg')] bg-cover">
+    <div className="container space-y-4 font-rubik p-2 backdrop-blur-[84px] bg-[linear-gradient(#24242499,#242424),url('/assets/traidmails.jpg')] bg-cover">
       {/* Muscles Group */}
       <MusclesGroup />
 
-      <section className="grid grid-cols-4 gap-6 ">
+      <section className="grid grid-cols-4 gap-3 ">
         <section
           id="scrollableDiv"
-          className="flex flex-col gap-6 lg:col-span-1 md:col-span-2 col-span-4 p-2 bg-[#242424]/50 shadow-xl border-2 rounded-[20px] pt-4 border-[#282828] h-[630px] overflow-y-auto backdrop-blur-[20px]"
+          className="flex flex-col gap-4 lg:col-span-1 md:col-span-2 col-span-4 p-1 shadow-2xl border-2 rounded-[20px] pt-4 border-[#282828] h-[850px] overflow-y-auto backdrop-blur-[20px] hide-scroll"
         >
           {/* Levels */}
           <Levels />
@@ -132,7 +133,7 @@ const ExerciseSection = () => {
               allExercises.map((exercise: Exercise) => (
                 <div
                   className={cn(
-                    "bg-[#2A2A2A] hover:bg-[#333333] transition-colors duration-200 rounded-lg p-4 mb-3 group cursor-pointer",
+                    " transition-colors duration-200 rounded-lg p-4 mb-3 group cursor-pointer",
                   )}
                   key={exercise._id}
                   onClick={() => {
@@ -145,7 +146,12 @@ const ExerciseSection = () => {
               ))
             )}
           </InfiniteScroll>
-          <Button disabled={!hasNextPage || isFetchingNextPage} onClick={() => fetchNextPage()}>
+          {/* Load More Button */}
+          <Button
+            disabled={!hasNextPage || isFetchingNextPage}
+            onClick={() => fetchNextPage()}
+            isLoading={isFetchingNextPage || isLoading}
+          >
             {isFetchingNextPage
               ? "Loading Exercises..."
               : !hasNextPage
@@ -153,14 +159,21 @@ const ExerciseSection = () => {
                 : "Load More Exercises"}
           </Button>
         </section>
-        <section className="lg:col-span-3 md:col-span-2 col-span-4">
+        <section className="lg:col-span-3 md:col-span-2 col-span-4 space-y-6">
+          {/*Exercise Play */}
           <section className="pe-10 space-y-6">
             <ExercisePlay exercise={isSelected ? selectedExercise : allExercises[0]} />
-            <section className="flex justify-between">
+            {/* Exercises Expertly */}
+            <section className="flex justify-between flex-col lg:flex-row gap-6 lg:gap-0">
               {Array.from({ length: 3 }).map((_, index) => (
                 <ExercisesExpertly key={index} />
               ))}
             </section>
+          </section>
+          <section className="space-y-4">
+            <h2 className="font-medium text-3xl text-grayExtra">Recommendation For You</h2>
+            {/* Recommended Meals */}
+            <ExerciseMealsCarousel />
           </section>
         </section>
       </section>

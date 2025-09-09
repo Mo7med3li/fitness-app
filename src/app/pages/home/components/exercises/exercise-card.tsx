@@ -1,35 +1,47 @@
 import { Badge } from "@/components/ui/badge";
-import { Play } from "lucide-react";
+import { Play, Dumbbell, Target, Activity } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const ExerciseCard = ({ exercise }: { exercise: Exercise }) => {
   return (
-    <div>
-      {/* Exercise Name */}
-      <h3 className="text-white font-medium text-base mb-3 leading-tight line-clamp-1">
-        {exercise.exercise}
-      </h3>
+    <div
+      className={cn(
+        "group border-b border-[#2D2D2D] rounded-lg p-4 hover:bg-[#1F1F1F] transition-all duration-300 cursor-pointer",
+      )}
+    >
+      <div className="flex justify-between items-start gap-4">
+        <div className="flex-1 min-w-0">
+          <h3 className="text-white font-semibold text-base mb-2 leading-tight line-clamp-2">
+            {exercise.exercise}
+          </h3>
 
-      {/* Tags and Play Button Container */}
-      <div className="flex items-center justify-between">
-        <div className="flex gap-2 items-center">
-          <Badge
-            className={`px-3 py-1 rounded-full text-xs font-medium bg-main text-white`}
-          >
-            {exercise.difficulty_level}
-          </Badge>
-          <Badge className="px-3 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300">
-            {exercise.target_muscle_group}
-          </Badge>
-          <Badge className="px-3 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300">
-            {exercise.body_region}
-          </Badge>
+          <div className="flex flex-wrap gap-2 mb-3">
+            <Badge className="text-xs font-medium bg-main">{exercise.difficulty_level}</Badge>
+            <Badge className="text-xs">
+              <Target className="w-3 h-3 mr-1" />
+              {exercise.target_muscle_group}
+            </Badge>
+          </div>
+
+          <div className="space-y-2 text-sm text-gray-400">
+            {exercise.primary_equipment && (
+              <div className="flex items-center gap-2">
+                <Dumbbell className="w-4 h-4 text-main" />
+                <span>{exercise.primary_equipment}</span>
+              </div>
+            )}
+
+            {exercise.movement_pattern_1 && (
+              <div className="flex items-center gap-2">
+                <Activity className="w-4 h-4 text-main" />
+                <span>{exercise.movement_pattern_1}</span>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Play Button */}
-        <div className="ml-3 flex-shrink-0">
-          <div className="w-8 h-8 bg-main hover:bg-orange-700 rounded-full flex items-center justify-center transition-colors duration-200 group-hover:scale-110 transform">
-            <Play size={14} className="text-white fill-white " />
-          </div>
+        <div className="w-8 h-8 bg-main rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-main/20 transition-colors">
+          <Play className="w-4 h-4 text-charcoal" fill="#242424" />
         </div>
       </div>
     </div>

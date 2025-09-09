@@ -37,3 +37,18 @@ export const levels = [
     id: "67c797e226895f87ce0aa94d",
   },
 ];
+
+export const exercisesMeals = [
+  {
+    name: "Breakfast",
+    image: "/assets/breakfast.png",
+  },
+  {
+    name: "Lunch",
+    image: "/assets/lunch.png",
+  },
+  {
+    name: "Dinner",
+    image: "/assets/dinner.jpg",
+  },
+];
