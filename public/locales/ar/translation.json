@@ -62,5 +62,12 @@
   "auth.confirm-new-password": "تأكيد كلمة مرور جديدة",
   "auth.new-password": "كلمة المرور الجديدة",
   "change": "تغيير",
-  "auth.resend-code": "إعادة تقديم رمز"
+  "auth.resend-code": "إعادة تقديم رمز",
+  "fitness-class": "فئة اللياقة",
+  "home.title1": "قم بتحويل جسمك بديناميكية",
+  "home.title2": "التدريبات القادمة",
+  "full-body": "كامل الجسم",
+  "no-muscle-groups": "لا توجد مجموعات عضلية متاحة",
+  "explore": "أستكشف",
+  "loading": "تحميل..."
 }

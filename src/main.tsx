@@ -18,7 +18,7 @@ import KYC from "@/app/auth/KYC/page.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import ClassessPage from "./app/pages/classes/ClassessPage.tsx";
-import MsclesGroupPage from "./app/pages/musclesGroup/musclesGroupPage.tsx";
+import ExercisesPage from "./app/pages/exercises/exercisesPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -50,10 +50,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "musclesGroup/:id",
+        path: "exercises/:muscle",
         element: (
           <ProtectedRoute>
-            <MsclesGroupPage />
+            <ExercisesPage />
           </ProtectedRoute>
         ),
       },

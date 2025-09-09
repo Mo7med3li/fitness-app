@@ -64,5 +64,12 @@
   "auth.new-password": "New password",
   "auth.confirm-new-password": "Confirm New Password",
   "change": "change",
-  "auth.resend-code": "Resend Code"
+  "auth.resend-code": "Resend Code",
+  "fitness-class": "Fitness Class",
+  "home.title1": "Transform Your Body with Our Dynamic",
+  "home.title2": "Upcoming Workouts",
+  "full-body": "Full body",
+  "no-muscle-groups": "No muscle groups available",
+  "explore": "Explore",
+  "loading": "Loading..."
 }

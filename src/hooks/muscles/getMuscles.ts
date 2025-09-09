@@ -4,7 +4,7 @@ import axios from "axios";
 import { useTranslation } from "react-i18next"; // or your i18n solution
 
 // Custom hook
-export default function useMuscles() {
+export default function fetchMuscles() {
   const { i18n } = useTranslation(); // Get current language
   const currentLanguage = i18n.language; // 'ar' or 'en'
 

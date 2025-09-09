@@ -9,15 +9,17 @@ export interface MusclesGroup {
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import useMuscles from "../Hooks/getMuscles";
+import useMuscles from "../../../../hooks/muscles/getMuscles";
 import { MoveUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function ClassesExplore() {
   const [emblaRef, emblaApi] = useEmblaCarousel();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const { data: muscles } = useMuscles();
+  const { t } = useTranslation();
 
   // Memoized helper function to get image path
   const getImagePath = useCallback((muscle: MusclesGroup): string => {
@@ -87,7 +89,7 @@ export function ClassesExplore() {
     return (
       <div className="w-full">
         <div className="flex justify-center items-center h-64">
-          <div className="text-lg text-gray-500">Loading...</div>
+          <div className="text-lg text-gray-500">{t("loading")}</div>
         </div>
       </div>
     );
@@ -98,7 +100,7 @@ export function ClassesExplore() {
     return (
       <div className="w-full">
         <div className="flex justify-center items-center h-64">
-          <div className="text-lg text-gray-500">No muscle groups available</div>
+          <div className="text-lg text-gray-500">{t("no-muscle-groups")}</div>
         </div>
       </div>
     );
@@ -132,11 +134,11 @@ export function ClassesExplore() {
                       </div>
 
                       {/* Bottom text overlay rectangle */}
-                      <Link to={`/musclesGroup/${muscle._id}`}>
+                      <Link to={`/exercises/${muscle.name}`}>
                         <div className="absolute flex flex-col gap-3 bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm p-3">
                           <p className="text-xl font-bold font-baloo text-white">{muscle.name}</p>
                           <p className="text-main flex gap-2 items-center">
-                            Explore
+                            {t("explore")}
                             <MoveUpRight className="w-5 h-5 rounded-full bg-main text-white p-1" />
                           </p>
                         </div>

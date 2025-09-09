@@ -1,8 +1,8 @@
-import { Dumbbell } from "lucide-react";
 import WOrkouts from "./../../../../public/assets/WOrkouts.webp";
 import ClassesFilter from "../../../components/common/ClassesFilter";
-
-export default function MsclesGroupPage() {
+import { ModeToggle } from "@/components/common/mode-toggle";
+import { TranslationToggle } from "@/components/common/translation-toggle";
+export default function ExercisesPage() {
   return (
     <section className="relative bg-[#242424] font-baloo">
       {/* Workouts Background */}
@@ -17,6 +17,8 @@ export default function MsclesGroupPage() {
 
         {/* Classes Explore */}
         <div>MsclesGroupPage</div>
+        <ModeToggle />
+        <TranslationToggle />
       </div>
     </section>
   );
