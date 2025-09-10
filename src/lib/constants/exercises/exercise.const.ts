@@ -1,51 +1,6 @@
 // Variables
 
 import { useTranslation } from "react-i18next";
-export const useMuscles = () => {
-  // Translation
-  const { t } = useTranslation();
-
-  return [
-    {
-      name: t("fullbody"),
-    },
-    {
-      name: t("chest"),
-    },
-    {
-      name: t("arm"),
-    },
-    {
-      name: t("shoulder"),
-    },
-    {
-      name: t("back"),
-    },
-    {
-      name: t("stomach"),
-    },
-    {
-      name: t("leg"),
-    },
-  ];
-};
-
-export const useLevels = () => {
-  // Translation
-  const { t } = useTranslation();
-
-  return [
-    {
-      name: t("beginner"),
-    },
-    {
-      name: t("intermediate"),
-    },
-    {
-      name: t("advanced"),
-    },
-  ];
-};
 
 const useExercisesMeals = () => {
   // Translation

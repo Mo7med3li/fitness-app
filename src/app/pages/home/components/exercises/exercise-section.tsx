@@ -8,12 +8,11 @@ import ExercisePlay from "./exercise-play";
 import { cn } from "@/lib/utils";
 import Levels from "./levels";
 import MusclesGroup from "./muscles-group";
-import { fetchExercises } from "../../api/fetch-exercises";
+import { fetchExercises } from "../../api/exercises/fetch-exercises";
 import ExerciseSkeleton from "@/components/skeletons/exercises/exercises.skeleton";
 import ExercisesExpertly from "./exercises-expertly";
 import ExerciseMealsCarousel from "./exercise-meals-carousel";
 import { useTranslation } from "react-i18next";
-import i18n from "@/i18n";
 import { getWorkoutTaglines } from "@/lib/constants/exercises/exercise.const";
 
 const ExerciseSection = () => {
@@ -53,51 +52,27 @@ const ExerciseSection = () => {
   // Functions
   function handleExercise() {
     if (!payload) return;
-
     const allExercisesFlat = payload?.pages.flatMap((page) => page.exercises) ?? [];
     const levelParam = searchParams.get("level");
     const muscleParam = searchParams.get("muscle");
     const levelFilteres = allExercisesFlat.filter(
       (exercise) => exercise.difficulty_level === levelParam,
     );
-    let exercisesFiltered: Exercise[] = [];
-
-    if (muscleParam === t("fullbody")) {
-      exercisesFiltered = levelFilteres.filter((exercise) => exercise.body_region === "Full Body");
-    } else if (muscleParam === t("leg")) {
-      exercisesFiltered = levelFilteres.filter((exercise) => exercise.body_region === "Lower Body");
-    } else if (muscleParam === t("stomach")) {
-      exercisesFiltered = levelFilteres.filter((exercise) => exercise.body_region === "Midsection");
-    } else if (muscleParam === t("back")) {
-      exercisesFiltered = levelFilteres.filter(
-        (exercise) => exercise.target_muscle_group === t("back"),
-      );
-    } else if (muscleParam === t("shoulder")) {
-      exercisesFiltered = levelFilteres.filter(
-        (exercise) => exercise.target_muscle_group === t("shoulder"),
-      );
-    } else if (muscleParam === t("arm")) {
-      exercisesFiltered = levelFilteres.filter(
-        (exercise) =>
-          exercise.target_muscle_group === t("biceps") ||
-          exercise.target_muscle_group === t("triceps") ||
-          exercise.target_muscle_group === t("forearms"),
-      );
-    } else if (muscleParam === t("chest")) {
-      exercisesFiltered = levelFilteres.filter(
-        (exercise) => exercise.target_muscle_group === t("chest"),
-      );
-    }
+    let exercisesFiltered = levelFilteres.filter(
+      (exercise) => exercise.target_muscle_group === muscleParam,
+    );
     setAllExercises(exercisesFiltered);
   }
 
   // Effects
   useEffect(() => {
-    setSearchParams({
-      level: t("beginner"),
-      muscle: t("fullbody"),
-    });
-  }, [i18n.language]);
+    if (!searchParams.get("level") || !searchParams.get("muscle")) {
+      setSearchParams({
+        level: t("beginner"),
+        muscle: searchParams.get("muscle") || "",
+      });
+    }
+  }, []);
 
   useEffect(() => {
     handleExercise();
@@ -136,6 +111,10 @@ const ExerciseSection = () => {
                 <ExerciseSkeleton />
                 <ExerciseSkeleton />
               </div>
+            ) : allExercises.length === 0 ? (
+              <h2 className="text-lg font-semibold mb-4 text-grayLight text-center">
+                No Exercises Found for this muscle group and level.
+              </h2>
             ) : (
               allExercises.map((exercise: Exercise) => (
                 <div
