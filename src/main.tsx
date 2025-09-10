@@ -17,6 +17,7 @@ import PagesLayout from "./app/pages/PagesLayout.tsx";
 import KYC from "@/app/auth/KYC/page.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
+import ExercisesPage from "./app/pages/exercises/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <About />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "exercises/:muscle",
+        element: (
+          <ProtectedRoute>
+            <ExercisesPage />
           </ProtectedRoute>
         ),
       },

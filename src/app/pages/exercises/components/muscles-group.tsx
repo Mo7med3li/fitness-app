@@ -4,50 +4,46 @@ import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useTranslation } from "react-i18next";
-import fetchLevels from "../../api/exercises/fetch-levels";
+import fetchMusclesGroup from "../api/fetch-muscles-group";
 
-const Levels = () => {
+const MusclesGroup = () => {
   // Search params
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Translation
-  const { t } = useTranslation();
-
-  const { data: levelsData, isLoading: levelsLoading } = useQuery<LevelsResponse>({
-    queryKey: ["levels", i18n.language],
-    queryFn: fetchLevels,
+  // Queries
+  const { data: allMusclesData, isLoading } = useQuery<MusclesResponse>({
+    queryKey: ["muscleGroups", i18n.language],
+    queryFn: fetchMusclesGroup,
   });
 
   return (
-    <div className="w-full p-1">
-      <h2 className="text-lg font-semibold mb-4 text-grayLight">{t("choose-your-level")}</h2>
-      <div className="flex flex-wrap gap-3 items-center justify-center">
-        {levelsLoading
+    <div className="w-full py-1">
+      <div className="flex flex-wrap gap-4 items-center justify-center">
+        {isLoading
           ? // Skeletons
-            Array.from({ length: 8 }).map((_, i) => (
+            Array.from({ length: 12 }).map((_, i) => (
               <Skeleton key={i} className="h-10 w-24 rounded-full" />
             ))
-          : // Levels
-            levelsData?.levels.map((level: Level) => (
+          : // Muscles
+            allMusclesData?.musclesGroup.map((muscle: MuscleGroup) => (
               <Button
-                key={level._id}
+                key={muscle.name}
                 variant="outline"
                 onClick={() => {
                   setSearchParams({
-                    level: level.name,
-                    muscle: searchParams.get("muscle") || "",
+                    muscle: muscle.name,
+                    level: searchParams.get("level") || "",
                   });
                 }}
                 className={cn(
                   "h-10 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200",
                   "hover:bg-main/10 hover:text-main border border-gray-200 dark:border-gray-700",
-                  searchParams.get("level") === level.name
+                  searchParams.get("muscle") === muscle.name
                     ? "bg-main text-white hover:bg-main/90 hover:text-white border-main"
                     : "text-gray-700 dark:text-gray-300",
                 )}
               >
-                {level.name}
+                {muscle.name}
               </Button>
             ))}
       </div>
@@ -55,4 +51,4 @@ const Levels = () => {
   );
 };
 
-export default Levels;
+export default MusclesGroup;

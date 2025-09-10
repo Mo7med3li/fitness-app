@@ -8,7 +8,7 @@ import ExercisePlay from "./exercise-play";
 import { cn } from "@/lib/utils";
 import Levels from "./levels";
 import MusclesGroup from "./muscles-group";
-import { fetchExercises } from "../../api/exercises/fetch-exercises";
+import { fetchExercises } from "../api/fetch-exercises";
 import ExerciseSkeleton from "@/components/skeletons/exercises/exercises.skeleton";
 import ExercisesExpertly from "./exercises-expertly";
 import ExerciseMealsCarousel from "./exercise-meals-carousel";

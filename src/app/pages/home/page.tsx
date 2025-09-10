@@ -1,6 +1,4 @@
-import ExerciseSection from "./components/exercises/exercise-section";
-
 const HomePage = () => {
-  return <ExerciseSection />;
+  return <h1>Home</h1>;
 };
 export default HomePage;
