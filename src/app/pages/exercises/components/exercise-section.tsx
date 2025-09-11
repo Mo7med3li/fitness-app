@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useSearchParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import ExerciseCard from "./exercise-card";
 import ExercisePlay from "./exercise-play";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,9 @@ import { getWorkoutTaglines } from "@/lib/constants/exercises/exercise.const";
 const ExerciseSection = () => {
   // Search params
   const [searchParams, setSearchParams] = useSearchParams();
+
+  // Params
+  const { muscle } = useParams();
 
   // Translation
   const { t } = useTranslation();
@@ -69,7 +72,7 @@ const ExerciseSection = () => {
     if (!searchParams.get("level") || !searchParams.get("muscle")) {
       setSearchParams({
         level: t("beginner"),
-        muscle: searchParams.get("muscle") || "",
+        muscle: muscle || "",
       });
     }
   }, []);
@@ -85,7 +88,7 @@ const ExerciseSection = () => {
     <div className="container space-y-4 font-rubik p-2 backdrop-blur-[84px] bg-[linear-gradient(#24242499,#242424),url('/assets/traidmails.jpg')] bg-cover">
       {/* Muscles Group */}
       <MusclesGroup />
-
+      {muscle}
       <section className="grid grid-cols-4 gap-3 ">
         <section
           id="scrollableDiv"
