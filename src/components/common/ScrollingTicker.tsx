@@ -2,7 +2,7 @@ import { Sparkle } from "lucide-react";
 
 export default function ScrollingTicker() {
   return (
-    <div className="w-full  my-8">
+    <div className="w-full">
       <div className="bg-main text-white py-3 overflow-hidden relative">
         <div className="animate-marquee whitespace-nowrap">
           {Array.from({ length: 5 }, (_, index) => (

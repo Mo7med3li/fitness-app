@@ -8,7 +8,7 @@ export default function Footer() {
       {/* our scrolling ticker */}
       <ScrollingTicker />
 
-      <div className="grid grid-cols-4 gap-16  justify-between pt-10 p-20">
+      <div className="grid grid-cols-4 gap-10  justify-between pt-5 p-10">
         {/* Logo */}
         <div className="flex flex-col gap-2">
           <img src={logo} className="w-[87px]" alt="logo" />

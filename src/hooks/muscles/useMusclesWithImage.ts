@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type { MuscleGroup, MuscleGroupWithImage, Muscle } from "@/lib/types/muscles";
+import type { MuscleGroup, MuscleGroupWithImage } from "@/lib/types/muscles";
 import useMuscles from "./useGetMuscles";
 import getMusclesByGroupId from "./useGetMusclesByGroup";
 

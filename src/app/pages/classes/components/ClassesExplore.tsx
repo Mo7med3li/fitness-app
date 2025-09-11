@@ -1,4 +1,4 @@
-// ==================== 📌 Imports ====================
+//   Imports
 // UI components + hooks + carousel + icons + routing + i18n + custom hooks
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -10,16 +10,16 @@ import useMusclesWithImage from "@/hooks/muscles/useMusclesWithImage";
 import type { MuscleGroupWithImage } from "@/lib/types/muscles";
 import SkeletonCard from "@/components/ui/skeleton-card";
 
-// ==================== 📌 Component ====================
+//  Component
 export function ClassesExplore() {
-  // ---------- 🪝 Hooks ----------
+  // ----------  Hooks ----------
   const [emblaRef, emblaApi] = useEmblaCarousel();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [_, setScrollSnaps] = useState<number[]>([]);
   const { data: muscleGroups, error, isLoading } = useMusclesWithImage();
   const { t } = useTranslation();
 
-  // ---------- 📌 Pagination logic ----------
+  // ----------  Pagination logic ----------
   // Split muscles into pages of 6 items each
   const pages = useMemo(() => {
     if (!muscleGroups || !Array.isArray(muscleGroups)) return [];
@@ -34,7 +34,7 @@ export function ClassesExplore() {
     return result;
   }, [muscleGroups]);
 
-  // ---------- 📌 Carousel scroll & selection ----------
+  // ----------  Carousel scroll & selection ----------
   const scrollTo = useCallback(
     (index: number) => {
       emblaApi?.scrollTo(index);
@@ -57,7 +57,7 @@ export function ClassesExplore() {
     };
   }, [emblaApi, onSelect]);
 
-  // ---------- ⚡ Loading state ----------
+  // ----------  Loading state ----------
   if (isLoading) {
     return (
       <div className="w-full">
@@ -76,7 +76,7 @@ export function ClassesExplore() {
     );
   }
 
-  // ---------- ❌ Error state ----------
+  // ----------  Error state ----------
   if (error) {
     return (
       <div className="w-full">
@@ -89,7 +89,7 @@ export function ClassesExplore() {
     );
   }
 
-  // ---------- ⚪ Empty state ----------
+  // ----------  Empty state ----------
   if (!muscleGroups || muscleGroups.length === 0) {
     return (
       <div className="w-full">
@@ -100,7 +100,7 @@ export function ClassesExplore() {
     );
   }
 
-  // ---------- 🟢 Main render ----------
+  // ----------  Main render ----------
   return (
     <div className="w-full">
       {/* Carousel */}
@@ -112,7 +112,7 @@ export function ClassesExplore() {
                 {page.map((muscle) => (
                   <Card key={muscle._id} className="overflow-hidden rounded-2xl">
                     <CardContent className="relative aspect-square p-0">
-                      {/* 🔹 Image or fallback letter */}
+                      {/*  Image or fallback letter */}
                       {muscle.image ? (
                         <img
                           src={muscle.image}
@@ -129,7 +129,7 @@ export function ClassesExplore() {
                         </div>
                       )}
 
-                      {/* 🔹 Bottom overlay with name + explore link */}
+                      {/*  Bottom overlay with name + explore link */}
                       <Link to={`/exercises/${muscle.name}`}>
                         <div className="absolute flex flex-col gap-3 bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm p-3">
                           <p className="text-xl font-bold font-baloo text-white">{muscle.name}</p>
@@ -143,7 +143,7 @@ export function ClassesExplore() {
                   </Card>
                 ))}
 
-                {/* 🔹 Fill empty grid slots if fewer than 6 items */}
+                {/*  Fill empty grid slots if fewer than 6 items */}
                 {page.length < 6 &&
                   Array.from({ length: 6 - page.length }).map((_, index) => (
                     <div key={`empty-${pageIndex}-${index}`} className="invisible" />
