@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
 import Image from "../../../../../../public/assets/Theo Vance.png";
 import Actions from "./actions";
 import Stats from "./stats";
 
 const HeroSection = () => {
+  // Translation
+  const { t } = useTranslation();
   return (
     <main className="w-full bg-center bg-[linear-gradient(#fff9,#fff9),url('/assets/auth-bg.webp')] dark:bg-[linear-gradient(#24242499,#24242499),url('/assets/auth-bg.webp')]">
       <section className="backdrop-blur-[86.1px]">
@@ -12,20 +15,15 @@ const HeroSection = () => {
           <div className="w-full lg:col-span-2 flex justify-center items-center col-span-3 ">
             <div className="space-y-16">
               <h2 className="font-bold text-6xl uppercase font-baloo">
-                Your body can <span className="text-main">stand almost</span> anything
+                {t("your-body-can")} <span className="text-main">{t("stand-almost")}</span>{" "}
+                {t("anything")}
               </h2>
               {/* content */}
               <div className="relative px-4">
-                <div className="before:block before:absolute before:left-0 before:w-1 before:h-full before:rounded-lg before:bg-main space-y-1">
-                  <p className="text-lg font-rubik text-charcoal dark:text-white">
-                    It's your mind that needs convincing. Push past your limits, stay
-                  </p>
-                  <p className="text-lg font-rubik text-charcoal dark:text-white">
-                    committed, and watch as your body transform into powerhouse of
-                  </p>
-                  <p className="text-lg font-rubik text-charcoal dark:text-white">
-                    strength and resilience. Start your journey today & truly capable of!
-                  </p>
+                <div className="before:block before:absolute before:start-0 before:w-1 before:h-full before:rounded-lg before:bg-main space-y-1">
+                  <p className="text-lg font-rubik text-charcoal dark:text-white">{t("text-0")}</p>
+                  <p className="text-lg font-rubik text-charcoal dark:text-white">{t("text-1")}</p>
+                  <p className="text-lg font-rubik text-charcoal dark:text-white">{t("text-2")}</p>
                 </div>
               </div>
               {/* Stats */}

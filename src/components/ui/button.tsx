@@ -52,7 +52,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
 
     if (icon) {
       return (
-        <div className="absolute bg-main rounded-full size-8 border-2 border-grayExtra text-grayExtra lg:flex items-center justify-center -right-5 top-1/2 -translate-y-1/2 -rotate-45 hidden">
+        <div className="absolute bg-main rounded-full size-8 border-2 border-grayExtra text-grayExtra lg:flex items-center justify-center -end-5 top-1/2 -translate-y-1/2 -rotate-45 hidden">
           {icon()}
         </div>
       );
