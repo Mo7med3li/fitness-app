@@ -10,14 +10,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-main text-primary-foreground hover:bg-main/80 dark:text-white",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        default: "bg-main text-primary-foreground hover:bg-main/80 dark:text-white",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-main hover:text-accent-foreground border border-main",
         link: "text-primary underline-offset-4 hover:underline text-main",
       },
@@ -32,7 +28,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 export interface ButtonProps
@@ -44,18 +40,8 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {
-    className,
-    variant,
-    size,
-    icon,
-    isLoading,
-    asChild = false,
-    children,
-    disabled,
-    ...props
-  },
-  ref
+  { className, variant, size, icon, isLoading, asChild = false, children, disabled, ...props },
+  ref,
 ) {
   const Comp = asChild ? Slot : "button";
 
@@ -66,7 +52,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
 
     if (icon) {
       return (
-        <div className="absolute bg-main rounded-full size-8 border-2 border-grayExtra text-grayExtra flex items-center justify-center -right-5 top-1/2 -translate-y-1/2 rotate-45">
+        <div className="absolute bg-main rounded-full size-8 border-2 border-grayExtra text-grayExtra lg:flex items-center justify-center -right-5 top-1/2 -translate-y-1/2 -rotate-45 hidden">
           {icon()}
         </div>
       );
