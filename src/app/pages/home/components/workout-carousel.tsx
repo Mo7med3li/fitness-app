@@ -26,8 +26,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       {/* Carousel Slides */}
       <div ref={emblaRef}>
         <div className="flex gap-4 lg:flex-row flex-col p-3">
-          {slides.map((slide, index) => (
-            <div className="flex-[0_0_33%]" key={index}>
+          {slides.map((slide) => (
+            <div className="flex-[0_0_33%]" key={slide.title}>
               <WorkoutCard title={slide.title} image={slide.image} />
             </div>
           ))}
@@ -41,8 +41,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               key={index}
               onClick={() => onDotButtonClick(index)}
               className={cn(
-                "bg-charcoal rounded-full size-[10px]",
-                index === selectedIndex ? " bg-main w-[30px] h-[10px] rounded-xl" : "",
+                "bg-charcoal dark:bg-grayExtra rounded-full size-[10px]",
+                index === selectedIndex ? " bg-main dark:bg-main w-[30px] h-[10px] rounded-xl" : "",
               )}
             />
           ))}

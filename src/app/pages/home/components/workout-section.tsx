@@ -15,12 +15,12 @@ function WorkoutSection() {
     <section className="w-full lg:h-screen bg-[url('/assets/traidmails.jpg')] bg-cover bg-center">
       <ModeToggle />
 
-      <div className="h-full lg:h-[380px] lg:bg-grayExtra/80 lg:backdrop-blur-3xl mt-5 flex flex-col items-center gap-5">
+      <div className="h-full lg:h-[380px] lg:bg-grayExtra/70 dark:lg:bg-charcoal/70 lg:backdrop-blur-3xl mt-5 flex flex-col lg:items-center items-start gap-5">
         <span className="relative flex items-center text-main  font-semibold text-sm justify-center before:content-['WORKOUTS'] before:absolute before:hidden before:text-[64px] before:font-bold before:text-white/10 lg:before:flex before:justify-center before:bottom-8">
           <Dumbbell fill="orange" width={34} height={20} className="text-main rotate-45" />
           Fitness Class
         </span>
-        <h2 className="font-bold text-[40px] text-charcoal w-[600px]">
+        <h2 className="font-bold text-[40px] text-charcoal dark:text-grayExtra w-[600px]">
           Transform Your Body with Our Dynamic <span className="text-main">Upcoming Workouts</span>
         </h2>
         {/* Muscles */}
