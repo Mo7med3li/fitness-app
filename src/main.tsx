@@ -19,6 +19,8 @@ import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import ClassessPage from "./app/pages/classes/ClassessPage.tsx";
 import ExercisesPage from "./app/pages/exercises/exercisesPage.tsx";
+import HealthyPage from "./app/pages/healthy/HealthyPage.tsx";
+import MealDetails from "./app/pages/healthy/MealDetails/MealDetails.tsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,22 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <About />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "healthy",
+        element: (
+          <ProtectedRoute>
+            <HealthyPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "healthy/:id",
+        element: (
+          <ProtectedRoute>
+            <MealDetails />
           </ProtectedRoute>
         ),
       },
