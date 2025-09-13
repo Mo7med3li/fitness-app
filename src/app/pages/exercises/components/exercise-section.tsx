@@ -56,30 +56,29 @@ const ExerciseSection = () => {
   function handleExercise() {
     if (!payload) return;
     const allExercisesFlat = payload?.pages.flatMap((page) => page.exercises) ?? [];
+
     const levelParam = searchParams.get("level");
-    const muscleParam = searchParams.get("muscle");
     const levelFilteres = allExercisesFlat.filter(
       (exercise) => exercise.difficulty_level === levelParam,
     );
     let exercisesFiltered = levelFilteres.filter(
-      (exercise) => exercise.target_muscle_group === muscleParam,
+      (exercise) => exercise.target_muscle_group.toLowerCase() === muscle?.toLowerCase(),
     );
     setAllExercises(exercisesFiltered);
   }
 
   // Effects
   useEffect(() => {
-    if (!searchParams.get("level") || !searchParams.get("muscle")) {
+    if (!searchParams.get("level")) {
       setSearchParams({
         level: t("beginner"),
-        muscle: muscle || "",
       });
     }
   }, []);
 
   useEffect(() => {
     handleExercise();
-  }, [payload, searchParams]);
+  }, [payload, searchParams, muscle]);
 
   // Variables
   const workoutTaglines = getWorkoutTaglines();
@@ -88,7 +87,6 @@ const ExerciseSection = () => {
     <div className="container space-y-4 font-rubik p-2 backdrop-blur-[84px] bg-[linear-gradient(#24242499,#242424),url('/assets/traidmails.jpg')] bg-cover">
       {/* Muscles Group */}
       <MusclesGroup />
-      {muscle}
       <section className="grid grid-cols-4 gap-3 ">
         <section
           id="scrollableDiv"

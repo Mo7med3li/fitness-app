@@ -4,6 +4,5 @@ declare type Level = {
 };
 
 declare type LevelsResponse = {
-  message: string;
   levels: Level[];
 };

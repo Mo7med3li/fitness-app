@@ -9,7 +9,12 @@ const fetchLevels = async () => {
       "Accept-Language": i18n.language,
     },
   });
-  return res.data;
+  const payload: APIResponse<LevelsResponse> = res.data;
+
+  if ("error" in payload) {
+    throw new Error(payload.error);
+  }
+  return payload;
 };
 
 export default fetchLevels;

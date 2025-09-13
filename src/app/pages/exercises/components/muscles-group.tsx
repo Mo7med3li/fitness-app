@@ -1,14 +1,16 @@
-import { Button } from "@/components/ui/button";
 import i18n from "@/i18n";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
 import fetchMusclesGroup from "../api/fetch-muscles-group";
 
 const MusclesGroup = () => {
   // Search params
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+
+  // Params
+  const params = useParams();
 
   // Queries
   const { data: allMusclesData, isLoading } = useQuery<MusclesResponse>({
@@ -26,25 +28,19 @@ const MusclesGroup = () => {
             ))
           : // Muscles
             allMusclesData?.musclesGroup.map((muscle: MuscleGroup) => (
-              <Button
+              <Link
                 key={muscle.name}
-                variant="outline"
-                onClick={() => {
-                  setSearchParams({
-                    muscle: muscle.name,
-                    level: searchParams.get("level") || "",
-                  });
-                }}
+                to={`/exercises/${muscle.name}?level=${searchParams.get("level")}`}
                 className={cn(
                   "h-10 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200",
                   "hover:bg-main/10 hover:text-main border border-gray-200 dark:border-gray-700",
-                  searchParams.get("muscle") === muscle.name
+                  params.muscle?.toLowerCase() === muscle.name.toLowerCase()
                     ? "bg-main text-white hover:bg-main/90 hover:text-white border-main"
                     : "text-gray-700 dark:text-gray-300",
                 )}
               >
                 {muscle.name}
-              </Button>
+              </Link>
             ))}
       </div>
     </div>

@@ -36,7 +36,6 @@ const Levels = () => {
                 onClick={() => {
                   setSearchParams({
                     level: level.name,
-                    muscle: searchParams.get("muscle") || "",
                   });
                 }}
                 className={cn(
