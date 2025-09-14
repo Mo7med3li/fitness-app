@@ -73,7 +73,7 @@ const ExerciseSection = () => {
         level: t("beginner"),
       });
     }
-  }, []);
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     handleExercise();
