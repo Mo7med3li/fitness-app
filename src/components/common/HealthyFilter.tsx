@@ -8,7 +8,7 @@ export default function HealthyFilter() {
   // hooks
   const { data, isPending } = useMeals();
   const navigate = useNavigate();
-  const { meal: mealParam } = useParams();
+  const { id: mealParam } = useParams();
   const location = useLocation();
   // const { t } = useTranslation();
 
@@ -48,7 +48,7 @@ export default function HealthyFilter() {
         </li>
 
         {data?.categories.map((meal: Category) => {
-          const isSelected = mealParam === meal.strCategory;
+          const isSelected = mealParam === meal.idCategory;
 
           return (
             <li
