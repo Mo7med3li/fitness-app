@@ -9,15 +9,15 @@ const useExercisesMeals = () => {
   return [
     {
       name: t("breakfast"),
-      image: "/assets/breakfast.png",
+      image: "/assets/breakfast.webP",
     },
     {
       name: t("lunch"),
-      image: "/assets/lunch.png",
+      image: "/assets/lunch.webP",
     },
     {
       name: t("dinner"),
-      image: "/assets/dinner.jpg",
+      image: "/assets/dinner.webP",
     },
   ];
 };
