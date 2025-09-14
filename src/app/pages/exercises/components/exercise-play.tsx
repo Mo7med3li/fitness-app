@@ -1,10 +1,14 @@
 import { useState } from "react";
 import ReactPlayer from "react-player";
 import { Play } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const ExercisePlay = ({ exercise }: { exercise: Exercise | null }) => {
   // States
   const [showVideo, setShowVideo] = useState(false);
+
+  // Translation
+  const { t } = useTranslation();
 
   return (
     <div
@@ -25,19 +29,22 @@ const ExercisePlay = ({ exercise }: { exercise: Exercise | null }) => {
           </button>
         )}
 
-        {showVideo && (
-          <div className="w-full h-full mt-4">
-            <ReactPlayer
-              src={exercise?.short_youtube_demonstration_link}
-              playing
-              controls
-              width="100%"
-              height="100%"
-              onPlay={() => setShowVideo(true)}
-              onEnded={() => setShowVideo(false)}
-            />
-          </div>
-        )}
+        {showVideo &&
+          (exercise?.short_youtube_demonstration_link ? (
+            <div className="w-full h-full mt-4">
+              <ReactPlayer
+                src={exercise?.short_youtube_demonstration_link}
+                playing
+                controls
+                width="100%"
+                height="100%"
+                onPlay={() => setShowVideo(true)}
+                onEnded={() => setShowVideo(false)}
+              />
+            </div>
+          ) : (
+            <h2 className="font-bold text-white text-xl">{t("no-video")}</h2>
+          ))}
 
         <h2 className="text-2xl font-bold text-white mt-4">
           {exercise?.exercise || "Choose an exercise to play"}

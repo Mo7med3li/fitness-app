@@ -56,7 +56,6 @@ const ExerciseSection = () => {
   function handleExercise() {
     if (!payload) return;
     const allExercisesFlat = payload?.pages.flatMap((page) => page.exercises) ?? [];
-
     const levelParam = searchParams.get("level");
     const levelFilteres = allExercisesFlat.filter(
       (exercise) => exercise.difficulty_level === levelParam,
