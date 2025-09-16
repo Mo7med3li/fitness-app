@@ -5,9 +5,21 @@ import anime3 from "./../../../../../public/assets/image-anime3.webp";
 export default function AboutImage() {
   return (
     <div className="relative h-[700px] lg:col-span-1 hidden lg:block">
-      <img src={anime1} className="absolute h-auto left-0" alt={"anime1"} />
-      <img src={anime2} className="absolute h-auto left-1/3 bottom-0" alt={"anime2"} />
-      <img src={anime3} className="absolute h-auto left-1/2 top-10" alt={"anime3"} />
+      <img
+        src={anime1}
+        className="absolute h-auto left-0 rtl:right-0 rtl:left-auto"
+        alt={"anime1"}
+      />
+      <img
+        src={anime2}
+        className="absolute h-auto left-1/3 rtl:right-1/3 rtl:left-auto bottom-0"
+        alt={"anime2"}
+      />
+      <img
+        src={anime3}
+        className="absolute h-auto left-1/2 rtl:right-1/2 rtl:left-auto top-10"
+        alt={"anime3"}
+      />
     </div>
   );
 }
