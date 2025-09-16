@@ -77,7 +77,7 @@
   "meal-plans": "meal plans",
   "for-you": "for you",
   "about-us": "About us",
-  "about.header": "EMPOWERING YOU TO ACHIEVE",
+  "about.header": "            EMPOWERING YOU TO ACHIEVE             <1 className=\"text-main block sm:inline\"> YOUR FITNESS </1>             <2 className=\"block sm:inline\">GOALS</2>",
   "your-fitness": "YOUR FITNESS",
   "goals": "GOALS",
   "about.header2": "We believe fitness is more than just a workout—it's a lifestyle. With top-of-the-line facilities, certified trainers, and a supportive community, we're here to inspire and guide you every step of the way.",

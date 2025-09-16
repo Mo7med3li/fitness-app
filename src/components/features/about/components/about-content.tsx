@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 export default function AboutUsContent() {
   const { t, i18n } = useTranslation();
@@ -11,8 +11,11 @@ export default function AboutUsContent() {
       {/*  Header title  */}
       <div className="w-full flex flex-col gap-4 sm:gap-6">
         <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
-          {t("about.header")} <span className="text-main block sm:inline">{t("your-fitness")}</span>
-          <span className="block sm:inline">{t("goals")}</span>
+          <Trans i18nKey="about.header">
+            EMPOWERING YOU TO ACHIEVE
+            <span className="text-main block sm:inline"> YOUR FITNESS </span>
+            <span className="block sm:inline">GOALS</span>
+          </Trans>
         </h3>
         <p className="text-base sm:text-lg md:text-xl font-rubik leading-relaxed text-gray-700 dark:text-gray-200">
           {t("about.header2")}
@@ -86,11 +89,11 @@ export default function AboutUsContent() {
 
         {/* Get Started Button */}
         <div className="flex justify-start">
-          <Button className="bg-main hover:bg-orange-600  text-white font-semibold px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full flex items-center space-x-2 sm:space-x-3 transition-colors shadow-lg hover:shadow-xl group w-full sm:w-auto justify-center sm:justify-start max-w-xs">
+          <Button
+            icon={() => <ArrowRight />}
+            className="bg-main hover:bg-orange-600  text-white font-semibold px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full flex items-center space-x-2 sm:space-x-3 transition-colors shadow-lg hover:shadow-xl group w-full sm:w-auto justify-center sm:justify-start max-w-xs"
+          >
             <span className="text-sm sm:text-base">{t("get-started")}</span>
-            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center group-hover:bg-opacity-30 transition-all flex-shrink-0">
-              <ArrowRight size={14} className={`sm:w-4 sm:h-4 ${isRTL ? "rotate-180" : ""}`} />
-            </div>
           </Button>
         </div>
       </div>
