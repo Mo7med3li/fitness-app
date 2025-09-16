@@ -1,51 +1,55 @@
+import { useTranslation } from "react-i18next";
+
 export const workouts = () => {
+  // Translation
+  const { t } = useTranslation();
   return [
     {
-      title: "Group Workout",
+      title: t("group-workout"),
       image: "/assets/group-workout.png",
     },
     {
-      title: "Personal Training",
+      title: t("personal-training"),
       image: "/assets/personal.png",
     },
     {
-      title: "Muscle Building",
+      title: t("muscle-building"),
       image: "/assets/muscle-building.jpg",
     },
     {
-      title: "Strength & Power",
+      title: t("strength-and-power"),
       image: "/assets/Strength.jpg",
     },
     {
-      title: "Weight Loss Program",
+      title: t("program"),
       image: "/assets/Weight-Loss.jpg",
     },
     {
-      title: "HIIT Training",
+      title: t("hiit-training"),
       image: "/assets/HIIT-Training.jpg",
     },
     {
-      title: "Yoga & Flexibility",
+      title: t("yoga-and-flexibility"),
       image: "/assets/Yoga.jpg",
     },
     {
-      title: "CrossFit Challenge",
+      title: t("crossfit-challenge"),
       image: "/assets/CrossFit.jpg",
     },
     {
-      title: "Cardio Blast",
+      title: t("cardio-blast"),
       image: "/assets/Cardio.jpg",
     },
     {
-      title: "Endurance Training",
+      title: t("endurance-training"),
       image: "/assets/Training.jpg",
     },
     {
-      title: "Functional Fitness",
+      title: t("functional-fitness"),
       image: "/assets/Fitness.jpg",
     },
     {
-      title: "Core & Abs Workout",
+      title: t("core-and-abs-workout"),
       image: "/assets/Abs-Workout.jpg",
     },
   ];

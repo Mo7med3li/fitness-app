@@ -1,21 +1,16 @@
-import { useTheme } from "@/components/providers/components/theme-provider";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const WorkoutCard = ({ title, image }: { title: string; image: string }) => {
-  const theme = useTheme();
+  // Translation
+  const { t } = useTranslation();
+
   return (
     <div
-      className="relative h-[370px] bg-cover bg-center rounded-2xl bg-blend-screen "
-      // style={{
-      //   backgroundImage: `linear-gradient(#fff0, #FFFFFFCC), url(${image})`,
-      // }}
-
+      className="relative h-[370px] bg-cover bg-center rounded-2xl bg-blend-screen"
       style={{
-        backgroundImage:
-          theme.theme === "light"
-            ? `linear-gradient(#fff0, #FFFFFFCC), url(${image})`
-            : `linear-gradient(#171E2E00, #171E2ECC), url(${image})`,
+        backgroundImage: `url(${image})`,
       }}
     >
       <div className="absolute top-[75%] bottom-0 left-0 right-0 bg-white/50 dark:bg-charcoal/50 flex flex-col justify-around p-3 space-y-2 backdrop-blur-[58px] rounded-b-xl">
@@ -24,9 +19,9 @@ const WorkoutCard = ({ title, image }: { title: string; image: string }) => {
         </h2>
         <div className={"flex items-center gap-2 cursor-pointer"}>
           <Link to={`/classes`} className="text-main font-baloo font-medium text-lg">
-            read-more
+            {t("explore")}
           </Link>
-          <div className="w-4 h-4 -rotate-45 rounded-full bg-main items-center justify-center flex">
+          <div className="w-4 h-4 -rotate-45 rounded-full bg-main items-center justify-center flex rtl:-rotate-[135deg]">
             <ArrowRight width={9} height={9} />
           </div>
         </div>

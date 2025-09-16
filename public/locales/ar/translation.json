@@ -62,5 +62,21 @@
   "auth.confirm-new-password": "تأكيد كلمة مرور جديدة",
   "auth.new-password": "كلمة المرور الجديدة",
   "change": "تغيير",
-  "auth.resend-code": "إعادة تقديم رمز"
+  "auth.resend-code": "إعادة تقديم رمز",
+  "fitness-class": "تمارين لياقة",
+  "transform-your-body-with-our-dynamic": "قم بتحويل جسمك بديناميكية",
+  "upcoming-workouts": "التدريبات القادمة",
+  "group-workout": "تمارين جماعية",
+  "personal-training": "التدريب الشخصي",
+  "muscle-building": "بناء العضلات",
+  "strength-and-power": "القوة والتحمّل",
+  "program": "برنامج فقدان الوزن",
+  "hiit-training": "تمارين الهيت",
+  "yoga-and-flexibility": "اليوغا والمرونة",
+  "crossfit-challenge": "تحدي الكروس فيت",
+  "cardio-blast": "تمارين كارديو مكثفة",
+  "endurance-training": "تدريب التحمل",
+  "functional-fitness": "تمارين اللياقة الوظيفية",
+  "core-and-abs-workout": "تمارين الكور والبطن",
+  "explore": "استكشف"
 }

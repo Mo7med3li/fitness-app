@@ -64,5 +64,21 @@
   "auth.new-password": "New password",
   "auth.confirm-new-password": "Confirm New Password",
   "change": "change",
-  "auth.resend-code": "Resend Code"
+  "auth.resend-code": "Resend Code",
+  "fitness-class": "Fitness Class",
+  "transform-your-body-with-our-dynamic": "Transform Your Body with Our Dynamic",
+  "upcoming-workouts": "Upcoming Workouts",
+  "group-workout": "Group Workout",
+  "personal-training": "Personal Training",
+  "muscle-building": "Muscle Building",
+  "strength-and-power": "Strength & Power",
+  "program": "Weight Loss Program",
+  "hiit-training": "HIIT Training",
+  "yoga-and-flexibility": "Yoga & Flexibility",
+  "crossfit-challenge": "CrossFit Challenge",
+  "cardio-blast": "Cardio Blast",
+  "endurance-training": "Endurance Training",
+  "functional-fitness": "Functional Fitness",
+  "core-and-abs-workout": "Core & Abs Workout",
+  "explore": "Explore"
 }

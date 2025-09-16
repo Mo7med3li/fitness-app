@@ -34,8 +34,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         </div>
       </div>
       {/* Dots */}
-      <div className=" flex justify-center ">
-        <div className=" lg:flex gap-2 py-1 hidden">
+      <div className=" flex justify-center">
+        <div className="lg:flex gap-2 py-1 hidden">
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
