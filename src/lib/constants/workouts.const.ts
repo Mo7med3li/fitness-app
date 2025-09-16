@@ -6,51 +6,51 @@ export const workouts = () => {
   return [
     {
       title: t("group-workout"),
-      image: "/assets/group-workout.png",
+      image: "/assets/group-workout.webP",
     },
     {
       title: t("personal-training"),
-      image: "/assets/personal.png",
+      image: "/assets/personal.webP",
     },
     {
       title: t("muscle-building"),
-      image: "/assets/muscle-building.jpg",
+      image: "/assets/muscle-building.webP",
     },
     {
       title: t("strength-and-power"),
-      image: "/assets/Strength.jpg",
+      image: "/assets/Strength.webP",
     },
     {
       title: t("program"),
-      image: "/assets/Weight-Loss.jpg",
+      image: "/assets/Weight-Loss.webP",
     },
     {
       title: t("hiit-training"),
-      image: "/assets/HIIT-Training.jpg",
+      image: "/assets/HIIT-Training.webP",
     },
     {
       title: t("yoga-and-flexibility"),
-      image: "/assets/Yoga.jpg",
+      image: "/assets/Yoga.webP",
     },
     {
       title: t("crossfit-challenge"),
-      image: "/assets/CrossFit.jpg",
+      image: "/assets/CrossFit.webP",
     },
     {
       title: t("cardio-blast"),
-      image: "/assets/Cardio.jpg",
+      image: "/assets/Cardio.webP",
     },
     {
       title: t("endurance-training"),
-      image: "/assets/Training.jpg",
+      image: "/assets/Training.webP",
     },
     {
       title: t("functional-fitness"),
-      image: "/assets/Fitness.jpg",
+      image: "/assets/Fitness.webP",
     },
     {
       title: t("core-and-abs-workout"),
-      image: "/assets/Abs-Workout.jpg",
+      image: "/assets/Abs-Workout.webP",
     },
   ];
 };
