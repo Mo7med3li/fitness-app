@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import Image from "../../../../../../public/assets/Theo Vance.png";
 import Actions from "./actions";
 import Stats from "./stats";
@@ -15,9 +15,12 @@ const HeroSection = () => {
           <div className="w-full lg:col-span-2 flex justify-center items-center col-span-3 ">
             <div className="space-y-16">
               <h2 className="font-bold text-6xl uppercase font-baloo">
-                {t("your-body-can")} <span className="text-main">{t("stand-almost")}</span>{" "}
-                {t("anything")}
+                <Trans
+                  i18nKey="hero-section.tittle"
+                  components={{ strong: <span className="text-main" /> }}
+                />
               </h2>
+
               {/* content */}
               <div className="relative px-4">
                 <div className="before:block before:absolute before:start-0 before:w-1 before:h-full before:rounded-lg before:bg-main space-y-1">

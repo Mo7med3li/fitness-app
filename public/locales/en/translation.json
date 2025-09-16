@@ -73,5 +73,8 @@
   "active-members": "Active Members",
   "your-body-can": "Your body can",
   "stand-almost": "stand almost",
-  "anything": "anything"
+  "anything": "anything",
+  "hero-section": {
+    "tittle": "Your body can <strong>stand almost</strong> anything"
+  }
 }
