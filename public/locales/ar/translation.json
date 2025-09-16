@@ -78,5 +78,9 @@
   "endurance-training": "تدريب التحمل",
   "functional-fitness": "تمارين اللياقة الوظيفية",
   "core-and-abs-workout": "تمارين الكور والبطن",
-  "explore": "استكشف"
+  "explore": "استكشف",
+  "see-more": "رؤية المزيد",
+  "workouts": {
+    "heading": "حوّل جسمك مع <strong>تماريننا القادمة</strong> الديناميكية"
+  }
 }

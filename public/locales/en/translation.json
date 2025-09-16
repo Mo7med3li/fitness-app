@@ -80,5 +80,9 @@
   "endurance-training": "Endurance Training",
   "functional-fitness": "Functional Fitness",
   "core-and-abs-workout": "Core & Abs Workout",
-  "explore": "Explore"
+  "explore": "Explore",
+  "see-more": "See More",
+  "workouts": {
+    "heading": "Transform Your Body with Our Dynamic <strong>Upcoming Workouts</strong>"
+  }
 }
