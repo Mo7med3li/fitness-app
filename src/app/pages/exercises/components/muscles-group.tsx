@@ -31,10 +31,10 @@ const MusclesGroup = () => {
         <Link
           to={"/classes"}
           className={cn(
-            "h-10 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200",
+            "h-10 px-4 py-2 bg-white rounded-full text-sm font-medium transition-all duration-200",
             "hover:bg-main/10 hover:text-main border border-gray-200 dark:border-gray-700",
             pathname === "/classes"
-              ? "bg-main text-white hover:bg-main/90 hover:text-white border-main"
+              ? "bg-main hover:bg-main/90 hover:text-white border-main"
               : "text-gray-700 dark:text-gray-300",
           )}
         >
@@ -55,7 +55,7 @@ const MusclesGroup = () => {
                   key={muscle.name}
                   to={`/exercises/${muscle.name}?level=${searchParams.get("level") || t("beginner")}`}
                   className={cn(
-                    "h-10 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200",
+                    "h-10 px-4 py-2 rounded-full bg-white text-sm font-medium transition-all duration-200",
                     "hover:bg-main/10 hover:text-main border border-gray-200 dark:border-gray-700",
                     params.muscle?.toLowerCase() === muscle.name.toLowerCase()
                       ? "bg-main text-white hover:bg-main/90 hover:text-white border-main"
