@@ -2,9 +2,7 @@ import { Dumbbell } from "lucide-react";
 import AboutLogo from "./../../../../public/assets/About_us.webp";
 import AboutImage from "./components/about-image";
 import AboutUsContent from "./components/about-content";
-import { ModeToggle } from "@/components/common/mode-toggle";
 import { useTranslation } from "react-i18next";
-import { TranslationToggle } from "@/components/common/translation-toggle";
 
 export default function AboutUs() {
   const { t } = useTranslation();
@@ -26,8 +24,6 @@ export default function AboutUs() {
         {/*  Page content */}
         <AboutUsContent />
       </div>
-      <ModeToggle />
-      <TranslationToggle />
     </section>
   );
 }
