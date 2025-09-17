@@ -73,7 +73,5 @@
   "explore": "Explore",
   "loading": "Loading...",
   "healthy-nutritions": "Healthy Nutritions",
-  "meals.header1": "Fuel your fitness journey with customized",
-  "meal-plans": "meal plans",
-  "for-you": "for you"
+  "healthy.header": "Fuel your fitness journey with  customized <span>meal plans</span> for you"
 }
