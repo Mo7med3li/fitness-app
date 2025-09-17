@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import useMuscles from "../../hooks/muscles/useGetMuscles";
+import useMuscles from "../../../hooks/muscles/useGetMuscles";
 import type { MuscleGroup } from "@/lib/types/muscles";
 
 export default function ClassesFilter() {

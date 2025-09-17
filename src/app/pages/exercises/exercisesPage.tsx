@@ -1,5 +1,5 @@
 import WOrkouts from "./../../../../public/assets/WOrkouts.webp";
-import ClassesFilter from "../../../components/common/ClassesFilter";
+import ClassesFilter from "../../../components/common/musles/ClassesFilter";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { TranslationToggle } from "@/components/common/translation-toggle";
 export default function ExercisesPage() {
