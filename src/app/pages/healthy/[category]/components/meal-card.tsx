@@ -23,7 +23,9 @@ const MealCard = ({ meal }: { meal: CategoryMeal }) => {
         />
       </div>
       <div className="flex-1 min-w-0 pl-4 pr-2 py-2 flex flex-col justify-center">
-        <h2 className="text-lg font-semibold text-grayExtra line-clamp-1">{meal.strMeal}</h2>
+        <h2 className="text-lg font-semibold dark:text-grayExtra text-charcoal line-clamp-1">
+          {meal.strMeal}
+        </h2>
         <div className="mt-1 flex items-center gap-3 text-xs text-gray-400">
           <span className="inline-flex items-center rtl:flex-row-reverse">
             <Clock className="h-4 w-4 mr-1" />

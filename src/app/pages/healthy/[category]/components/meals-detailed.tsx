@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { ChefHat, MapPin, Tag, Link as LinkIcon } from "lucide-react";
 import MealInfoItem from "./meal-item";
 import { useTranslation } from "react-i18next";
-import { TranslationToggle } from "@/components/common/translation-toggle";
 
 const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
   // Translation
@@ -35,9 +34,8 @@ const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
   return (
     <section className="space-y-6">
       {/* Image Section */}
-      <TranslationToggle />
       <section
-        className="w-full h-[500px] flex flex-col justify-end bg-cover bg-center rounded-tl-3xl rounded-tr-3xl backdrop-blur-[55px]"
+        className="w-full h-[500px] flex flex-col justify-end bg-cover bg-center rounded-tl-3xl rounded-tr-3xl backdrop-blur-[55px] p-2"
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), #242424),url(${meal.strMealThumb})`,
         }}
@@ -66,14 +64,14 @@ const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
         </div>
       </section>
       {/* Ingredients Section */}
-      <h2 className="text-3xl font-baloo font-medium lg:text-start text-center text-grayExtra">
+      <h2 className="text-3xl font-baloo font-medium lg:text-start text-center text-charcoal dark:text-grayExtra">
         {t("ingredients")}
       </h2>
-      <div className="flex lg:flex-row flex-col items-center lg:items-start lg:justify-between bg-charcoal/80 backdrop-blur-[20px] shadow-md">
+      <div className="flex lg:flex-row flex-col items-center lg:items-start lg:justify-between dark:bg-charcoal/80 bg-grayExtra/80 backdrop-blur-[20px] shadow-md">
         <div className="w-80">
           {Array.from({ length: 5 }).map((_, index) => (
             <div key={index} className="flex justify-between border-b border-[#2d2d2d] pb-1">
-              <span className="text-grayExtra font-semibold font-baloo capitalize">
+              <span className="dark:text-grayExtra text-charcoal font-semibold font-baloo capitalize">
                 {meal[`strIngredient${index + 1}` as keyof MealDetails]}
               </span>
               <span className="text-main font-baloo capitalize">
@@ -87,7 +85,7 @@ const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
             (_, index) =>
               meal[`strIngredient${index + 6}` as keyof MealDetails] && (
                 <div key={index} className="flex justify-between border-b border-[#2d2d2d] pb-1">
-                  <span className="text-grayExtra font-semibold font-baloo capitalize">
+                  <span className="dark:text-grayExtra text-charcoal font-semibold font-baloo capitalize">
                     {meal[`strIngredient${index + 6}` as keyof MealDetails]}
                   </span>
                   <span className="text-main font-baloo capitalize">
