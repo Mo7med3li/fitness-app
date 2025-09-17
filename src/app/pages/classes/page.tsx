@@ -1,12 +1,7 @@
-import MusclesGroup from "../exercises/components/muscles-group";
+import ClassessPage from "./ClassessPage";
 
 const ClassesPage = () => {
-  return (
-    <div>
-      <MusclesGroup />
-      <h1>Classes</h1>
-    </div>
-  );
+  return <ClassessPage />;
 };
 
 export default ClassesPage;

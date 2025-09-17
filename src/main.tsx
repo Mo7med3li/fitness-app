@@ -17,10 +17,9 @@ import PagesLayout from "./app/pages/PagesLayout.tsx";
 import KYC from "@/app/auth/KYC/page.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
-import ExercisesPage from "./app/pages/exercises/page.tsx";
 import MealsPage from "./app/pages/meals/page.tsx";
 import ClassesPage from "./app/pages/classes/page.tsx";
-
+import ExercisesPage from "./app/pages/exercises/page.tsx";
 const router = createBrowserRouter([
   {
     path: "",
