@@ -60,8 +60,10 @@ const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
         </div>
       </section>
       {/* Ingredients Section */}
-      <h2 className="text-3xl font-baloo font-medium text-grayExtra">Ingredients</h2>
-      <div className="flex justify-between bg-charcoal/80 backdrop-blur-[20px] shadow-md">
+      <h2 className="text-3xl font-baloo font-medium lg:text-start text-center text-grayExtra">
+        Ingredients
+      </h2>
+      <div className="flex lg:flex-row flex-col items-center lg:items-start lg:justify-between bg-charcoal/80 backdrop-blur-[20px] shadow-md">
         <div className="w-80">
           {Array.from({ length: 5 }).map((_, index) => (
             <div key={index} className="flex justify-between border-b border-[#2d2d2d] pb-1">

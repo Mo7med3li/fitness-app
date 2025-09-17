@@ -17,17 +17,17 @@ const MealsRecipeSection = () => {
   const { category } = useParams();
 
   // Queries
-  const { data, isLoading } = useQuery<CategoryMealsResponse>({
+  const { data: CategoryMealsResponse, isLoading } = useQuery<CategoryMealsResponse>({
     queryKey: ["Meals", category],
     queryFn: () => getCategoryMeals(category),
   });
 
   // Effects
   useEffect(() => {
-    if (data?.meals?.length) {
-      setSelectedMealId(data.meals[0].idMeal);
+    if (CategoryMealsResponse?.meals?.length) {
+      setSelectedMealId(CategoryMealsResponse.meals[0].idMeal);
     }
-  }, [data]);
+  }, [CategoryMealsResponse]);
 
   // Queries
   const { data: mealDataDetails } = useQuery<MealDetailsResponse>({
@@ -42,11 +42,11 @@ const MealsRecipeSection = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 container p-4">
-        <div className="col-span-1 w-[420px] h-[700px] overflow-auto bg-charcoal/50 border-2 border-[#282828] rounded-[20px] px-2 backdrop-blur-[20px] pt-4 hide-scroll">
+      <div className="grid grid-cols-3 container p-4 gap-4">
+        <div className="lg:col-span-1 col-span-3 w-[420px] h-[700px] overflow-auto bg-charcoal/50 border-2 border-[#282828] rounded-[20px] px-2 backdrop-blur-[20px] pt-4 hide-scroll">
           <div className=" space-y-4 ">
             <MealsCategories />
-            {data?.meals?.map((meal: CategoryMeal) => (
+            {CategoryMealsResponse?.meals?.map((meal: CategoryMeal) => (
               <div
                 className="px-4 pb-4"
                 key={meal.idMeal}
@@ -57,7 +57,7 @@ const MealsRecipeSection = () => {
             ))}
           </div>
         </div>
-        <section className="col-span-2">
+        <section className="lg:col-span-2 col-span-3">
           {mealDataDetails.meals.map((details: MealDetails) => (
             <MealsDetailed meal={details} />
           ))}
