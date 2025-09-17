@@ -20,7 +20,7 @@ import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import ClassessPage from "./app/pages/classes/ClassessPage.tsx";
 import ExercisesPage from "./app/pages/exercises/exercisesPage.tsx";
 import HealthyPage from "./app/pages/healthy/page.tsx";
-import HealthyMealRecipePage from "./app/pages/healthy/[id]/page.tsx";
+import HealthyMealRecipePage from "./app/pages/healthy/[category]/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "healthy/:id",
+        path: "healthy/:category",
         element: (
           <ProtectedRoute>
             <HealthyMealRecipePage />

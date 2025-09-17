@@ -1,9 +1,7 @@
+import MealsCategories from "./components/meals-categories";
+
 const HealthyPage = () => {
-  return (
-    <div>
-      <h1>Healthy Page</h1>
-    </div>
-  );
+  return <MealsCategories />;
 };
 
 export default HealthyPage;
