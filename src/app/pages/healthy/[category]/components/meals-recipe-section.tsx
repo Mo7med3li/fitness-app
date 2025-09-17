@@ -8,10 +8,12 @@ import { getMealDetails } from "../api/get-meal-details";
 import MealsCategories from "../../components/meals-categories";
 import MealCard from "./meal-card";
 import MealsDetailed from "./meals-detailed";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const MealsRecipeSection = () => {
   // States
   const [selectedMealId, setSelectedMealId] = useState("");
+  const [slicedMeals, setSlicedMeals] = useState<CategoryMeal[]>([]);
 
   // Params
   const { category } = useParams();
@@ -26,6 +28,7 @@ const MealsRecipeSection = () => {
   useEffect(() => {
     if (CategoryMealsResponse?.meals?.length) {
       setSelectedMealId(CategoryMealsResponse.meals[0].idMeal);
+      setSlicedMeals(CategoryMealsResponse.meals.slice(0, 5));
     }
   }, [CategoryMealsResponse]);
 
@@ -40,21 +43,38 @@ const MealsRecipeSection = () => {
     return <div>Loading...</div>;
   }
 
+  // Functions
+  const fetchMoreData = () => {
+    const next = slicedMeals.length + 5;
+    setTimeout(() => {
+      setSlicedMeals(CategoryMealsResponse!.meals.slice(0, next));
+    }, 500);
+  };
   return (
     <div>
       <div className="grid grid-cols-3 container p-4 gap-4">
         <div className="lg:col-span-1 col-span-3 w-[420px] h-[700px] overflow-auto bg-charcoal/50 border-2 border-[#282828] rounded-[20px] px-2 backdrop-blur-[20px] pt-4 hide-scroll">
           <div className=" space-y-4 ">
             <MealsCategories />
-            {CategoryMealsResponse?.meals?.map((meal: CategoryMeal) => (
-              <div
-                className="px-4 pb-4"
-                key={meal.idMeal}
-                onClick={() => setSelectedMealId(meal.idMeal)}
-              >
-                <MealCard meal={meal} />
-              </div>
-            ))}
+            <InfiniteScroll
+              next={fetchMoreData}
+              hasMore={slicedMeals.length < CategoryMealsResponse?.meals?.length!}
+              loader={<h4>Loading...</h4>}
+              endMessage={
+                <h4 className="text-center text-main text-2xl font-semibold">End of meals</h4>
+              }
+              dataLength={slicedMeals.length}
+            >
+              {slicedMeals?.map((meal: CategoryMeal) => (
+                <div
+                  className="px-4 pb-4"
+                  key={meal.idMeal}
+                  onClick={() => setSelectedMealId(meal.idMeal)}
+                >
+                  <MealCard meal={meal} />
+                </div>
+              ))}
+            </InfiniteScroll>
           </div>
         </div>
         <section className="lg:col-span-2 col-span-3">
