@@ -10,8 +10,12 @@ import MealCard from "./meal-card";
 import MealsDetailed from "./meals-detailed";
 import InfiniteScroll from "react-infinite-scroll-component";
 import MealCardSkeleton from "@/components/skeleton/meals/meal-card.skeleton";
+import { useTranslation } from "react-i18next";
 
 const MealsRecipeSection = () => {
+  // Translation
+  const { t } = useTranslation();
+
   // States
   const [selectedMealId, setSelectedMealId] = useState("");
   const [slicedMeals, setSlicedMeals] = useState<CategoryMeal[]>([]);
@@ -68,7 +72,9 @@ const MealsRecipeSection = () => {
               hasMore={slicedMeals.length < CategoryMealsResponse?.meals?.length!}
               loader={<MealCardSkeleton />}
               endMessage={
-                <h4 className="text-center text-main text-2xl font-semibold">End of meals</h4>
+                <h4 className="text-center text-main text-2xl font-semibold">
+                  {t("end-of-meals")}
+                </h4>
               }
               dataLength={slicedMeals.length}
             >

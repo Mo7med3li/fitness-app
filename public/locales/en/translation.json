@@ -71,5 +71,18 @@
   "full-body": "Full body",
   "no-muscle-groups": "No muscle groups available",
   "explore": "Explore",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "category": "Category",
+  "area": "Area",
+  "tags": "Tags",
+  "source": "Source",
+  "ingredients": "Ingredients",
+  "open-link": "Open link",
+  "no-link": "No Link",
+  "end-of-meals": "End of meals",
+  "delicious": "Delicious",
+  "meal": {
+    "calories": "{{value}} kcal",
+    "time": "{{value}} min"
+  }
 }

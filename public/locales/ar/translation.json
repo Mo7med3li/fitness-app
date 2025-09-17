@@ -69,5 +69,18 @@
   "full-body": "كامل الجسم",
   "no-muscle-groups": "لا توجد مجموعات عضلية متاحة",
   "explore": "أستكشف",
-  "loading": "تحميل..."
+  "loading": "تحميل...",
+  "category": "الفئة",
+  "tags": "العلامات",
+  "source": "المصدر",
+  "ingredients": "المكونات",
+  "area": "المنطقة",
+  "open-link": "فتح الرابط",
+  "no-link": "لا رابط",
+  "end-of-meals": "نهاية الوجبات",
+  "delicious": "لذيذ",
+  "meal": {
+    "calories": "{{value}} سعرة حرارية",
+    "time": "{{value}} دقيقة"
+  }
 }

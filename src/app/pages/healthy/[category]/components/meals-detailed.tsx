@@ -2,34 +2,40 @@ import type { MealDetails } from "@/lib/types/meals/meals-details";
 import { Link } from "react-router-dom";
 import { ChefHat, MapPin, Tag, Link as LinkIcon } from "lucide-react";
 import MealInfoItem from "./meal-item";
+import { useTranslation } from "react-i18next";
+import { TranslationToggle } from "@/components/common/translation-toggle";
 
 const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
+  // Translation
+  const { t } = useTranslation();
+
   // variables
   const mealInfo = [
     {
       icon: <ChefHat className="h-4 w-4 text-main" />,
-      label: "Category",
+      label: t("category"),
       value: meal.strCategory,
     },
     {
       icon: <MapPin className="h-4 w-4 text-main" />,
-      label: "Area",
+      label: t("area"),
       value: meal.strArea,
     },
     {
       icon: <Tag className="h-4 w-4 text-main" />,
-      label: "Tags",
-      value: meal.strTags || "Tags",
+      label: t("tags"),
+      value: meal.strTags || t("tags"),
     },
     {
       icon: <LinkIcon className="h-4 w-4 text-main" />,
-      label: "Source",
-      value: meal.strSource ? "Open link" : "",
+      label: t("source"),
+      value: meal.strSource ? t("open-link") : t("no-link"),
     },
   ];
   return (
     <section className="space-y-6">
       {/* Image Section */}
+      <TranslationToggle />
       <section
         className="w-full h-[500px] flex flex-col justify-end bg-cover bg-center rounded-tl-3xl rounded-tr-3xl backdrop-blur-[55px]"
         style={{
@@ -61,7 +67,7 @@ const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
       </section>
       {/* Ingredients Section */}
       <h2 className="text-3xl font-baloo font-medium lg:text-start text-center text-grayExtra">
-        Ingredients
+        {t("ingredients")}
       </h2>
       <div className="flex lg:flex-row flex-col items-center lg:items-start lg:justify-between bg-charcoal/80 backdrop-blur-[20px] shadow-md">
         <div className="w-80">
