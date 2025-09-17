@@ -1,9 +1,14 @@
 import { JSON_HEADER } from "@/lib/constants/api.const";
+import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const MealsCategories = () => {
+  // Params
+  const params = useParams();
+
+  // Queries
   const { data, isLoading } = useQuery({
     queryKey: ["Meals Category"],
     queryFn: async () => {
@@ -15,16 +20,21 @@ const MealsCategories = () => {
       return res.data;
     },
   });
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
   return (
-    <div className="flex flex-wrap gap-2 bg-main">
+    <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap px-4 pb-3 hide-scroll">
       {data?.categories?.map((item: any) => (
         <Link
           key={item.idCategory}
           to={`/healthy/${item.strCategory}`}
-          className="flex items-center gap-2"
+          className={cn(
+            "font-baloo font-semibold uppercase tracking-wide text-[18px] px-4 py-2 rounded-full text-grayExtra border border-[#2d2d2d] bg-charcoal/40 backdrop-blur-[6px] shadow-sm transition-colors duration-200 hover:border-main hover:bg-main/20",
+            params.category === item.strCategory &&
+              "bg-main text-white border-main hover:bg-main -order-1",
+          )}
         >
           {item.strCategory}
         </Link>

@@ -41,11 +41,10 @@ const HealthyMealRecipePage = () => {
 
   return (
     <div>
-      <MealsCategories />
       <div className="grid grid-cols-3 container">
-        <div className="col-span-1 w-[420px] h-[700px] overflow-auto bg-charcoal/50 border-2 border-[#282828] backdrop-blur-[20px] pt-4 hide-scroll">
+        <div className="col-span-1 w-[420px] h-[700px] overflow-auto bg-charcoal/50 border-2 border-[#282828] rounded-[20px] px-2 backdrop-blur-[20px] pt-4 hide-scroll">
           <div className=" space-y-4 ">
-            {category}
+            <MealsCategories />
             {data?.meals?.map((meal: CategoryMeal) => (
               <div
                 className="px-4 pb-4"
