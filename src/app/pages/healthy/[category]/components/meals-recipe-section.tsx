@@ -9,6 +9,7 @@ import MealsCategories from "../../components/meals-categories";
 import MealCard from "./meal-card";
 import MealsDetailed from "./meals-detailed";
 import InfiniteScroll from "react-infinite-scroll-component";
+import MealCardSkeleton from "@/components/skeleton/meals/meal-card.skeleton";
 
 const MealsRecipeSection = () => {
   // States
@@ -40,7 +41,13 @@ const MealsRecipeSection = () => {
   });
 
   if (isLoading || !mealDataDetails) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <MealCardSkeleton key={index} />
+        ))}
+      </div>
+    );
   }
 
   // Functions
@@ -59,7 +66,7 @@ const MealsRecipeSection = () => {
             <InfiniteScroll
               next={fetchMoreData}
               hasMore={slicedMeals.length < CategoryMealsResponse?.meals?.length!}
-              loader={<h4>Loading...</h4>}
+              loader={<MealCardSkeleton />}
               endMessage={
                 <h4 className="text-center text-main text-2xl font-semibold">End of meals</h4>
               }
