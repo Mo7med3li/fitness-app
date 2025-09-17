@@ -6,6 +6,7 @@ import type { MealDetails, MealDetailsResponse } from "@/lib/types/meals/meals-d
 import { getCategoryMeals } from "./api/get-category-meals";
 import { getMealDetails } from "./api/get-meal-details";
 import type { CategoryMeal, CategoryMealsResponse } from "@/lib/types/meals/meals-by-category";
+import MealCard from "./components/meal-card";
 
 const HealthyMealRecipePage = () => {
   // States
@@ -41,14 +42,20 @@ const HealthyMealRecipePage = () => {
   return (
     <div>
       <MealsCategories />
-      <div className="grid grid-cols-3">
-        <div className="col-span-1">
-          {category}
-          {data?.meals?.map((meal: CategoryMeal) => (
-            <div key={meal.idMeal} onClick={() => setSelectedMealId(meal.idMeal)}>
-              {meal.strMeal}
-            </div>
-          ))}
+      <div className="grid grid-cols-3 container">
+        <div className="col-span-1 w-[420px] h-[700px] overflow-auto bg-charcoal/50 border-2 border-[#282828] backdrop-blur-[20px] pt-4 hide-scroll">
+          <div className=" space-y-4 ">
+            {category}
+            {data?.meals?.map((meal: CategoryMeal) => (
+              <div
+                className="px-4 pb-4"
+                key={meal.idMeal}
+                onClick={() => setSelectedMealId(meal.idMeal)}
+              >
+                <MealCard meal={meal} />
+              </div>
+            ))}
+          </div>
         </div>
         <div className="col-span-2 bg-black">
           <h2 className="text-2xl font-bold text-white">{mealDataDetails.meals[0].strMeal}</h2>
