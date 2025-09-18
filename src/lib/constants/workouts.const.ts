@@ -6,7 +6,7 @@ export const workouts = () => {
   return [
     {
       title: t("group-workout"),
-      image: "/assets/group-workout.webP",
+      image: "/assets/group-workout.webp",
     },
     {
       title: t("personal-training"),
@@ -26,7 +26,7 @@ export const workouts = () => {
     },
     {
       title: t("hiit-training"),
-      image: "/assets/HIIT-Training.webP",
+      image: "/assets/HIIT-Training.webp",
     },
     {
       title: t("yoga-and-flexibility"),
@@ -34,11 +34,11 @@ export const workouts = () => {
     },
     {
       title: t("crossfit-challenge"),
-      image: "/assets/CrossFit.webP",
+      image: "/assets/CrossFit.webp",
     },
     {
       title: t("cardio-blast"),
-      image: "/assets/Cardio.webP",
+      image: "/assets/Cardio.webp",
     },
     {
       title: t("endurance-training"),
@@ -46,7 +46,7 @@ export const workouts = () => {
     },
     {
       title: t("functional-fitness"),
-      image: "/assets/Fitness.webP",
+      image: "/assets/Fitness.webp",
     },
     {
       title: t("core-and-abs-workout"),

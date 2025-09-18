@@ -15,7 +15,7 @@ function WorkoutSection() {
   const [count, setCount] = useState(3);
 
   // Checks of screen size
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 1000 });
 
   // Translation
   const { t, i18n } = useTranslation();
