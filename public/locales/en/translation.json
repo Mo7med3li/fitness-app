@@ -85,7 +85,6 @@
   "scientifically-program": "Scientifically backed fitness program.",
   "choose-your-level": "Choose Your Level",
   "no-video": "There is no video for this exercise",
-  "fitness-class": "Fitness Class",
   "transform-your-body-with-our-dynamic": "Transform Your Body with Our Dynamic",
   "upcoming-workouts": "Upcoming Workouts",
   "group-workout": "Group Workout",
@@ -100,9 +99,6 @@
   "endurance-training": "Endurance Training",
   "functional-fitness": "Functional Fitness",
   "core-and-abs-workout": "Core & Abs Workout",
-  "explore": "Explore",
   "see-more": "See More",
-  "workouts": {
-    "heading": "Transform Your Body with Our Dynamic <strong>Upcoming Workouts</strong>"
-  }
+  "workouts.heading": "Transform Your Body with Our Dynamic <strong>Upcoming Workouts</strong>"
 }

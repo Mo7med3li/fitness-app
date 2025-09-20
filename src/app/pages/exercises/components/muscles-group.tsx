@@ -1,7 +1,7 @@
 import i18n from "@/i18n";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
-import { Link, NavLink, useParams, useSearchParams } from "react-router-dom";
+import { Link, NavLink, useLocation, useParams, useSearchParams } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
 import fetchMusclesGroup from "../api/fetch-muscles-group";
 import { useTranslation } from "react-i18next";
@@ -12,6 +12,8 @@ const MusclesGroup = () => {
 
   // Params
   const params = useParams();
+
+  const { pathname } = useLocation();
 
   // Queries
   const { data: allMusclesData, isLoading } = useQuery<MusclesResponse>({
@@ -31,7 +33,7 @@ const MusclesGroup = () => {
             cn(
               "h-10 px-4 py-2 bg-white dark:bg-[#242424] rounded-full text-sm font-medium transition-all duration-200",
               "hover:bg-main/10 hover:text-main border border-gray-200 dark:border-gray-700",
-              isActive
+              isActive || pathname === "/"
                 ? "bg-main dark:bg-main hover:bg-main/90 hover:text-white border-main"
                 : "text-gray-700 dark:text-gray-300",
             )

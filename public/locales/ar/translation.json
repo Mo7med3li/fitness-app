@@ -63,7 +63,6 @@
   "auth.new-password": "كلمة المرور الجديدة",
   "change": "تغيير",
   "auth.resend-code": "إعادة تقديم رمز",
-  "fitness-class": "فئة اللياقة",
   "home.title1": "قم بتحويل جسمك بديناميكية ",
   "home.title2": "التدريبات القادمة",
   "full-body": "كامل الجسم",
@@ -99,9 +98,6 @@
   "endurance-training": "تدريب التحمل",
   "functional-fitness": "تمارين اللياقة الوظيفية",
   "core-and-abs-workout": "تمارين الكور والبطن",
-  "explore": "استكشف",
   "see-more": "رؤية المزيد",
-  "workouts": {
-    "heading": "حوّل جسمك مع <strong>تماريننا القادمة</strong> الديناميكية"
-  }
+  "workouts.heading": "حوّل جسمك مع <strong>تماريننا القادمة</strong> الديناميكية"
 }

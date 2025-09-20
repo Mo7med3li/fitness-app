@@ -6,6 +6,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import MusclesGroup from "../../exercises/components/muscles-group";
 
 function WorkoutSection() {
   // Slides
@@ -41,7 +42,7 @@ function WorkoutSection() {
         </h2>
 
         {/*Muscles take from merge */}
-        {/* <MuscleGroup /> */}
+        <MusclesGroup />
 
         {/* Carousel */}
         <section className="w-full ">

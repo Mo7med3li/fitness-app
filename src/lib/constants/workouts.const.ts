@@ -26,7 +26,7 @@ export const workouts = () => {
     },
     {
       title: t("hiit-training"),
-      image: "/assets/HIIT-Training.webp",
+      image: "/assets/HIIT-Training.webP",
     },
     {
       title: t("yoga-and-flexibility"),
@@ -34,11 +34,11 @@ export const workouts = () => {
     },
     {
       title: t("crossfit-challenge"),
-      image: "/assets/CrossFit.webp",
+      image: "/assets/CrossFit.webP",
     },
     {
       title: t("cardio-blast"),
-      image: "/assets/Cardio.webp",
+      image: "/assets/Cardio.webP",
     },
     {
       title: t("endurance-training"),
@@ -46,7 +46,7 @@ export const workouts = () => {
     },
     {
       title: t("functional-fitness"),
-      image: "/assets/Fitness.webp",
+      image: "/assets/Fitness.webP",
     },
     {
       title: t("core-and-abs-workout"),
