@@ -38,7 +38,7 @@ const ExerciseSection = () => {
     hasNextPage,
     fetchNextPage,
   } = useInfiniteQuery<ExercisesResponse>({
-    queryKey: ["Exercises", searchParams.get("level"), searchParams.get("muscle")],
+    queryKey: ["Exercises", searchParams.get("level")],
     queryFn: async ({ pageParam }) => {
       const res = await fetchExercises(pageParam as number);
       return res;
@@ -57,10 +57,10 @@ const ExerciseSection = () => {
     if (!payload) return;
     const allExercisesFlat = payload?.pages.flatMap((page) => page.exercises) ?? [];
     const levelParam = searchParams.get("level");
-    const levelFilteres = allExercisesFlat.filter(
+    const levelFilters = allExercisesFlat.filter(
       (exercise) => exercise.difficulty_level === levelParam,
     );
-    let exercisesFiltered = levelFilteres.filter(
+    let exercisesFiltered = levelFilters.filter(
       (exercise) => exercise.target_muscle_group.toLowerCase() === muscle?.toLowerCase(),
     );
     setAllExercises(exercisesFiltered);
