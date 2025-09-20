@@ -63,7 +63,6 @@
   "auth.new-password": "كلمة المرور الجديدة",
   "change": "تغيير",
   "auth.resend-code": "إعادة تقديم رمز",
-
   "fitness-class": "فئة اللياقة",
   "home.title1": "قم بتحويل جسمك بديناميكية ",
   "home.title2": "التدريبات القادمة",
@@ -94,7 +93,5 @@
   "your-body-can": "جسدك يستطيع",
   "stand-almost": " تحمّل تقريبًا",
   "anything": "أي شئ",
-  "hero-section": {
-    "tittle": "جسدك يستطيع <strong>تحمّل تقريبًا</strong> أي شئ"
-  }
+  "hero-section.tittle": "جسدك يستطيع <strong>تحمّل تقريبًا</strong> أي شئ"
 }

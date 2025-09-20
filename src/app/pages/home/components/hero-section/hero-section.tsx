@@ -1,7 +1,9 @@
 import { Trans, useTranslation } from "react-i18next";
-import Image from "../../../../../../public/assets/Theo Vance.png";
+import Image from "../../../../../../public/assets/Theo Vance.webp";
 import Actions from "./actions";
 import Stats from "./stats";
+import ScrollingTicker from "@/components/common/ScrollingTicker";
+import Navbar from "@/app/pages/components/Navbar";
 
 const HeroSection = () => {
   // Translation
@@ -10,7 +12,7 @@ const HeroSection = () => {
     <main className="w-full bg-center bg-[linear-gradient(#fff9,#fff9),url('/assets/auth-bg.webp')] dark:bg-[linear-gradient(#24242499,#24242499),url('/assets/auth-bg.webp')]">
       <section className="backdrop-blur-[86.1px]">
         {/* ToDo */}
-        {/* <Navbar /> */}
+        <Navbar />
         <section className="w-full grid grid-cols-3 container dark:text-white px-4">
           <div className="w-full lg:col-span-2 flex justify-center items-center col-span-3 ">
             <div className="space-y-16">
@@ -40,7 +42,7 @@ const HeroSection = () => {
           </div>
         </section>
         {/* ToDo */}
-        {/* <ScrollingTicker /> */}
+        <ScrollingTicker />
       </section>
     </main>
   );

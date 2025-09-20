@@ -73,9 +73,7 @@
   "your-body-can": "Your body can",
   "stand-almost": "stand almost",
   "anything": "anything",
-  "hero-section": {
-    "tittle": "Your body can <strong>stand almost</strong> anything"
-  },
+  "hero-section.tittle": "Your body can <strong>stand almost</strong> anything",
   "fitness-class": "Fitness Class",
   "home.title1": "Transform Your Body with Our Dynamic ",
   "home.title2": "Upcoming Workouts",
