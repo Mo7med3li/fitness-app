@@ -17,10 +17,11 @@ import PagesLayout from "./app/pages/PagesLayout.tsx";
 import KYC from "@/app/auth/KYC/page.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
-import ClassessPage from "./app/pages/classes/ClassessPage.tsx";
-import ExercisesPage from "./app/pages/exercises/exercisesPage.tsx";
+import ClassesPage from "./app/pages/classes/page.tsx";
+import MealsPage from "./app/pages/meals/page.tsx";
 import HealthyPage from "./app/pages/healthy/page.tsx";
 import HealthyMealRecipePage from "./app/pages/healthy/[category]/page.tsx";
+import ExercisesPage from "./app/pages/exercises/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -44,18 +45,26 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "classess",
-        element: (
-          <ProtectedRoute>
-            <ClassessPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
         path: "exercises/:muscle",
         element: (
           <ProtectedRoute>
             <ExercisesPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "classes",
+        element: (
+          <ProtectedRoute>
+            <ClassesPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "meals/:meal",
+        element: (
+          <ProtectedRoute>
+            <MealsPage />
           </ProtectedRoute>
         ),
       },

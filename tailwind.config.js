@@ -24,6 +24,7 @@ export default {
       },
       colors: {
         main: "#ff4100",
+        charcoal: "#242424",
         grayLight: "#D3D3D3",
         grayNeutral: "#D9D9D9",
         grayExtra: "#F3F3F4",
