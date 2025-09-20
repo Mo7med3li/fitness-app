@@ -94,7 +94,7 @@ export default function Navbar() {
             </li>
             <li>
               <NavLink
-                to="/classess"
+                to="/classes"
                 className={({ isActive }) =>
                   `block py-2 px-3 rounded-sm md:p-0 ${
                     isActive ? "text-main font-bold" : "text-gray-200 hover:text-main"

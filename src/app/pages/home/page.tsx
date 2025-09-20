@@ -1,9 +1,4 @@
-
-export default function HomePage() {
-  // Translation
-  return (
-    <div>
-      mahmoud
-    </div>
-  );
-}
+const HomePage = () => {
+  return <h1>Home</h1>;
+};
+export default HomePage;
