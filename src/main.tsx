@@ -20,6 +20,7 @@ import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import MealsPage from "./app/pages/meals/page.tsx";
 import ClassesPage from "./app/pages/classes/page.tsx";
 import ExercisesPage from "./app/pages/exercises/page.tsx";
+import Register from "./app/auth/register/page.tsx";
 const router = createBrowserRouter([
   {
     path: "",
@@ -83,6 +84,14 @@ const router = createBrowserRouter([
         element: (
           <GuestRoute>
             <LoginPage />
+          </GuestRoute>
+        ),
+      },
+      {
+        path: "/auth/register",
+        element: (
+          <GuestRoute>
+            <Register />
           </GuestRoute>
         ),
       },
