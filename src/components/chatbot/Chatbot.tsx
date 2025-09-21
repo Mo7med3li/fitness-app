@@ -15,8 +15,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 export default function ChatBot() {
+  // Translation
+  const { t } = useTranslation();
+
   // States
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -45,11 +49,11 @@ export default function ChatBot() {
       <div className="flex flex-col items-center">
         <img src={emo} alt="Smart Coach assistant" className="size-25" loading="lazy" />
         <Button
-          className="rounded-full shadow-lg bg-orange-500 hover:bg-orange-600 px-5 h-12"
+          className="rounded-full shadow-lg bg-main hover:bg-main/80 px-5 h-12"
           onClick={() => setOpen((prev) => !prev)}
           aria-label={open ? "Close chatbot" : "Open chatbot"}
         >
-          {open ? "Tab to close" : "Hey Ask Me"}
+          {open ? t("tab-to-close") : t("hey-ask-me")}
         </Button>
       </div>
 
@@ -75,11 +79,11 @@ export default function ChatBot() {
                   align="start"
                 >
                   <DropdownMenuLabel className="font-semibold text-xl text-center text-grayExtra font-baloo capitalize">
-                    Previous conversation
+                    {t("previous-conversations")}
                   </DropdownMenuLabel>
                   <DropdownMenuGroup>
                     <DropdownMenuItem className="text-grayLight text-sm font-baloo font-medium border-b border-[#2d2d2d] pb-2">
-                      Chest day
+                      {t("chest-day")}
                       <DropdownMenuShortcut className="text-main">
                         <ArrowRight />
                       </DropdownMenuShortcut>
@@ -142,7 +146,7 @@ export default function ChatBot() {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     className="relative ps-10 py-2 border-grayExtra placeholder:text-xs placeholder:text-grayLight"
-                    placeholder="Ask me anything"
+                    placeholder={t("ask-me-anything")}
                     aria-label="Chat input"
                     name="chat-input"
                     autoComplete="off"
