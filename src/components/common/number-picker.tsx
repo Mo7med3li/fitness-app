@@ -4,20 +4,15 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import {
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-} from "@/components/ui/form";
+import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import type { Control } from "react-hook-form";
-import type { RegisterFieleds } from "@/lib/schemas/register.schema";
+import type { RegisterFields } from "@/lib/schemas/register.schema";
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Triangle } from "lucide-react";
 
 interface Props {
-  control: Control<RegisterFieleds>;
+  control: Control<RegisterFields>;
   name: "age" | "weight" | "height";
   label: string;
   range: number[];
@@ -25,9 +20,7 @@ interface Props {
 
 export default function NumberPicker({ control, name, label, range }: Props) {
   // States
-  const [mainCarouselAPI, setMainCarouselAPI] = useState<CarouselApi | null>(
-    null
-  );
+  const [mainCarouselAPI, setMainCarouselAPI] = useState<CarouselApi | null>(null);
 
   // Functions
   // Scroll to for the main carousel
@@ -38,7 +31,7 @@ export default function NumberPicker({ control, name, label, range }: Props) {
       mainCarouselAPI.scrollTo(index);
       console.log(index);
     },
-    [mainCarouselAPI]
+    [mainCarouselAPI],
   );
 
   return (
@@ -48,9 +41,7 @@ export default function NumberPicker({ control, name, label, range }: Props) {
       render={({ field }) => (
         <FormItem className="w-full flex flex-col items-center">
           {/* Msurment */}
-          <FormLabel className="mb-4 text-base font-normal text-main">
-            {label}
-          </FormLabel>
+          <FormLabel className="mb-4 text-base font-normal text-main">{label}</FormLabel>
           <FormControl>
             <div className="relative w-full max-w-sm">
               <Carousel
@@ -74,15 +65,13 @@ export default function NumberPicker({ control, name, label, range }: Props) {
                         }}
                         className={cn(
                           "cursor-pointer transition-all duration-300 font-extrabold",
-                          field.value === num &&
-                            "text-3xl font-bold text-main scale-125",
-                          Math.abs(index - range.indexOf(field.value)) === 1 &&
-                            "text-xl scale-100",
+                          field.value === num && "text-3xl font-bold text-main scale-125",
+                          Math.abs(index - range.indexOf(field.value)) === 1 && "text-xl scale-100",
                           Math.abs(index - range.indexOf(field.value)) === 2 &&
                             "text-base scale-95",
                           Math.abs(index - range.indexOf(field.value)) > 2 &&
                             "text-sm text-gray-400 scale-90",
-                          num >= 100 && "text-2xl" // layout was breaking if number bigger than 100 or 3 degets
+                          num >= 100 && "text-2xl", // layout was breaking if number bigger than 100 or 3 degets
                         )}
                       >
                         {num}
@@ -92,11 +81,7 @@ export default function NumberPicker({ control, name, label, range }: Props) {
                 </CarouselContent>
               </Carousel>
 
-              <Triangle
-                className="mx-auto text-main"
-                fill="#FF4100"
-                size={15}
-              />
+              <Triangle className="mx-auto text-main" fill="#FF4100" size={15} />
             </div>
           </FormControl>
         </FormItem>
