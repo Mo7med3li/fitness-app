@@ -14,7 +14,6 @@ import OtpPage from "./app/auth/otp/OtpPage.tsx";
 import HomePAge from "./app/pages/home/page";
 import About from "./app/pages/about/About.tsx";
 import PagesLayout from "./app/pages/PagesLayout.tsx";
-import KYC from "@/app/auth/KYC/page.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import MealsPage from "./app/pages/meals/page.tsx";
@@ -71,14 +70,6 @@ const router = createBrowserRouter([
   {
     element: <AuthLayout />,
     children: [
-      {
-        path: "/auth/kyc",
-        element: (
-          <GuestRoute>
-            <KYC />
-          </GuestRoute>
-        ),
-      },
       {
         path: "/auth/login",
         element: (
