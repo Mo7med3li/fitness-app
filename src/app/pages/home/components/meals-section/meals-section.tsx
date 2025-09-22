@@ -16,7 +16,7 @@ function MealsSection() {
         <Dumbbell fill="orange" width={34} height={34} className="text-main rotate-45 w-9" />
         {t("healthy-nutrition")}
       </span>
-      <div className="left-0 right-0 absolute lg:h-[400px] top-8 lg:bg-grayExtra/70 dark:lg:bg-charcoal/60 lg:backdrop-blur-2xl -z-0"></div>
+      <div className="left-0 right-0 absolute h-[400px] lg:top-8 top-[220px] bg-grayExtra/70 dark:bg-charcoal/60 backdrop-blur-2xl -z-0"></div>
       <h2 className=" relative z-10 font-bold text-[40px] lg:text-charcoal text-grayExtra dark:text-grayExtra px-2 max-w-[600px] text-wrap">
         <Trans i18nKey="meals.heading" components={{ strong: <span className="text-main" /> }} />
       </h2>
