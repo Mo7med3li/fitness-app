@@ -18,7 +18,7 @@ const RecommendedMeals = ({ meal, image }: { meal: string; image: string }) => {
           {meal}
         </h2>
         <div className={"flex items-center gap-2 cursor-pointer"}>
-          <Link to={`/meals/${meal}`} className="text-main font-baloo font-medium text-lg">
+          <Link to={`/healthy`} className="text-main font-baloo font-medium text-lg">
             {t("read-more")}
           </Link>
           <div className="w-4 h-4 -rotate-45 rounded-full bg-main items-center justify-center flex">
