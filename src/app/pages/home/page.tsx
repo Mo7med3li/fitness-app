@@ -1,4 +1,5 @@
-const HomePage = () => {
-  return <h1>Home</h1>;
-};
-export default HomePage;
+import HeroSection from "./components/hero-section/hero-section";
+
+export default function HomePage() {
+  return <HeroSection />;
+}
