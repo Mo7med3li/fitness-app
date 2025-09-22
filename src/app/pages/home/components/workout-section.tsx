@@ -28,7 +28,7 @@ function WorkoutSection() {
   };
 
   return (
-    <section className="w-full lg:h-screen bg-[url('/assets/traidmails.jpg')] bg-cover bg-center py-6">
+    <section className="w-full lg:h-screen bg-[url('/assets/traidmails.jpg')] bg-cover bg-center py-4 ">
       <span className="relative flex lg:items-center text-main font-semibold text-sm lg:justify-center before:content-['WORKOUTS'] rtl:before:content-['التمارين'] before:absolute before:hidden before:text-[64px] before:font-bold before:text-white/10 lg:before:flex before:justify-center before:bottom-4 rtl:before:bottom-8 items-start before:left-1/2 before:-translate-x-1/2 before:whitespace-nowrap mt-5">
         <Dumbbell fill="orange" width={34} height={20} className="text-main rotate-45 w-9" />
         {t("fitness-class")}

@@ -6,7 +6,7 @@ export const workouts = () => {
   return [
     {
       title: t("group-workout"),
-      image: "/assets/group-workout.webp",
+      image: "/assets/group-workout.webP",
     },
     {
       title: t("personal-training"),
