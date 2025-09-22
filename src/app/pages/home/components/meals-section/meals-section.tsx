@@ -2,6 +2,7 @@ import { Dumbbell } from "lucide-react";
 import { Trans } from "react-i18next";
 import RecommendedMeals from "@/app/pages/exercises/components/recommended-meals";
 import useExercisesMeals from "@/lib/constants/exercises/exercise.const";
+import { ModeToggle } from "@/components/common/mode-toggle";
 
 function MealsSection() {
   // Variables
@@ -18,11 +19,11 @@ function MealsSection() {
         <Trans i18nKey="meals.heading" components={{ strong: <span className="text-main" /> }} />
       </h2>
 
-      {/* Carousel */}
       <section className="container grid grid-cols-1 lg:grid-cols-3 gap-7">
         {exercisesMeals.map((meal) => (
           <RecommendedMeals key={meal.name} meal={meal.name} image={meal.image} />
         ))}
+        <ModeToggle />
       </section>
     </section>
   );
