@@ -8,8 +8,6 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import KycForm from "../../KYC/components/kyc-form";
 import { useTranslation } from "react-i18next";
-import { TranslationToggle } from "@/components/common/translation-toggle";
-import { ModeToggle } from "@/components/common/mode-toggle";
 
 const RegisterForm = () => {
   // Translation
@@ -51,20 +49,22 @@ const RegisterForm = () => {
 
   return (
     <section className="flex justify-center flex-col items-center w-full font-baloo gap-2">
-      <TranslationToggle />
-      <ModeToggle />
       {!isKYC && (
         <>
           <div className="flex flex-col gap-2 items-center py-2 px-4">
-            <h3 className="text-lg">{t("hey-there")}</h3>
-            <h2 className="font-bold text-5xl capitalize">{t("create-an-account")}</h2>
+            <h3 className="text-lg text-charcoal dark:text-white">{t("hey-there")}</h3>
+            <h2 className="font-bold text-5xl capitalize text-charcoal dark:text-white">
+              {t("create-an-account")}
+            </h2>
           </div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="w-[500px] p-10 border rounded-[50px] border-grayLight flex flex-col gap-3 items-center"
+              className="w-[500px] p-10 border rounded-[50px] dark:border-grayLight border-charcoal flex flex-col gap-3 items-center"
             >
-              <h2 className="text-2xl font-extrabold">{t("register")}</h2>
+              <h2 className="text-2xl font-extrabold text-charcoal dark:text-white">
+                {t("register")}
+              </h2>
               <FormField
                 control={form.control}
                 name="firstName"
