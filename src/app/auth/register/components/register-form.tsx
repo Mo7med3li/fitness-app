@@ -7,8 +7,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import KycForm from "../../KYC/components/kyc-form";
+import { useTranslation } from "react-i18next";
+import { TranslationToggle } from "@/components/common/translation-toggle";
+import { ModeToggle } from "@/components/common/mode-toggle";
 
 const RegisterForm = () => {
+  // Translation
+  const { t } = useTranslation();
+
   // States
   const [registerValues, setRegisterValues] = useState<RegisterValues>({
     firstName: "",
@@ -45,27 +51,29 @@ const RegisterForm = () => {
 
   return (
     <section className="flex justify-center flex-col items-center w-full font-baloo gap-2">
+      <TranslationToggle />
+      <ModeToggle />
       {!isKYC && (
         <>
           <div className="flex flex-col gap-2 items-center py-2 px-4">
-            <h3 className="text-lg">Hey there</h3>
-            <h2 className="font-bold text-5xl capitalize">Create an account</h2>
+            <h3 className="text-lg">{t("hey-there")}</h3>
+            <h2 className="font-bold text-5xl capitalize">{t("create-an-account")}</h2>
           </div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="w-[500px] p-10 border rounded-[50px] border-grayLight flex flex-col gap-3 items-center"
             >
-              <h2 className="text-2xl font-extrabold">Register</h2>
+              <h2 className="text-2xl font-extrabold">{t("register")}</h2>
               <FormField
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
                   <FormItem className="w-full">
                     {/* Label */}
-                    <FormLabel className="sr-only">First Name</FormLabel>
+                    <FormLabel className="sr-only">{t("first-name")}</FormLabel>
                     {/* Input */}
-                    <Input {...field} type="text" placeholder="First Name" />
+                    <Input {...field} type="text" placeholder={t("first-name")} />
                     {/* Feedback */}
                     <FormMessage />
                   </FormItem>
@@ -77,9 +85,9 @@ const RegisterForm = () => {
                 render={({ field }) => (
                   <FormItem className="w-full">
                     {/* Label */}
-                    <FormLabel className="sr-only">Last Name</FormLabel>
+                    <FormLabel className="sr-only">{t("last-name")}</FormLabel>
                     {/* Input */}
-                    <Input {...field} type="text" placeholder="Last Name" />
+                    <Input {...field} type="text" placeholder={t("last-name")} />
                     {/* Feedback */}
                     <FormMessage />
                   </FormItem>
@@ -92,9 +100,9 @@ const RegisterForm = () => {
                 render={({ field }) => (
                   <FormItem className="w-full">
                     {/* Label */}
-                    <FormLabel className="sr-only">Email</FormLabel>
+                    <FormLabel className="sr-only">{t("email")}</FormLabel>
                     {/* Input */}
-                    <Input {...field} type="email" placeholder="Email" />
+                    <Input {...field} type="email" placeholder={t("email")} />
                     {/* Feedback */}
                     <FormMessage />
                   </FormItem>
@@ -106,9 +114,9 @@ const RegisterForm = () => {
                 render={({ field }) => (
                   <FormItem className="w-full">
                     {/* Label */}
-                    <FormLabel className="sr-only">Password</FormLabel>
+                    <FormLabel className="sr-only">{t("password")}</FormLabel>
                     {/* Input */}
-                    <Input {...field} type="password" placeholder="Password" />
+                    <Input {...field} type="password" placeholder={t("password")} />
                     {/* Feedback */}
                     <FormMessage />
                   </FormItem>
@@ -120,16 +128,19 @@ const RegisterForm = () => {
                 render={({ field }) => (
                   <FormItem className="w-full">
                     {/* Label */}
-                    <FormLabel className="sr-only">Re Password</FormLabel>
+                    <FormLabel className="sr-only">{t("re-password")}</FormLabel>
                     {/* Input */}
-                    <Input {...field} type="password" placeholder="Re Password" />
+                    <Input {...field} type="password" placeholder={t("re-password")} />
                     {/* Feedback */}
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Link to="/auth/forget-password" className="text-main underline self-end">
-                Forgot Password ?
+              <Link
+                to="/auth/forget-password"
+                className="text-main underline self-end rtl:self-start"
+              >
+                {t("forgot-password")}
               </Link>
               {form.formState.errors && <p>{form.formState.errors.firstName?.message}</p>}
               <Button
@@ -140,7 +151,7 @@ const RegisterForm = () => {
                   !form.formState.isValid
                 }
               >
-                Register
+                {t("register")}
               </Button>
             </form>
           </Form>

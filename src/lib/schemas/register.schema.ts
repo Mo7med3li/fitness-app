@@ -1,36 +1,40 @@
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 export const useRegisterValuesSchema = () => {
+  // Translation
+  const { t } = useTranslation();
+
   return z
     .object({
       firstName: z
-        .string({ error: "First Name is required" })
-        .min(1, "First Name is required")
-        .min(2, "First Name must be more than two characters ")
-        .max(10, "First Name must be at most 10 characters"),
+        .string({ error: t("first-name-required") })
+        .min(1, t("first-name-required"))
+        .min(2, t("first-name-error"))
+        .max(10, t("first-name-error-max")),
 
       lastName: z
-        .string({ error: "Last Name is required" })
-        .min(1, "Last Name is required")
-        .min(2, "Last Name must be more than two characters ")
-        .max(10, "Last Name must be at most 10 characters"),
+        .string({ error: t("last-name-required") })
+        .min(1, t("last-name-required"))
+        .min(2, t("last-name-erorr"))
+        .max(10, t("last-name-max")),
 
       email: z
-        .string({ error: "Email is required" })
-        .min(1, "Email is required")
-        .email("Enter valid email"),
+        .string({ error: t("email-required") })
+        .min(1, t("email-required"))
+        .email(t("enter-valid-email")),
 
       password: z
-        .string({ error: "Password is required" })
-        .min(1, "Password is required")
+        .string({ error: t("password-required") })
+        .min(1, t("password-required"))
         .regex(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{9,}$/,
-          "Password must be at least 8 characters include at least 1 upper, 1 lower, and number.",
+          t("password-regex"),
         ),
-      rePassword: z.string({ error: "Re-enter your password" }).min(1, "Re-enter your password"),
+      rePassword: z.string({ error: t("repassword") }).min(1, t("repassword")),
     })
     .refine((data) => data.password === data.rePassword, {
-      message: "Passwords do not match",
+      message: t("not-match"),
       path: ["rePassword"],
     });
 };
