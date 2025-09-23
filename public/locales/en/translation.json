@@ -99,5 +99,15 @@
   "chest-day": "Chest day",
   "ask-me-anything": "Ask me anything",
   "tab-to-close": "Tab to close",
-  "hey-ask-me": "Hey Ask Me"
+  "hey-ask-me": "Hey Ask Me",
+  "new-conversation": "new conversation +",
+  "no-previous-conversations": "No previous conversations",
+  "delete-conversation": "Delete conversation",
+  "sorry-there-was-a-connection-error-please-try-again": "Sorry, there was a connection error. Please try again.",
+  "i-couldnt-get-a-proper-response": "I couldn't get a proper response.",
+  "writing": "Writing...",
+  "today": "today",
+  "yesterday": "yesterday",
+  "days-ago": "{{count}} days ago",
+  "smart-coach": "Smart Coach"
 }
