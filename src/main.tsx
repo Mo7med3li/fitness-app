@@ -20,6 +20,7 @@ import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import MealsPage from "./app/pages/meals/page.tsx";
 import ClassesPage from "./app/pages/classes/page.tsx";
 import ExercisesPage from "./app/pages/exercises/page.tsx";
+import ProfilePage from "./app/profile/page.tsx";
 const router = createBrowserRouter([
   {
     path: "",
@@ -62,6 +63,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <MealsPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
           </ProtectedRoute>
         ),
       },
