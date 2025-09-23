@@ -9,7 +9,9 @@ const PagesLayout = () => {
   return (
     <main className="flex flex-col">
       {pathname !== "/" && <Navbar />}
-      <Outlet />
+      <div>
+        <Outlet />
+      </div>
       <Footer />
     </main>
   );

@@ -39,7 +39,7 @@ const MusclesGroup = () => {
             )
           }
         >
-          Full Body
+          {t("full-body")}
         </NavLink>
         {isLoading
           ? // Skeletons
