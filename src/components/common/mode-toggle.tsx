@@ -13,7 +13,7 @@ export function ModeToggle() {
     <div
       className={cn(
         "w-9 h-5 rounded-xl cursor-pointer transition-colors duration-500",
-        isDark ? "bg-black" : "bg-white"
+        isDark ? "bg-main" : "bg-white",
       )}
       onClick={() => {
         const newDark = !isDark;
@@ -26,7 +26,7 @@ export function ModeToggle() {
           "w-5 h-full rounded-full transition-all duration-700 ease-in-out",
           isDark
             ? "translate-x-full rtl:translate-x-0 bg-white"
-            : "translate-x-0 rtl:-translate-x-full bg-black"
+            : "translate-x-0 rtl:-translate-x-full bg-black",
         )}
       />
     </div>

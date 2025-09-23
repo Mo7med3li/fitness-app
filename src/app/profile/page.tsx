@@ -1,5 +1,12 @@
+import UtilitiesSection from "./components/utilities-section";
+
 const ProfilePage = () => {
-  return <div>ProfilePage</div>;
+  return (
+    <section>
+      {" "}
+      <UtilitiesSection />
+    </section>
+  );
 };
 
 export default ProfilePage;
