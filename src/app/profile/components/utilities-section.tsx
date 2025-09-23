@@ -19,15 +19,16 @@ import Navbar from "@/app/pages/components/Navbar";
 import logout from "@/lib/utils/logout.utils";
 
 const baseCard =
-  "rounded-2xl shadow-sm border border-grayLight flex items-center justify-center p-8 font-baloo hover:bg-grayLight transition duration-300 ease-in-out hover:dark:bg-charcoal/50 h-[180px]";
+  "rounded-2xl shadow-sm border border-grayLight flex items-center justify-center p-8 font-baloo hover:bg-grayLight transition duration-300 ease-in-out hover:dark:bg-charcoal cursor-pointer h-[180px]";
 const textCard = "font-semibold text-lg capitalize text-charcoal dark:text-grayExtra";
+
 const UtilitiesSection = () => {
   // Theme
   const { theme } = useTheme();
 
   return (
-    <section className="relative w-full bg-charcoal/60  bg-[url('/assets/traidmails.jpg')] bg-cover bg-center">
-      <div className="backdrop-blur-[86px] w-full py-5">
+    <section className="relative w-full bg-[url('/assets/traidmails.jpg')] bg-cover bg-center">
+      <div className="backdrop-blur-[86px] w-full py-5 dark:bg-charcoal/50 bg-white/50">
         <Navbar />
         <div className="container mx-auto px-4">
           {/* Grid actions */}
@@ -95,7 +96,11 @@ const UtilitiesSection = () => {
             <div className={cn(baseCard, "col-start-2 col-span-1")}>
               <div className="flex flex-col items-center gap-3 text-center">
                 <LogOut className="text-main" size={24} />
-                <Button variant="ghost" className={cn(textCard, "text-main")} onClick={logout}>
+                <Button
+                  variant="ghost"
+                  className={cn(textCard, "text-main border-none")}
+                  onClick={logout}
+                >
                   logout
                 </Button>
               </div>
