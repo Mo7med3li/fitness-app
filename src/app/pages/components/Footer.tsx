@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 export default function Footer() {
   const { t } = useTranslation();
   return (
-    <div className="container">
+    <div>
       {/* our scrolling ticker */}
       <ScrollingTicker />
 
@@ -19,22 +19,24 @@ export default function Footer() {
 
         {/* Contact Us */}
         <div className="flex flex-col gap-4 ">
-          <h4 className="uppercase text-white font-semibold text-lg">{t("contact-us")}</h4>
+          <h4 className="uppercase dark:text-white text-charcoal font-bold text-lg">
+            {t("contact-us")}
+          </h4>
 
           {/* Phone */}
           <div className="flex items-center gap-3">
-            <span className="rounded-full border border-gray-600 p-2 bg-gray-800 flex items-center justify-center w-10 h-10">
-              <Phone className="w-4 h-4 text-white" />
+            <span className="rounded-full border border-gray-600 p-2 dark:bg-charcoal flex items-center justify-center w-10 h-10">
+              <Phone className="w-4 h-4 text-charcoal dark:text-white" />
             </span>
-            <span className="text-white">+91 123 456 789</span>
+            <span className="dark:text-gray-300 text-charcoal">+91 123 456 789</span>
           </div>
 
           {/* Email */}
           <div className="flex items-center gap-3">
-            <span className="rounded-full border border-gray-600 p-2 bg-gray-800 flex items-center justify-center w-10 h-10">
-              <Mail className="w-4 h-4 text-white" />
+            <span className="rounded-full border border-gray-600 p-2 dark:bg-charcoal flex items-center justify-center w-10 h-10">
+              <Mail className="w-4 h-4 text-charcoal dark:text-white" />
             </span>
-            <span className="text-white">info@gmail.com</span>
+            <span className="dark:text-gray-300 text-charcoal">info@gmail.com</span>
           </div>
         </div>
 
@@ -46,13 +48,13 @@ export default function Footer() {
 
           <div className="space-y-3">
             <div>
-              <p className="text-gray-300">
+              <p className="dark:text-gray-300 text-charcoal">
                 <span className="font-medium">{t("mon-fri")}:</span> 08:00 AM - 10:00 PM
               </p>
             </div>
 
             <div>
-              <p className="text-gray-300">
+              <p className="dark:text-gray-300 text-charcoal">
                 <span className="font-medium">{t("sat-sun")}:</span> 08:00 AM - 09:00 PM
               </p>
             </div>
@@ -66,7 +68,7 @@ export default function Footer() {
           </h4>
 
           <div>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="dark:text-gray-300 text-charcoal leading-relaxed">
               {t("2715-ash-dr-san-jose-south")}
               <br />
               Dakota 83475

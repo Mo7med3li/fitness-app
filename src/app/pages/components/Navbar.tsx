@@ -90,7 +90,7 @@ export default function Navbar() {
                   }`
                 }
               >
-                {t("toHome")}
+                {t("home-page")}
               </NavLink>
             </li>
             <li>
