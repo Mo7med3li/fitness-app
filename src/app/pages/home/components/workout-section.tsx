@@ -4,7 +4,7 @@ import type { EmblaOptionsType } from "embla-carousel";
 import { workouts } from "@/lib/constants/workouts.const";
 import { Trans, useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import MusclesGroup from "../../exercises/components/muscles-group";
 
@@ -25,6 +25,8 @@ function WorkoutSection() {
   const OPTIONS: EmblaOptionsType = {
     slidesToScroll: 3,
     direction: i18n.language === "ar" ? "rtl" : "ltr",
+    dragFree: false,
+    duration: 100,
   };
 
   return (
@@ -53,7 +55,8 @@ function WorkoutSection() {
           {count < workoutsSlides.length && isMobile && (
             <div className="text-end container">
               <Button
-                className="text-main bg-transparent hover:bg-transparent"
+                variant={"link"}
+                className="text-main"
                 onClick={() => {
                   if (count + 3 <= workoutsSlides.length) {
                     setCount(count + 3);
@@ -69,4 +72,4 @@ function WorkoutSection() {
     </section>
   );
 }
-export default WorkoutSection;
+export default React.memo(WorkoutSection);

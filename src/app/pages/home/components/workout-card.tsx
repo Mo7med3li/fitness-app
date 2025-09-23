@@ -1,8 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import React from "react";
 
-const WorkoutCard = ({ title, image }: { title: string; image: string }) => {
+const WorkoutCard = React.memo(({ title, image }: { title: string; image: string }) => {
   // Translation
   const { t } = useTranslation();
 
@@ -28,5 +29,5 @@ const WorkoutCard = ({ title, image }: { title: string; image: string }) => {
       </div>
     </div>
   );
-};
+});
 export default WorkoutCard;

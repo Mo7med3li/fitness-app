@@ -26,21 +26,21 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div ref={emblaRef}>
         <div className="flex gap-4 lg:flex-row flex-col p-2">
           {slides.map((slide) => (
-            <div className="flex-[0_0_33%]" key={slide.title}>
+            <div className="flex-[0_0_100%] lg:flex-[0_0_33%]" key={slide.title}>
               <WorkoutCard title={slide.title} image={slide.image} />
             </div>
           ))}
         </div>
       </div>
       {/* Dots */}
-      <div className=" flex justify-center">
+      <div className="flex justify-center">
         <div className="lg:flex gap-2 py-1 hidden">
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
               onClick={() => onDotButtonClick(index)}
               className={cn(
-                "bg-charcoal dark:bg-grayExtra rounded-full size-[10px]",
+                "bg-charcoal dark:bg-grayExtra rounded-full size-[10px] transition-all duration-300 ease-in-out",
                 index === selectedIndex ? " bg-main dark:bg-main w-[30px] h-[10px] rounded-xl" : "",
               )}
             />
