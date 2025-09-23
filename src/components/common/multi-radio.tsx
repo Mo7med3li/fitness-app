@@ -50,7 +50,7 @@ export default function MultiRadio({ fieldName, control, items, value }: Props) 
                           ? "border-main text-main"
                           : "border-neutral-300",
                         locale === "ar" ? "flex-row" : "flex-row-reverse",
-                        "flex w-full items-center justify-between gap-2 border rounded-2xl py-4 px-4 cursor-pointer bg-[#d3d3d31a]",
+                        "flex w-full items-center justify-between gap-2 border rounded-2xl py-4 px-4 cursor-pointer border-charcoal dark:border-neutral-300 dark:bg-[#d3d3d31a] bg-white",
                       )}
                       onClick={() => setFieldValue(undefined)}
                     >
@@ -59,7 +59,7 @@ export default function MultiRadio({ fieldName, control, items, value }: Props) 
                           value={item.key}
                           className={cn(
                             (field.value === item.key || fieldValue === item.key) && "text-main",
-                            "border-neutral-300",
+                            "dark:border-neutral-300 border-charcoal",
                           )}
                           onClick={() => setFieldValue(undefined)}
                         />

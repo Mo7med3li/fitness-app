@@ -16,6 +16,7 @@ import { useTheme } from "@/components/providers/components/theme-provider";
 import { cn } from "@/lib/utils";
 import Navbar from "@/app/pages/components/Navbar";
 import ChangeKyc from "./change-kyc";
+import { useTranslation } from "react-i18next";
 
 // Classes
 const baseCard =
@@ -35,6 +36,9 @@ const UtilitiesSection = () => {
     navigate("/auth/login");
   };
 
+  // Translation
+  const { t } = useTranslation();
+
   return (
     <section className="relative w-full bg-[url('/assets/traidmails.jpg')] bg-cover bg-center">
       <div className="backdrop-blur-[86px] w-full py-5 dark:bg-charcoal/50 bg-white/50">
@@ -47,7 +51,7 @@ const UtilitiesSection = () => {
             <div className={baseCard}>
               <Link to="/change-password" className="flex flex-col items-center gap-4 text-center">
                 <RefreshCcw className="text-main" size={24} />
-                <h4 className={textCard}>Change Password</h4>
+                <h4 className={textCard}>{t("change-password")}</h4>
               </Link>
             </div>
 
@@ -55,7 +59,7 @@ const UtilitiesSection = () => {
             <div className={cn(baseCard, "flex-col gap-1")}>
               <Globe className="text-main" size={24} />
               <div className="flex flex-col items-center text-center">
-                <h4 className={textCard}>select language</h4>
+                <h4 className={textCard}>{t("select-language")}</h4>
                 <TranslationToggle />
               </div>
             </div>
@@ -69,9 +73,11 @@ const UtilitiesSection = () => {
                   <Sun className="text-main" size={24} />
                 )}
                 <div className="flex items-center gap-1">
-                  <h4 className={textCard}>mood</h4>
+                  <h4 className={textCard}>{t("mood")}</h4>
                   <span className="text-lg font-semibold">(</span>
-                  <h3 className="text-main capitalize text-lg font-semibold">{theme}</h3>
+                  <h3 className="text-main capitalize text-lg font-semibold">
+                    {theme == "dark" ? t("dark") : t("light")}
+                  </h3>
                   <span className="text-lg font-semibold">)</span>
                 </div>
                 <ModeToggle />
@@ -82,7 +88,7 @@ const UtilitiesSection = () => {
             <div className={baseCard}>
               <div className="flex flex-col items-center gap-4 text-center">
                 <Settings className="text-main" size={24} />
-                <h4 className={textCard}>security</h4>
+                <h4 className={textCard}>{t("security")}</h4>
               </div>
             </div>
 
@@ -90,7 +96,7 @@ const UtilitiesSection = () => {
             <div className={baseCard}>
               <div className="flex flex-col items-center gap-4 text-center">
                 <ShieldQuestion className="text-main" size={24} />
-                <h4 className={textCard}>privacy policy</h4>
+                <h4 className={textCard}>{t("privacy-policy")}</h4>
               </div>
             </div>
 
@@ -98,7 +104,7 @@ const UtilitiesSection = () => {
             <div className={baseCard}>
               <div className="flex flex-col items-center gap-4 text-center">
                 <MailWarning className="text-main" size={24} />
-                <h4 className={textCard}>help</h4>
+                <h4 className={textCard}>{t("help")}</h4>
               </div>
             </div>
 
@@ -111,7 +117,7 @@ const UtilitiesSection = () => {
                   className={cn(textCard, "text-main border-none")}
                   onClick={logout}
                 >
-                  logout
+                  {t("logout")}
                 </Button>
               </div>
             </div>

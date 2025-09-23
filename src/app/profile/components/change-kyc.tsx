@@ -5,6 +5,7 @@ import { getUserData } from "../api/get-user-data.api";
 import ChangeDialog from "./change-dialog";
 import type { UserDataResponse } from "@/lib/constants/user-data";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslation } from "react-i18next";
 
 const ChangeKyc = () => {
   // Context
@@ -21,6 +22,9 @@ const ChangeKyc = () => {
       return await getUserData(userLogin!);
     },
   });
+
+  // Translation
+  const { t } = useTranslation();
 
   // Loading
   if (!data)
@@ -39,27 +43,36 @@ const ChangeKyc = () => {
   // Data
   const KYC = [
     {
-      title: "Goal",
-      value: data.user.goal,
+      title: t("goal"),
+      value:
+        data.user.goal === "gain-weight"
+          ? t("gain-weight")
+          : data.user.goal === "lose-weight"
+            ? t("lose-weight")
+            : data.user.goal === "get-fitter"
+              ? t("get-fitter")
+              : data.user.goal === "gain-more-flexible"
+                ? t("gain-more-flexible")
+                : t("learn-the-basic"),
       step: 1,
     },
     {
-      title: "Level",
+      title: t("level"),
       value:
         data.user.activityLevel === "level1"
-          ? "Rookie"
+          ? t("rookie")
           : data.user.activityLevel === "level2"
-            ? "Beginner"
+            ? t("beginner")
             : data.user.activityLevel === "level3"
-              ? "Intermediate"
+              ? t("intermediate")
               : data.user.activityLevel === "level4"
-                ? "Advanced"
-                : "True Beast",
+                ? t("advanced")
+                : t("true-beast"),
       step: 2,
     },
     {
-      title: "Weight",
-      value: `${data.user.weight} kg`,
+      title: t("weight"),
+      value: `${data.user.weight} ${t("kg")}`,
       step: 3,
     },
   ];

@@ -54,6 +54,7 @@ export default function NumberPicker({ control, name, label, range, value }: Pro
             <FormControl>
               <div className="relative w-full max-w-sm">
                 <Carousel
+                  dir="ltr"
                   setApi={setMainCarouselAPI}
                   opts={{
                     align: "center",

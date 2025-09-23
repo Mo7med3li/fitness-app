@@ -8,6 +8,7 @@ import useLevels from "@/lib/constants/KYC/levels.const";
 import useGoals from "@/lib/constants/KYC/goals.const";
 import useChangeKyc from "../hooks/use-change-kyc";
 import type { UserDataResponse } from "@/lib/constants/user-data";
+import { useTranslation } from "react-i18next";
 
 type KYCChangeFormProps = {
   activityLevel: string;
@@ -31,6 +32,9 @@ const KYCChangeForm = ({
   const levels = useLevels();
   // Goals
   const goals = useGoals();
+
+  // Translation
+  const { t } = useTranslation();
 
   // Form
   const form = useForm<RegisterFieleds>({
@@ -105,10 +109,10 @@ const KYCChangeForm = ({
             disabled={currentStep === 1}
             className="w-full"
           >
-            Previous
+            {t("previous")}
           </Button>
           <Button type={"submit"} disabled={isPending} isLoading={isPending} className="w-full">
-            {currentStep < 3 ? "Next" : "Change"}
+            {currentStep < 3 ? t("next") : t("change")}
           </Button>
         </div>
       </form>
