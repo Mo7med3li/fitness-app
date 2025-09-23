@@ -42,14 +42,17 @@ const ChangeKyc = () => {
     {
       title: "Goal",
       value: data.user.goal,
+      step: 1,
     },
     {
       title: "Level",
       value: data.user.activityLevel,
+      step: 2,
     },
     {
       title: "Weight",
       value: data.user.weight,
+      step: 3,
     },
   ];
 
@@ -58,7 +61,7 @@ const ChangeKyc = () => {
       {KYC.map((item) => (
         <div key={item.title} className="col-span-3 lg:col-span-1 flex flex-col items-center">
           <h2 className="text-4xl font-extrabold">{item.title}</h2>
-          <ChangeDialog data={data} title={item.title} />
+          <ChangeDialog data={data} title={item.title} step={item.step} />
           <div className="bg-main flex w-full items-center justify-between rounded-3xl px-4 py-2">
             <h3 className="text-2xl font-extrabold">{item.value}</h3>
             <RefreshCcw />

@@ -3,7 +3,7 @@ import NumberPicker from "@/components/common/number-picker";
 import { Button } from "@/components/ui/button";
 import type { RegisterFieleds } from "@/lib/schemas/register.schema";
 import { FormProvider, useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useLevels from "@/lib/constants/KYC/levels.const";
 import useGoals from "@/lib/constants/KYC/goals.const";
 import useChangeKyc from "../hooks/use-change-kyc";
@@ -15,7 +15,10 @@ type KYCChangeFormProps = {
   weight: number;
 };
 
-const KYCChangeForm = ({ data, title }: { data: UserDataResponse; title: string }) => {
+const KYCChangeForm = ({ data, step }: { data: UserDataResponse; step: number }) => {
+  // States
+  const [currentStep, setCurrentStep] = useState(step);
+
   // Levels
   const levels = useLevels();
   // Goals
@@ -48,7 +51,8 @@ const KYCChangeForm = ({ data, title }: { data: UserDataResponse; title: string 
 
   // Submit
   const onSubmit = (values: KYCChangeFormProps) => {
-    changeKycFn(values);
+    if (currentStep < 3) setCurrentStep(currentStep + 1);
+    else changeKycFn(values);
   };
 
   return (
@@ -57,7 +61,7 @@ const KYCChangeForm = ({ data, title }: { data: UserDataResponse; title: string 
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6 flex flex-col items-center justify-center w-full"
       >
-        {title === "Weight" && (
+        {currentStep === 3 && (
           <NumberPicker
             control={form.control}
             name="weight"
@@ -66,7 +70,7 @@ const KYCChangeForm = ({ data, title }: { data: UserDataResponse; title: string 
             value={data?.user.weight}
           />
         )}
-        {title === "Level" && (
+        {currentStep === 2 && (
           <MultiRadio
             control={form.control}
             fieldName="activityLevel"
@@ -74,7 +78,7 @@ const KYCChangeForm = ({ data, title }: { data: UserDataResponse; title: string 
             value={data?.user.activityLevel}
           />
         )}
-        {title === "Goal" && (
+        {currentStep === 1 && (
           <MultiRadio
             control={form.control}
             fieldName="goal"
@@ -83,9 +87,19 @@ const KYCChangeForm = ({ data, title }: { data: UserDataResponse; title: string 
           />
         )}
 
-        <Button type={"submit"} disabled={isPending}>
-          Change
-        </Button>
+        <div className="flex gap-2 w-full">
+          <Button
+            type={"button"}
+            onClick={() => setCurrentStep(currentStep - 1)}
+            disabled={currentStep === 1}
+            className="w-full"
+          >
+            Previous
+          </Button>
+          <Button type={"submit"} disabled={isPending} isLoading={isPending} className="w-full">
+            {currentStep < 3 ? "Next" : "Change"}
+          </Button>
+        </div>
       </form>
     </FormProvider>
   );

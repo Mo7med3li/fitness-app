@@ -9,7 +9,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-const ChangeDialog = ({ title, data }: { title: string; data: UserDataResponse }) => {
+const ChangeDialog = ({
+  title,
+  data,
+  step,
+}: {
+  title: string;
+  data: UserDataResponse;
+  step: number;
+}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -20,9 +28,8 @@ const ChangeDialog = ({ title, data }: { title: string; data: UserDataResponse }
       <DialogContent className="dark:bg-charcoal bg-grayLight p-10 rounded-[40px]">
         <DialogHeader className="space-y-6">
           <DialogTitle className="text-2xl font-semibold text-main">Change {title}</DialogTitle>
-          <DialogDescription>
-            <KYCChangeForm data={data} title={title} />
-          </DialogDescription>
+          <DialogDescription></DialogDescription>
+          <KYCChangeForm data={data} step={step} />
         </DialogHeader>
       </DialogContent>
     </Dialog>
