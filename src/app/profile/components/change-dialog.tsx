@@ -9,20 +9,27 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { RefreshCcw } from "lucide-react";
 const ChangeDialog = ({
   title,
   data,
   step,
+  icon,
 }: {
   title: string;
   data: UserDataResponse;
   step: number;
+  icon?: boolean;
 }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant={"link"} className="text-white underline hover:text-main">
-          Tab To Change
+          {icon ? (
+            <RefreshCcw className="text-charcoal dark:text-white" size={24} />
+          ) : (
+            "Tab To Change"
+          )}
         </Button>
       </DialogTrigger>
       <DialogContent className="dark:bg-charcoal bg-grayLight p-10 rounded-[40px]">

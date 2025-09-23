@@ -1,6 +1,5 @@
 import { UserContext } from "@/context/UserContext";
 import { useQuery } from "@tanstack/react-query";
-import { RefreshCcw } from "lucide-react";
 import { useContext } from "react";
 import { getUserData } from "../api/get-user-data.api";
 import ChangeDialog from "./change-dialog";
@@ -46,25 +45,34 @@ const ChangeKyc = () => {
     },
     {
       title: "Level",
-      value: data.user.activityLevel,
+      value:
+        data.user.activityLevel === "level1"
+          ? "Rookie"
+          : data.user.activityLevel === "level2"
+            ? "Beginner"
+            : data.user.activityLevel === "level3"
+              ? "Intermediate"
+              : data.user.activityLevel === "level4"
+                ? "Advanced"
+                : "True Beast",
       step: 2,
     },
     {
       title: "Weight",
-      value: data.user.weight,
+      value: `${data.user.weight} kg`,
       step: 3,
     },
   ];
 
   return (
-    <section className="w-full grid grid-cols-3 font-baloo gap-20">
+    <section className="w-full grid grid-cols-3 font-baloo gap-24">
       {KYC.map((item) => (
         <div key={item.title} className="col-span-3 lg:col-span-1 flex flex-col items-center">
           <h2 className="text-4xl font-extrabold">{item.title}</h2>
           <ChangeDialog data={data} title={item.title} step={item.step} />
-          <div className="bg-main flex w-full items-center justify-between rounded-3xl px-4 py-2">
+          <div className="bg-main flex w-full items-center justify-between rounded-3xl px-4 py-2 border border-charcoal dark:border-white">
             <h3 className="text-2xl font-extrabold">{item.value}</h3>
-            <RefreshCcw />
+            <ChangeDialog data={data} title={item.title} step={item.step} icon />
           </div>
         </div>
       ))}
