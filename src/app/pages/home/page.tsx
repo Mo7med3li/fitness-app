@@ -1,9 +1,5 @@
+import HeroSection from "./components/hero-section/hero-section";
 
 export default function HomePage() {
-  // Translation
-  return (
-    <div>
-      mahmoud
-    </div>
-  );
+  return <HeroSection />;
 }

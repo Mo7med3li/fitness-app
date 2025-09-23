@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { useLocation } from "react-router-dom";
 
 const PagesLayout = () => {
+  // Pathname
+  const { pathname } = useLocation();
   return (
-    <main className="container flex flex-col gap-4">
-      <Navbar />
+    <main className="flex flex-col">
+      {pathname !== "/" && <Navbar />}
       <Outlet />
       <Footer />
     </main>
