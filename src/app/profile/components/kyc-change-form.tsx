@@ -15,7 +15,15 @@ type KYCChangeFormProps = {
   weight: number;
 };
 
-const KYCChangeForm = ({ data, step }: { data: UserDataResponse; step: number }) => {
+const KYCChangeForm = ({
+  data,
+  step,
+  setOpen,
+}: {
+  data: UserDataResponse;
+  step: number;
+  setOpen: (open: boolean) => void;
+}) => {
   // States
   const [currentStep, setCurrentStep] = useState(step);
 
@@ -52,7 +60,10 @@ const KYCChangeForm = ({ data, step }: { data: UserDataResponse; step: number })
   // Submit
   const onSubmit = (values: KYCChangeFormProps) => {
     if (currentStep < 3) setCurrentStep(currentStep + 1);
-    else changeKycFn(values);
+    else {
+      changeKycFn(values);
+      setOpen(false);
+    }
   };
 
   return (

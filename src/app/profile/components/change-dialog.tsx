@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { RefreshCcw } from "lucide-react";
+import { useState } from "react";
 const ChangeDialog = ({
   title,
   data,
@@ -21,8 +22,10 @@ const ChangeDialog = ({
   step: number;
   icon?: boolean;
 }) => {
+  // State
+  const [open, setOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant={"link"} className="text-white underline hover:text-main">
           {icon ? (
@@ -36,7 +39,7 @@ const ChangeDialog = ({
         <DialogHeader className="space-y-6">
           <DialogTitle className="text-2xl font-semibold text-main">Change {title}</DialogTitle>
           <DialogDescription></DialogDescription>
-          <KYCChangeForm data={data} step={step} />
+          <KYCChangeForm data={data} step={step} setOpen={setOpen} />
         </DialogHeader>
       </DialogContent>
     </Dialog>
