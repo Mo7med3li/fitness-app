@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Globe,
   ShieldQuestion,
@@ -13,26 +13,36 @@ import {
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { TranslationToggle } from "@/components/common/translation-toggle";
 import { useTheme } from "@/components/providers/components/theme-provider";
-
 import { cn } from "@/lib/utils";
 import Navbar from "@/app/pages/components/Navbar";
-import logout from "@/lib/utils/logout.utils";
+import ChangeKyc from "./change-kyc";
 
+// Classes
 const baseCard =
-  "rounded-2xl shadow-sm border border-grayLight flex items-center justify-center p-8 font-baloo hover:bg-grayLight transition duration-300 ease-in-out hover:dark:bg-charcoal cursor-pointer h-[180px]";
+  "rounded-2xl col-span-3 lg:col-span-1 shadow-sm border border-grayLight flex items-center justify-center p-8 font-baloo hover:bg-grayLight transition duration-300 ease-in-out hover:dark:bg-charcoal cursor-pointer h-[180px]";
 const textCard = "font-semibold text-lg capitalize text-charcoal dark:text-grayExtra";
 
 const UtilitiesSection = () => {
   // Theme
   const { theme } = useTheme();
 
+  //   Navigation
+  const navigate = useNavigate();
+
+  // Logout
+  const logout = () => {
+    localStorage.removeItem("userToken");
+    navigate("/auth/login");
+  };
+
   return (
     <section className="relative w-full bg-[url('/assets/traidmails.jpg')] bg-cover bg-center">
       <div className="backdrop-blur-[86px] w-full py-5 dark:bg-charcoal/50 bg-white/50">
         <Navbar />
-        <div className="container mx-auto px-4">
+        <div className="container space-y-10">
+          <ChangeKyc />
           {/* Grid actions */}
-          <div className=" grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className=" grid grid-cols-3 gap-10 px-8">
             {/* Change Password */}
             <div className={baseCard}>
               <Link to="/change-password" className="flex flex-col items-center gap-4 text-center">
@@ -93,7 +103,7 @@ const UtilitiesSection = () => {
             </div>
 
             {/* Logout - full width on large screens */}
-            <div className={cn(baseCard, "col-start-2 col-span-1")}>
+            <div className={cn(baseCard, "lg:col-start-2 ")}>
               <div className="flex flex-col items-center gap-3 text-center">
                 <LogOut className="text-main" size={24} />
                 <Button
