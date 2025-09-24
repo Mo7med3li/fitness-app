@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import useChangePasswordSchema, {
   type ChangePasswordFields,
 } from "@/lib/schemas/profile-change-password/change-password.schema";
+import useChangePassword from "../hooks/use-profile-change-password";
 const ChangePasswordForm = () => {
   // Translation
   const { t } = useTranslation();
@@ -23,9 +24,12 @@ const ChangePasswordForm = () => {
     },
   });
 
+  // Mutation
+  const changePassword = useChangePassword();
+
   //  Submit handler
   function onSubmit(values: ChangePasswordFields) {
-    console.log("Change password submitted:", values);
+    changePassword?.changePasswordFn(values);
   }
   return (
     <Form {...form}>
@@ -76,7 +80,8 @@ const ChangePasswordForm = () => {
         <Button
           type="submit"
           className="w-full h-12 text-base lg:text-lg"
-          disabled={!form.formState.isValid}
+          disabled={!form.formState.isValid || changePassword?.isPending}
+          isLoading={changePassword?.isPending}
         >
           {t("change")}
         </Button>
