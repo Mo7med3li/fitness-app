@@ -16,5 +16,5 @@ const useChangePasswordSchema = () => {
       ),
   });
 };
-export type ChangePasswordSchema = z.infer<ReturnType<typeof useChangePasswordSchema>>;
+export type ChangePasswordFields = z.infer<ReturnType<typeof useChangePasswordSchema>>;
 export default useChangePasswordSchema;

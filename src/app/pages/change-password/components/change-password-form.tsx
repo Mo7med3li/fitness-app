@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 import useChangePasswordSchema, {
-  type ChangePasswordSchema,
+  type ChangePasswordFields,
 } from "@/lib/schemas/profile-change-password/change-password.schema";
 const ChangePasswordForm = () => {
   // Translation
@@ -15,7 +15,7 @@ const ChangePasswordForm = () => {
   const changePasswordSchema = useChangePasswordSchema();
 
   // Form
-  const form = useForm<ChangePasswordSchema>({
+  const form = useForm<ChangePasswordFields>({
     resolver: zodResolver(changePasswordSchema),
     defaultValues: {
       password: "",
@@ -24,7 +24,7 @@ const ChangePasswordForm = () => {
   });
 
   //  Submit handler
-  function onSubmit(values: ChangePasswordSchema) {
+  function onSubmit(values: ChangePasswordFields) {
     console.log("Change password submitted:", values);
   }
   return (
