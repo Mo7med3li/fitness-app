@@ -8,11 +8,11 @@ const PagesLayout = () => {
   const { pathname } = useLocation();
   return (
     <main className="flex flex-col">
-      {pathname !== "/" && <Navbar />}
+      {pathname !== "/" && pathname !== "/change-password" && <Navbar />}
       <div>
         <Outlet />
       </div>
-      <Footer />
+      {pathname !== "/change-password" && <Footer />}
     </main>
   );
 };
