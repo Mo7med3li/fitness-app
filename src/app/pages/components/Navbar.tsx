@@ -31,7 +31,11 @@ export default function Navbar() {
             </NavLink>
           ) : (
             <div className="flex ">
-              <Button variant="default" className="text-white me-5" icon={() => <ArrowRight />}>
+              <Button
+                variant="default"
+                className="dark:text-white me-5 text-gray-700"
+                icon={() => <ArrowRight />}
+              >
                 <Link className="uppercase" to="/auth/login">
                   {t("login")}
                 </Link>
@@ -39,7 +43,7 @@ export default function Navbar() {
 
               <Button
                 variant="default"
-                className=" text-main bg-transparent border border-main"
+                className=" text-main bg-transparent border border-main hover:text-gray-700"
                 icon={() => <ArrowRight />}
               >
                 <Link className="uppercase" to="/auth/register">
@@ -85,8 +89,10 @@ export default function Navbar() {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `block py-2 px-3 rounded-sm md:p-0 ${
-                    isActive ? "text-main font-bold" : "text-gray-200 hover:text-main"
+                  `block py-2 px-3 rounded-sm md:p-0  ${
+                    isActive
+                      ? "text-main font-bold"
+                      : "text-gray-700 dark:text-gray-200 hover:text-main"
                   }`
                 }
               >
@@ -98,7 +104,9 @@ export default function Navbar() {
                 to="/about"
                 className={({ isActive }) =>
                   `block py-2 px-3 rounded-sm md:p-0 ${
-                    isActive ? "text-main font-bold" : "text-gray-200 hover:text-main"
+                    isActive
+                      ? "text-main font-bold"
+                      : "text-gray-700 dark:text-gray-200 hover:text-main"
                   }`
                 }
               >
@@ -110,7 +118,9 @@ export default function Navbar() {
                 to="/classes"
                 className={({ isActive }) =>
                   `block py-2 px-3 rounded-sm md:p-0 ${
-                    isActive ? "text-main font-bold" : "text-gray-200 hover:text-main"
+                    isActive
+                      ? "text-main font-bold"
+                      : "text-gray-700 dark:text-gray-200 hover:text-main"
                   }`
                 }
               >
@@ -122,7 +132,9 @@ export default function Navbar() {
                 to="/healthy"
                 className={({ isActive }) =>
                   `block py-2 px-3 rounded-sm md:p-0 ${
-                    isActive ? "text-main font-bold" : "text-gray-200 hover:text-main"
+                    isActive
+                      ? "text-main font-bold"
+                      : "text-gray-700 dark:text-gray-200 hover:text-main"
                   }`
                 }
               >

@@ -14,7 +14,7 @@ export default function HealthyPage() {
       <div className="flex justify-center -m-5 relative">
         <img src={healthyLogo} alt="healthyLogo" />
         <p className="absolute bottom-0 text-main flex gap-2 whitespace-nowrap">
-          <Dumbbell />
+          <Dumbbell fill="orange" width={34} height={20} className="text-main rotate-45 w-9" />
           {t("healthy-nutritions")}
         </p>
       </div>
