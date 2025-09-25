@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useLocation } from "react-router-dom";
+import Chatbot from "@/components/chatbot/Chatbot";
 
 const PagesLayout = () => {
   // Pathname
@@ -13,6 +14,7 @@ const PagesLayout = () => {
         <Outlet />
       </div>
       <Footer />
+      <Chatbot />
     </main>
   );
 };
