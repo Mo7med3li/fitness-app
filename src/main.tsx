@@ -18,7 +18,6 @@ import KYC from "@/app/auth/KYC/page.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import ClassesPage from "./app/pages/classes/page.tsx";
-import MealsPage from "./app/pages/meals/page.tsx";
 import HealthyPage from "./app/pages/healthy/page.tsx";
 import HealthyMealRecipePage from "./app/pages/healthy/[category]/page.tsx";
 import ExercisesPage from "./app/pages/exercises/page.tsx";
@@ -30,11 +29,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: (
-          <ProtectedRoute>
-            <HomePAge />
-          </ProtectedRoute>
-        ),
+        element: <HomePAge />,
       },
       {
         path: "about",
@@ -57,14 +52,6 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <ClassesPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "meals/:meal",
-        element: (
-          <ProtectedRoute>
-            <MealsPage />
           </ProtectedRoute>
         ),
       },
