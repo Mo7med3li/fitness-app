@@ -30,8 +30,8 @@ export default function HealthyFilter() {
             key={meal.idCategory}
             to={`/healthy/${meal.strCategory}`}
             className={cn(
-              "rounded-xl px-2 py-1 cursor-pointer transition-colors duration-200 hover:bg-main",
-              isSelected ? "bg-main text-white" : "bg-transparent text-white",
+              "rounded-xl px-2 py-1 dark:text-white text-black border cursor-pointer transition-colors duration-200 hover:bg-main",
+              isSelected ? "bg-main" : "bg-transparent ",
             )}
           >
             {meal.strCategory}

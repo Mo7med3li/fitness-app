@@ -150,7 +150,7 @@ export function MealsExplore() {
 
                       {/*  Bottom overlay with name + explore link - Enhanced responsive */}
                       <Link
-                        to={`/meals/${category.strCategory.toLowerCase()}`}
+                        to={`/healthy/${category.strCategory.toLowerCase()}`}
                         className="absolute inset-0 flex flex-col justify-end"
                       >
                         <div className="relative z-10 p-3 sm:p-4 md:p-5 space-y-2 sm:space-y-3">
