@@ -1,8 +1,7 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { useLocation } from "react-router-dom";
-import Chatbot from "@/components/chatbot/Chatbot";
+import ChatBot from "@/components/chatbot/Chatbot";
 
 const PagesLayout = () => {
   // Pathname
@@ -10,11 +9,9 @@ const PagesLayout = () => {
   return (
     <main className="flex flex-col">
       {pathname !== "/" && <Navbar />}
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
       <Footer />
-      <Chatbot />
+      <ChatBot />
     </main>
   );
 };

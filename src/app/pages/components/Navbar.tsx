@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Figure from "./../../../../public/assets/logo.webp";
-import { ArrowRight, User } from "lucide-react";
-import { Link, NavLink } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { useTranslation } from "react-i18next";
+import { User } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const userToken = localStorage.getItem("userToken");
-  const { t } = useTranslation();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
-      className={`static w-full z-50 top-0 start-0 py-8 transition-colors duration-300bg-transparent`}
+      className={`static w-full z-50 top-0 start-0 py-8 transition-colors duration-300 ${
+        isScrolled ? "bg-black shadow-md" : "bg-transparent"
+      }`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* Logo */}
@@ -22,39 +29,19 @@ export default function Navbar() {
 
         {/* Toggle button + Profile */}
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          {userToken ? (
-            <NavLink
-              to="/profile"
-              className="w-10 h-10 rounded-full bg-main flex justify-center items-center text-white"
-            >
-              <User />
-            </NavLink>
-          ) : (
-            <div className="flex ">
-              <Button variant="default" className="text-white me-5" icon={() => <ArrowRight />}>
-                <Link className="uppercase" to="/auth/login">
-                  {t("login")}
-                </Link>
-              </Button>
-
-              <Button
-                variant="default"
-                className=" text-main bg-transparent border border-main"
-                icon={() => <ArrowRight />}
-              >
-                <Link className="uppercase" to="/auth/register">
-                  {t("sign-up")}
-                </Link>
-              </Button>
-            </div>
-          )}
+          <NavLink
+            to="/profile"
+            className="w-10 h-10 rounded-full bg-main flex justify-center items-center text-white"
+          >
+            <User />
+          </NavLink>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-200 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400"
           >
-            <span className="sr-only">{t("open-main-menu")}</span>
+            <span className="sr-only">Open main menu</span>
             <svg
               className="w-5 h-5"
               aria-hidden="true"
@@ -90,7 +77,7 @@ export default function Navbar() {
                   }`
                 }
               >
-                {t("home-page")}
+                Home
               </NavLink>
             </li>
             <li>
@@ -102,7 +89,7 @@ export default function Navbar() {
                   }`
                 }
               >
-                {t("toAbout")}
+                About
               </NavLink>
             </li>
             <li>
@@ -114,7 +101,7 @@ export default function Navbar() {
                   }`
                 }
               >
-                {t("classes")}
+                Classes
               </NavLink>
             </li>
             <li>
@@ -126,7 +113,7 @@ export default function Navbar() {
                   }`
                 }
               >
-                {t("toHealthy")}
+                Healthy
               </NavLink>
             </li>
           </ul>

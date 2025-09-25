@@ -27,7 +27,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <HomePAge />,
+        element: (
+          <ProtectedRoute>
+            <HomePAge />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "about",

@@ -9,7 +9,7 @@ export default {
         rubik: ['"Rubik"', "sans-serif"],
       },
       screens: {
-        "2xl": "1360px",
+        "2xl": "1300px",
       },
       container: {
         center: true,
@@ -28,7 +28,6 @@ export default {
         grayLight: "#D3D3D3",
         grayNeutral: "#D9D9D9",
         grayExtra: "#F3F3F4",
-        charcoal: "#242424",
         charcoal: "#242424",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

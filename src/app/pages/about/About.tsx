@@ -1,5 +1,9 @@
-import AboutUs from "@/components/features/about/about-us";
+import React from 'react'
 
 export default function About() {
-  return <AboutUs />;
+  return (
+    <div>
+      About
+    </div>
+  )
 }
