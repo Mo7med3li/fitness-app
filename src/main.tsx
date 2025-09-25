@@ -21,6 +21,7 @@ import ClassesPage from "./app/pages/classes/page.tsx";
 import HealthyPage from "./app/pages/healthy/page.tsx";
 import HealthyMealRecipePage from "./app/pages/healthy/[category]/page.tsx";
 import ExercisesPage from "./app/pages/exercises/page.tsx";
+import ProfilePage from "./app/profile/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <HealthyMealRecipePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
           </ProtectedRoute>
         ),
       },

@@ -1,11 +1,6 @@
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import i18n, { getDirection } from "@/i18n";
 import { useEffect } from "react";
+import { Button } from "../ui/button";
 
 export function TranslationToggle() {
   // Effects
@@ -14,18 +9,14 @@ export function TranslationToggle() {
     document.documentElement.setAttribute("dir", dir);
   }, [i18n.language]);
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="border-none outline-none">
-        {i18n.language == "ar" ? "Arabic" : "English"}
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => i18n.changeLanguage("ar")}>
-          Arabic
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => i18n.changeLanguage("en")}>
-          English
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Button
+      variant="ghost"
+      className="border-none text-main"
+      onClick={() => i18n.changeLanguage(i18n.language === "ar" ? "en" : "ar")}
+    >
+      <span className="text-white text-lg font-semibold">(</span>
+      {i18n.language === "ar" ? "العربية" : "English"}
+      <span className="text-white text-lg font-semibold">)</span>
+    </Button>
   );
 }
