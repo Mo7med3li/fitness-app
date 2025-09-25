@@ -19,15 +19,15 @@ export default function ClassesFilter() {
   //  Make sure the data contains musclesGroup
   const muscles = isSuccess && data && "musclesGroup" in data ? data.musclesGroup : [];
 
-  // isPending skeleton Ui
+  // isPending skeleton Ui - Responsive
   if (isPending) {
     return (
-      <div className="flex justify-center mt-10">
-        <ul className="flex justify-center gap-5 flex-wrap">
+      <div className="flex justify-center mt-6 sm:mt-8 lg:mt-10 px-2 sm:px-0">
+        <ul className="flex justify-center gap-2 sm:gap-3 lg:gap-5 flex-wrap max-w-full">
           {[...Array(6)].map((_, idx) => (
             <li
               key={idx}
-              className="h-8 w-20 bg-gray-300 dark:bg-gray-700 animate-pulse rounded-xl"
+              className="h-6 w-16 sm:h-7 sm:w-18 lg:h-8 lg:w-20 bg-gray-300 dark:bg-gray-700 animate-pulse rounded-lg sm:rounded-xl"
             ></li>
           ))}
         </ul>
@@ -36,20 +36,24 @@ export default function ClassesFilter() {
   }
 
   return (
-    <div className="flex justify-center mt-10">
-      <ul className="flex justify-center gap-5 flex-wrap">
+    <div className="flex justify-center mt-6 sm:mt-8 lg:mt-10 px-2 sm:px-4 lg:px-0">
+      <ul className="flex justify-center gap-2 sm:gap-3 lg:gap-5 flex-wrap max-w-full">
+        {/* Full Body Button - Responsive */}
         <li
           onClick={() => {
             navigate("/classess");
           }}
           className={cn(
-            "rounded-xl px-2 py-1 cursor-pointer transition-colors duration-200 hover:bg-main",
-            isFullBody ? "bg-main text-white" : "bg-transparent text-white",
+            "rounded-lg sm:rounded-xl px-2 sm:px-3 lg:px-2 py-1 sm:py-1.5 lg:py-1 cursor-pointer transition-colors duration-200 hover:bg-main text-sm sm:text-base lg:text-base font-medium min-w-fit",
+            isFullBody
+              ? "bg-main text-white"
+              : "bg-transparent text-black dark:text-white border border-gray-400 dark:border-gray-600",
           )}
         >
-          <p>{t("full-body")}</p>
+          <p className="whitespace-nowrap">{t("full-body")}</p>
         </li>
 
+        {/* Muscle Groups - Responsive */}
         {muscles.map((muscle: MuscleGroup) => {
           const isSelected = muscleParam === muscle.name;
 
@@ -57,11 +61,13 @@ export default function ClassesFilter() {
             <li
               key={muscle._id}
               className={cn(
-                "rounded-xl px-2 py-1 cursor-pointer transition-colors duration-200 hover:bg-main text-black dark:text-white border border-gray-400 dark:border-none",
-                isSelected ? "bg-main" : "bg-transparent",
+                "rounded-lg sm:rounded-xl px-2 sm:px-3 lg:px-2 py-1 sm:py-1.5 lg:py-1 cursor-pointer transition-colors duration-200 hover:bg-main text-black dark:text-white border border-gray-400 dark:border-gray-600 text-sm sm:text-base lg:text-base font-medium min-w-fit",
+                isSelected ? "bg-main text-white" : "bg-transparent",
               )}
             >
-              <Link to={`/exercises/${muscle.name}`}>{muscle.name}</Link>
+              <Link to={`/exercises/${muscle.name}`} className="whitespace-nowrap block">
+                {muscle.name}
+              </Link>
             </li>
           );
         })}
