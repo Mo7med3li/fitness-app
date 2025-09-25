@@ -83,7 +83,7 @@ const ExerciseSection = () => {
   const workoutTaglines = getWorkoutTaglines();
 
   return (
-    <div className="container space-y-4 font-rubik p-2 backdrop-blur-[84px] bg-[linear-gradient(#24242499,#242424),url('/assets/traidmails.jpg')] bg-cover">
+    <div className="space-y-4 font-rubik p-2 backdrop-blur-[84px] bg-[linear-gradient(#24242499,#242424),url('/assets/traidmails.jpg')] bg-cover">
       {/* Muscles Group */}
       <MusclesGroup />
       <section className="grid grid-cols-4 gap-3 ">
