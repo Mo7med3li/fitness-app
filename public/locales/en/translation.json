@@ -161,5 +161,14 @@
   "end-of-meals": "End of meals",
   "delicious": "Delicious",
   "meal.calories": "{{value}} kcal",
-  "meal.time": "{{value}} min"
+  "meal.time": "{{value}} min",
+  "why-us.tittle": "Elevate fitness with the <strong>best way</strong> possible",
+  "whyus-desc": "We offer a fitness journey that's tailored to your goals, supported by professional trainers and a welcoming community. Whether it's weight loss, strength building, or overall wellness, our proven methods.",
+  "personalized-fitness-plans": "personalized fitness plans",
+  "why-data-1": "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress.",
+  "results-driven-focus": "results-driven focus",
+  "why-data-2": "Everything we do is designed to help you achieve measurable results, whether you're aiming for weight loss.",
+  "state-of-the-art-equipment": "state-of-the-art equipment",
+  "why-data-3": "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type.",
+  "why-us-t": "Why Us"
 }
