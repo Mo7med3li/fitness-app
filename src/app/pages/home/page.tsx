@@ -7,7 +7,7 @@ import WhyUsSection from "./components/why-us-section/why-us-section";
 export default function HomePage() {
   // Translation
   return (
-    <div>
+    <div className="overflow-hidden">
       {/* hero section */}
       <HeroSection />
 

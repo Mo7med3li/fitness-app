@@ -1,21 +1,23 @@
+import { useTranslation } from "react-i18next";
+
 const useWhyUsData = () => {
+  // Translation
+  const { t } = useTranslation();
+
   return [
     {
-      title: "personalized fitness plans",
-      description:
-        "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress.",
+      title: t("personalized-fitness-plans"),
+      description: t("why-data-1"),
       id: 1,
     },
     {
-      title: "results-driven focus",
-      description:
-        "Everything we do is designed to help you achieve measurable results, whether you're aiming for weight loss.",
+      title: t("results-driven-focus"),
+      description: t("why-data-2"),
       id: 2,
     },
     {
-      title: "state-of-the-art equipment",
-      description:
-        "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type.",
+      title: t("state-of-the-art-equipment"),
+      description: t("why-data-3"),
       id: 3,
     },
   ];

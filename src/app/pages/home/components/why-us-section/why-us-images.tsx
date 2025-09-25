@@ -4,7 +4,7 @@ import img3 from "../../../../../../public/assets/why-3.png";
 import img4 from "../../../../../../public/assets/why-4.png";
 const WhyUsImages = () => {
   return (
-    <div className="columns-2">
+    <div className="columns-2" dir="ltr">
       <div className="break-inside-avoid mb-2">
         <div className="relative overflow-hidden rounded-xl">
           <img src={img1} className="w-full h-[380px] object-cover" />
