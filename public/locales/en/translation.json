@@ -140,5 +140,15 @@
   "tab-to-close": "Tab to close",
   "hey-ask-me": "Hey Ask Me",
   "meals.heading": "Fuel your fitness journey with customized <strong>meal plans</strong> for you",
-  "healthy-nutrition": "Healthy Nutrition"
+  "healthy-nutrition": "Healthy Nutrition",
+  "delete-conversation": "Delete conversation",
+  "no-previous-conversations": "No previous conversations",
+  "new-conversation": "new conversation",
+  "i-couldnt-get-a-proper-response": "I couldn't get a proper response.",
+  "sorry-there-was-a-connection-error-please-try-again": "Sorry, there was a connection error. Please try again.",
+  "writing": "Writing...",
+  "today": "today",
+  "yesterday": "yesterday",
+  "days-ago": "{{count}} days ago",
+  "hello-how-can-i-assist-you-today": "Hello! How can I assist you today?"
 }

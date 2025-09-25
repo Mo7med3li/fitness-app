@@ -140,5 +140,15 @@
   "core-and-abs-workout": "تمارين الكور والبطن",
   "see-more": "رؤية المزيد",
   "workouts.heading": "حوّل جسمك مع <strong>تماريننا القادمة</strong> الديناميكية",
-  "home-page": "الرئيسية"
+  "home-page": "الرئيسية",
+  "delete-conversation": "حذف المحادثة",
+  "no-previous-conversations": "لا محادثات سابقة",
+  "new-conversation": "محادثة جديدة",
+  "i-couldnt-get-a-proper-response": "لم أستطع الحصول على استجابة مناسبة.",
+  "sorry-there-was-a-connection-error-please-try-again": "آسف ، كان هناك خطأ في الاتصال. \nمن فضلك حاول مرة أخرى.",
+  "writing": "كتابة...",
+  "today": "اليوم",
+  "yesterday": "أمس",
+  "days-ago": "منذ {{count}} أيام",
+  "hello-how-can-i-assist-you-today": "مرحبًا! \nكيف يمكنني مساعدتك اليوم؟"
 }
