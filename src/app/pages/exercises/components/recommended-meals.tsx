@@ -13,12 +13,12 @@ const RecommendedMeals = ({ meal, image }: { meal: string; image: string }) => {
         backgroundImage: `linear-gradient(#171E2E00, #171E2ECC), url(${image})`,
       }}
     >
-      <div className="absolute top-[70%] bottom-0 left-0 right-0 bg-charcoal/50 flex flex-col justify-around p-3 space-y-2 backdrop-blur-[40px]">
-        <h2 className="font-baloo font-bold text-xl tracking-[2px] text-grayExtra uppercase">
+      <div className="absolute top-[70%] bottom-0 left-0 right-0 dark:bg-charcoal/50 bg-white/50 flex rounded-b-2xl flex-col justify-around p-3 space-y-2 backdrop-blur-[40px]">
+        <h2 className="font-baloo font-bold text-xl tracking-[2px] dark:text-grayExtra text-charcoal uppercase">
           {meal}
         </h2>
         <div className={"flex items-center gap-2 cursor-pointer"}>
-          <Link to={`/meals/${meal}`} className="text-main font-baloo font-medium text-lg">
+          <Link to={`/healthy`} className="text-main font-baloo font-medium text-lg">
             {t("read-more")}
           </Link>
           <div className="w-4 h-4 -rotate-45 rounded-full bg-main items-center justify-center flex">
