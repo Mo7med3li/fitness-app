@@ -28,7 +28,7 @@ export default function HealthyFilter() {
         return (
           <Link
             key={meal.idCategory}
-            to={`/healthy/${meal.idCategory}`}
+            to={`/healthy/${meal.strCategory}`}
             className={cn(
               "rounded-xl px-2 py-1 cursor-pointer transition-colors duration-200 hover:bg-main",
               isSelected ? "bg-main text-white" : "bg-transparent text-white",

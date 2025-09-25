@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "healthy/:id",
+        path: "healthy/:category",
         element: (
           <ProtectedRoute>
             <MealDetails />
