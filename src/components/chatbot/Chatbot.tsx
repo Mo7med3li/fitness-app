@@ -18,11 +18,18 @@ import { useTranslation } from "react-i18next";
 import ChatForm from "./ChatForm";
 import ChatMessages from "./ChatMessages";
 
+// Message type definition
+type Message = {
+  type: "bot" | "user";
+  text: string;
+  id?: string;
+};
+
 // Conversation type definition
 type Conversation = {
   id: string;
   title: string;
-  messages: { type: "bot" | "user"; text: string }[];
+  messages: Message[];
   timestamp: Date;
 };
 
@@ -33,8 +40,8 @@ export default function ChatBot() {
   // Component states
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [messages, setMessages] = useState<{ type: "bot" | "user"; text: string }[]>([
-    { type: "bot", text: "Hello! How can I assist you today?" },
+  const [messages, setMessages] = useState<Message[]>([
+    { type: "bot", text: "Hello! How can I assist you today?", id: "welcome" },
   ]);
   const [conversationHistory, setConversationHistory] = useState<Conversation[]>([]);
   const [currentConversationId, setCurrentConversationId] = useState<string | null>(null);
@@ -124,7 +131,7 @@ export default function ChatBot() {
 
   // Start new conversation
   const startNewConversation = () => {
-    setMessages([{ type: "bot", text: "Hello! How can I assist you today?" }]);
+    setMessages([{ type: "bot", text: "Hello! How can I assist you today?", id: "welcome" }]);
     setCurrentConversationId(null);
     setInputValue("");
   };
@@ -255,7 +262,7 @@ export default function ChatBot() {
                 <ScrollArea className="relative z-10 h-[415px]">
                   <div className="flex flex-col gap-4 p-2">
                     {messages.map((msg, idx) => (
-                      <ChatMessages key={idx} msg={msg} />
+                      <ChatMessages key={msg.id || idx} msg={msg} />
                     ))}
                   </div>
                 </ScrollArea>

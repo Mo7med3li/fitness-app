@@ -2,7 +2,33 @@ import { cn } from "@/lib/utils";
 import robot from "../../../public/assets/robot.jpg";
 import { User2 } from "lucide-react";
 
-export default function ChatMessages({ msg }: { msg: { type: "bot" | "user"; text: string } }) {
+// Component for animated dots loading
+const LoadingDots = () => {
+  return (
+    <div className="flex items-center space-x-1">
+      <div
+        className="w-2 h-2 bg-white rounded-full animate-bounce"
+        style={{ animationDelay: "0ms" }}
+      ></div>
+      <div
+        className="w-2 h-2 bg-white rounded-full animate-bounce"
+        style={{ animationDelay: "150ms" }}
+      ></div>
+      <div
+        className="w-2 h-2 bg-white rounded-full animate-bounce"
+        style={{ animationDelay: "300ms" }}
+      ></div>
+    </div>
+  );
+};
+
+export default function ChatMessages({
+  msg,
+}: {
+  msg: { type: "bot" | "user"; text: string; id?: string };
+}) {
+  const isLoading = msg.type === "bot" && msg.text === "...";
+
   return (
     <div className={cn("flex gap-2 max-w-full", msg.type === "user" ? "self-end" : "self-start")}>
       {msg.type === "bot" && (
@@ -25,7 +51,13 @@ export default function ChatMessages({ msg }: { msg: { type: "bot" | "user"; tex
             : "bg-[#ff6a00]/80 rounded-tr-none",
         )}
       >
-        <div className="whitespace-pre-wrap break-words hyphens-auto">{msg.text}</div>
+        {isLoading ? (
+          <div className="flex items-center justify-center py-2">
+            <LoadingDots />
+          </div>
+        ) : (
+          <div className="whitespace-pre-wrap break-words hyphens-auto">{msg.text}</div>
+        )}
       </div>
 
       {msg.type === "user" && (

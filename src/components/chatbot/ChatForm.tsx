@@ -7,11 +7,12 @@ import { GoogleGenAI } from "@google/genai";
 // Props type definition for ChatForm component
 type ChatFormProp = {
   setInputValue: Dispatch<SetStateAction<string>>;
-  setMessages: Dispatch<SetStateAction<{ type: "bot" | "user"; text: string }[]>>;
+  setMessages: Dispatch<SetStateAction<{ type: "bot" | "user"; text: string; id?: string }[]>>;
   inputValue: string;
   messages: {
     type: "bot" | "user";
     text: string;
+    id?: string;
   }[];
 };
 
@@ -32,10 +33,14 @@ export default function ChatForm({
 
   // Main function to handle AI communication
   async function main(userMessage: string) {
+    // Add loading message with dots animation
+    const loadingMessageId = Date.now().toString();
+    setMessages((prev) => [...prev, { type: "bot", text: "...", id: loadingMessageId }]);
+
     try {
       setIsLoading(true);
 
-      // Convert previous messages to Gemini format
+      // Convert previous messages to Gemini format (exclude loading message)
       const history = messages.map((msg) => ({
         role: msg.type === "user" ? "user" : "model",
         parts: [{ text: msg.text }],
@@ -60,18 +65,24 @@ export default function ChatForm({
       const botResponse = response.text || t("i-couldnt-get-a-proper-response");
       console.log("Bot response:", botResponse);
 
-      // Add bot response to messages
-      setMessages((prev) => [...prev, { type: "bot", text: botResponse }]);
+      // Replace loading message with actual response
+      setMessages((prev) =>
+        prev.map((msg) => (msg.id === loadingMessageId ? { type: "bot", text: botResponse } : msg)),
+      );
     } catch (error) {
       console.error("Error calling Gemini AI:", error);
-      // Add error message to chat
-      setMessages((prev) => [
-        ...prev,
-        {
-          type: "bot",
-          text: t("sorry-there-was-a-connection-error-please-try-again"),
-        },
-      ]);
+
+      // Replace loading message with error message
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === loadingMessageId
+            ? {
+                type: "bot",
+                text: t("sorry-there-was-a-connection-error-please-try-again"),
+              }
+            : msg,
+        ),
+      );
     } finally {
       // Reset loading state
       setIsLoading(false);
