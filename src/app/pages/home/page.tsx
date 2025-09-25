@@ -1,6 +1,7 @@
 import AboutUs from "@/components/features/about/about-us";
 import HeroSection from "./components/hero-section/hero-section";
 import WorkoutSection from "./components/workout-section";
+import MealsSection from "./components/meals-section/meals-section";
 
 export default function HomePage() {
   // Translation
@@ -18,7 +19,7 @@ export default function HomePage() {
       {/* why us section */}
 
       {/* healthy section */}
-      {/*  */}
+      <MealsSection />
     </div>
   );
 }
