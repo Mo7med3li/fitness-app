@@ -12,8 +12,8 @@ const WhyUsContent = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2 py-1">
-            <h2 className="capitalize font-bold text-charcoal">{item.title}</h2>
-            <p className="font-rubik text-charcoal">{item.description}</p>
+            <h2 className="capitalize font-bold text-charcoal dark:text-grayExtra">{item.title}</h2>
+            <p className="font-rubik text-charcoal dark:text-grayExtra">{item.description}</p>
           </div>
         </div>
       ))}
