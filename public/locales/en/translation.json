@@ -124,7 +124,7 @@
   "see-more": "See More",
   "workouts.heading": "Transform Your Body with Our Dynamic <strong>Upcoming Workouts</strong>",
   "home-page": "Home",
-  "toAbout": "ِAbout",
+  "toAbout": "About",
   "classes": "Classes",
   "toHealthy": "Healthy",
   "footer.header": "Push harder, go further. Your fitness journey starts today!",
@@ -150,5 +150,16 @@
   "today": "today",
   "yesterday": "yesterday",
   "days-ago": "{{count}} days ago",
-  "hello-how-can-i-assist-you-today": "Hello! How can I assist you today?"
+  "hello-how-can-i-assist-you-today": "Hello! How can I assist you today?",
+  "category": "Category",
+  "area": "Area",
+  "tags": "Tags",
+  "source": "Source",
+  "ingredients": "Ingredients",
+  "open-link": "Open link",
+  "no-link": "No Link",
+  "end-of-meals": "End of meals",
+  "delicious": "Delicious",
+  "meal.calories": "{{value}} kcal",
+  "meal.time": "{{value}} min"
 }

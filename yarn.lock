@@ -5805,11 +5805,14 @@ throttle-debounce@^2.1.0:
   resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
   integrity sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==
 
+<<<<<<< HEAD
+=======
 tiktok-video-element@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/tiktok-video-element/-/tiktok-video-element-0.1.1.tgz#dc61819ae89fc55c62ecef86d686a2e8d6b560eb"
   integrity sha512-BaiVzvNz2UXDKTdSrXzrNf4q6Ecc+/utYUh7zdEu2jzYcJVDoqYbVfUl0bCfMoOeeAqg28vD/yN63Y3E9jOrlA==
 
+>>>>>>> 3553afe966010429f5191d4200bf67d28874b3bc
 tiny-invariant@^1.3.1, tiny-invariant@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.3.3.tgz#46680b7a873a0d5d10005995eb90a70d74d60127"

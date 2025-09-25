@@ -150,5 +150,16 @@
   "today": "اليوم",
   "yesterday": "أمس",
   "days-ago": "منذ {{count}} أيام",
-  "hello-how-can-i-assist-you-today": "مرحبًا! \nكيف يمكنني مساعدتك اليوم؟"
+  "hello-how-can-i-assist-you-today": "مرحبًا! \nكيف يمكنني مساعدتك اليوم؟",
+  "category": "الفئة",
+  "tags": "العلامات",
+  "source": "المصدر",
+  "ingredients": "المكونات",
+  "area": "المنطقة",
+  "open-link": "فتح الرابط",
+  "no-link": "لا رابط",
+  "end-of-meals": "نهاية الوجبات",
+  "delicious": "لذيذ",
+  "meal.calories": "{{value}} سعرة حرارية",
+  "meal.time": "{{value}} دقيقة"
 }
