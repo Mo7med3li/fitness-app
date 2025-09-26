@@ -5,9 +5,9 @@ import { Eye, EyeOff, Lock, Mail, Search, User } from "lucide-react";
 import * as React from "react";
 
 const baseClasses =
-  "flex w-full bg-transparent rounded-[20px] border border-grayNeutral py-2 py-4 text-base text-grayLight shadow-xs transition-colors placeholder:text-sm placeholder:text-grayLight placeholder:capitalize hover:border-main focus-visible:border-main focus-visible:outline-none disabled:cursor-not-allowed disabled:border-gray-100 disabled:bg-gray-100 md:text-sm";
+  "flex w-full bg-transparent rounded-[20px] border border-grayNeutral py-2 py-4 text-base dark:text-grayLight text-charcoal shadow-xs transition-colors placeholder:text-sm placeholder:dark:text-grayLight placeholder:text-charcoal placeholder:capitalize hover:border-main focus-visible:border-main focus-visible:outline-none disabled:cursor-not-allowed disabled:border-gray-100 disabled:bg-gray-100 md:text-sm";
 const iconClassBasses =
-  "absolute top-1/2 z-50 size-5 -translate-y-1/2 cursor-pointer text-grayLight";
+  "absolute top-1/2 z-50 size-5 -translate-y-1/2 cursor-pointer dark:text-grayLight text-charcoal";
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   // state
   const [hide, setHide] = React.useState(true);
@@ -56,15 +56,9 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
           {...props}
         />
         {hide ? (
-          <Eye
-            className={cn(iconClassBasses, "end-4", props.disabled)}
-            onClick={toggleType}
-          />
+          <Eye className={cn(iconClassBasses, "end-4", props.disabled)} onClick={toggleType} />
         ) : (
-          <EyeOff
-            className={cn(iconClassBasses, "end-4", props.disabled)}
-            onClick={toggleType}
-          />
+          <EyeOff className={cn(iconClassBasses, "end-4", props.disabled)} onClick={toggleType} />
         )}
       </div>
     );
@@ -84,9 +78,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
       </div>
     );
   }
-  return (
-    <input type={type} className={cn(baseClasses, className)} {...props} />
-  );
+  return <input type={type} className={cn(baseClasses, className)} {...props} />;
 }
 
 export { Input };

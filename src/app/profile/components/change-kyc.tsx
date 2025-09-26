@@ -45,13 +45,13 @@ const ChangeKyc = () => {
     {
       title: t("goal"),
       value:
-        data.user.goal === "gain-weight"
+        data.user.goal === "gain weight"
           ? t("gain-weight")
-          : data.user.goal === "lose-weight"
+          : data.user.goal === "lose weight"
             ? t("lose-weight")
-            : data.user.goal === "get-fitter"
+            : data.user.goal === "get fitter"
               ? t("get-fitter")
-              : data.user.goal === "gain-more-flexible"
+              : data.user.goal === "gain more flexible"
                 ? t("gain-more-flexible")
                 : t("learn-the-basic"),
       step: 1,

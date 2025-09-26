@@ -11,7 +11,7 @@ export default function HealthyPage() {
     //  Main Section
     <section className="relative dark:bg-[#242424] font-baloo bg-white text-black">
       {/*  Background image with title */}
-      <div className="flex justify-center -m-5 relative">
+      <div className="flex justify-center relative">
         <img src={healthyLogo} alt="healthyLogo" />
         <p className="absolute bottom-0 text-main flex gap-2 whitespace-nowrap">
           <Dumbbell fill="orange" width={34} height={20} className="text-main rotate-45 w-9" />

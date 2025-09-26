@@ -6,13 +6,13 @@ import {
 } from "@/components/ui/carousel";
 import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import type { Control } from "react-hook-form";
-import type { RegisterFieleds } from "@/lib/schemas/register.schema";
+import type { RegisterFields } from "@/lib/schemas/register.schema";
 import { useCallback, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Triangle } from "lucide-react";
 
 interface Props {
-  control: Control<RegisterFieleds>;
+  control: Control<RegisterFields>;
   name: "age" | "weight" | "height";
   label: string;
   range: number[];
@@ -35,18 +35,19 @@ export default function NumberPicker({ control, name, label, range, value }: Pro
       control={control}
       name={name}
       render={({ field }) => {
-        const selectedValue = field.value ?? value;
+        const selectedValue = field.value ?? value ?? range[0];
+        const selectedIndex = range.indexOf(selectedValue);
 
         useEffect(() => {
-          if (mainCarouselAPI && selectedValue != null) {
-            const startIndex = range.indexOf(selectedValue);
-            if (startIndex >= 0) {
-              const centerIndex = startIndex - 3;
-              mainCarouselAPI.scrollTo(Math.max(centerIndex, 0), false);
+          if (mainCarouselAPI && selectedIndex >= 0) {
+            const centerIndex = Math.max(selectedIndex - 3, 0);
+            mainCarouselAPI.scrollTo(centerIndex, false);
+
+            if (!field.value) {
               field.onChange(selectedValue);
             }
           }
-        }, [mainCarouselAPI, selectedValue, field, range]);
+        }, [mainCarouselAPI, selectedIndex, selectedValue]);
 
         return (
           <FormItem className="w-full flex flex-col items-center">
@@ -75,12 +76,9 @@ export default function NumberPicker({ control, name, label, range, value }: Pro
                           className={cn(
                             "cursor-pointer transition-all duration-300 font-extrabold",
                             selectedValue === num && "text-3xl font-bold text-main scale-125",
-                            Math.abs(index - range.indexOf(selectedValue)) === 1 &&
-                              "text-xl scale-100",
-                            Math.abs(index - range.indexOf(selectedValue)) === 2 &&
-                              "text-base scale-95",
-                            Math.abs(index - range.indexOf(selectedValue)) > 2 &&
-                              "text-sm text-gray-400 scale-90",
+                            Math.abs(index - selectedIndex) === 1 && "text-xl scale-100",
+                            Math.abs(index - selectedIndex) === 2 && "text-base scale-95",
+                            Math.abs(index - selectedIndex) > 2 && "text-sm text-gray-400 scale-90",
                             num >= 100 && "text-2xl",
                           )}
                         >

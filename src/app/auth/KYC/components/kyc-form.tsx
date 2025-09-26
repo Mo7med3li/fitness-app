@@ -1,6 +1,10 @@
 import { Form } from "@/components/ui/form";
 import useRegister from "../hooks/use-register";
-import { type RegisterFieleds, useRegisterSchema } from "@/lib/schemas/register.schema";
+import {
+  type RegisterFields,
+  type RegisterValues,
+  useRegisterSchema,
+} from "@/lib/schemas/register.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Gender from "./gender";
@@ -15,9 +19,10 @@ import useGoals from "@/lib/constants/KYC/goals.const";
 interface FormSteps {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  registerValues: RegisterValues;
 }
 
-export default function KycForm({ step, setStep }: FormSteps) {
+export default function KycForm({ step, setStep, registerValues }: FormSteps) {
   // Translation
   const { t } = useTranslation();
 
@@ -26,14 +31,14 @@ export default function KycForm({ step, setStep }: FormSteps) {
   const registerSchema = useRegisterSchema();
 
   // Form
-  const form = useForm<RegisterFieleds>({
+  const form = useForm<RegisterFields>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      firstName: "Ahmed",
-      lastName: "Hassan",
-      email: "ahmeddd@exasdawd.com",
-      password: "Test@1234",
-      rePassword: "Test@1234",
+      firstName: registerValues.firstName,
+      lastName: registerValues.lastName,
+      email: registerValues.email,
+      password: registerValues.password,
+      rePassword: registerValues.rePassword,
       height: 53,
       weight: 23,
       goal: undefined,
@@ -45,8 +50,7 @@ export default function KycForm({ step, setStep }: FormSteps) {
   });
 
   // Functions
-  const onSubmit = (values: RegisterFieleds) => {
-    // Todo : values from register form should be passed to this component and added here
+  const onSubmit = (values: RegisterFields) => {
     submitRegister(values);
   };
 
@@ -153,7 +157,7 @@ export default function KycForm({ step, setStep }: FormSteps) {
                 if (step < 6) {
                   setStep(step + 1);
                 } else {
-                  form.handleSubmit(onSubmit)();
+                  onSubmit(form.getValues());
                 }
               }}
             >

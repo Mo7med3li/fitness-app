@@ -14,7 +14,6 @@ import OtpPage from "./app/auth/otp/OtpPage.tsx";
 import HomePAge from "./app/pages/home/page";
 import About from "./app/pages/about/About.tsx";
 import PagesLayout from "./app/pages/PagesLayout.tsx";
-import KYC from "@/app/auth/KYC/page.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import HealthyMealRecipePage from "./app/pages/healthy/[category]/page.tsx";
@@ -22,6 +21,7 @@ import ExercisesPage from "./app/pages/exercises/page.tsx";
 import ProfilePage from "./app/profile/page.tsx";
 import ClassessPage from "./app/pages/classes/ClassessPage.tsx";
 import HealthyPage from "./app/pages/healthy/HealthyPage.tsx";
+import Register from "./app/auth/register/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -86,18 +86,18 @@ const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       {
-        path: "/auth/kyc",
-        element: (
-          <GuestRoute>
-            <KYC />
-          </GuestRoute>
-        ),
-      },
-      {
         path: "/auth/login",
         element: (
           <GuestRoute>
             <LoginPage />
+          </GuestRoute>
+        ),
+      },
+      {
+        path: "/auth/register",
+        element: (
+          <GuestRoute>
+            <Register />
           </GuestRoute>
         ),
       },

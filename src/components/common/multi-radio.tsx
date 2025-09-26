@@ -1,13 +1,13 @@
 import type { Control } from "react-hook-form";
 import { FormField, FormItem, FormControl, FormLabel } from "@/components/ui/form";
-import type { RegisterFieleds } from "@/lib/schemas/register.schema";
+import type { RegisterFields } from "@/lib/schemas/register.schema";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 
 interface Props {
-  control: Control<RegisterFieleds>;
+  control: Control<RegisterFields>;
   fieldName: "activityLevel" | "goal";
   items: {
     key: string;

@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import { getCategoryMeals } from "../api/get-category-meals";
 import type { MealDetails, MealDetailsResponse } from "@/lib/types/meals/meals-details";
 import { getMealDetails } from "../api/get-meal-details";
-import MealsCategories from "../../components/meals-categories";
 import MealCard from "./meal-card";
 import MealsDetailed from "./meals-detailed";
 import InfiniteScroll from "react-infinite-scroll-component";
