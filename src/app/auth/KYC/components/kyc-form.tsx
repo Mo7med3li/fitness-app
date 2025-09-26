@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import MultiRadio from "@/components/common/multi-radio";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
+import useLevels from "@/lib/constants/KYC/levels.const";
+import useGoals from "@/lib/constants/KYC/goals.const";
 
 interface FormSteps {
   step: number;
@@ -50,7 +52,6 @@ export default function KycForm({ step, setStep, registerValues }: FormSteps) {
   // Functions
   const onSubmit = (values: RegisterFields) => {
     submitRegister(values);
-    console.log(values);
   };
 
   // Variables
@@ -60,20 +61,8 @@ export default function KycForm({ step, setStep, registerValues }: FormSteps) {
   const age = form.watch("age");
   const height = form.watch("height");
   const weight = form.watch("weight");
-  const levels = [
-    { key: "level1", label: t("rookie") },
-    { key: "level2", label: t("beginner") },
-    { key: "level3", label: t("intermediate") },
-    { key: "level4", label: t("advance") },
-    { key: "level5", label: t("true-beast") },
-  ];
-  const goals = [
-    { key: "gain weight", label: t("gain-weight") },
-    { key: "lose weight", label: t("lose-weight") },
-    { key: "get fitter", label: t("get-fitter") },
-    { key: "gain more flexible", label: t("gain-more-flexible") },
-    { key: "learn the basic", label: t("learn-the-basic") },
-  ];
+  const levels = useLevels();
+  const goals = useGoals();
 
   // Statements
   const disableNext = () => {

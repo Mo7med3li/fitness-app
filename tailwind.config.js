@@ -9,7 +9,7 @@ export default {
         rubik: ['"Rubik"', "sans-serif"],
       },
       screens: {
-        "2xl": "1300px",
+        "2xl": "1360px",
       },
       container: {
         center: true,

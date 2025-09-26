@@ -16,10 +16,13 @@ import About from "./app/pages/about/About.tsx";
 import PagesLayout from "./app/pages/PagesLayout.tsx";
 import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
-import MealsPage from "./app/pages/meals/page.tsx";
-import ClassesPage from "./app/pages/classes/page.tsx";
+import HealthyMealRecipePage from "./app/pages/healthy/[category]/page.tsx";
 import ExercisesPage from "./app/pages/exercises/page.tsx";
+import ProfilePage from "./app/profile/page.tsx";
+import ClassessPage from "./app/pages/classes/ClassessPage.tsx";
+import HealthyPage from "./app/pages/healthy/HealthyPage.tsx";
 import Register from "./app/auth/register/page.tsx";
+
 const router = createBrowserRouter([
   {
     path: "",
@@ -27,11 +30,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: (
-          <ProtectedRoute>
-            <HomePAge />
-          </ProtectedRoute>
-        ),
+        element: <HomePAge />,
       },
       {
         path: "about",
@@ -53,15 +52,31 @@ const router = createBrowserRouter([
         path: "classes",
         element: (
           <ProtectedRoute>
-            <ClassesPage />
+            <ClassessPage />
           </ProtectedRoute>
         ),
       },
       {
-        path: "meals/:meal",
+        path: "healthy",
         element: (
           <ProtectedRoute>
-            <MealsPage />
+            <HealthyPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "healthy/:category",
+        element: (
+          <ProtectedRoute>
+            <HealthyMealRecipePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
           </ProtectedRoute>
         ),
       },
