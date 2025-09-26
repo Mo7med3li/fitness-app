@@ -2,19 +2,19 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useLocation } from "react-router-dom";
-import Chatbot from "@/components/chatbot/Chatbot";
+import ChatBot from "@/components/chatbot/Chatbot";
 
 const PagesLayout = () => {
   // Pathname
   const { pathname } = useLocation();
   return (
     <main className="flex flex-col">
-      {pathname !== "/" && pathname !== "/profile" && <Navbar />}
+      {pathname !== "/" && pathname !== "/profile" && pathname !== "/change-password" && <Navbar />}
       <div>
         <Outlet />
       </div>
-      <Footer />
-      <Chatbot />
+      {pathname !== "/profile" && pathname !== "/change-password" && <Footer />}
+      <ChatBot />
     </main>
   );
 };
