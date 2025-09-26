@@ -13,7 +13,7 @@ const PagesLayout = () => {
       <div>
         <Outlet />
       </div>
-      {pathname !== "/change-password" && <Footer />}
+      {pathname !== "/profile" && pathname !== "/change-password" && <Footer />}
       <ChatBot />
     </main>
   );

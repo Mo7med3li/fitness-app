@@ -22,6 +22,7 @@ import ProfilePage from "./app/profile/page.tsx";
 import ClassessPage from "./app/pages/classes/ClassessPage.tsx";
 import HealthyPage from "./app/pages/healthy/HealthyPage.tsx";
 import Register from "./app/auth/register/page.tsx";
+import ChangePasswordPage from "./app/pages/change-password/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <ProfilePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "change-password",
+        element: (
+          <ProtectedRoute>
+            <ChangePasswordPage />
           </ProtectedRoute>
         ),
       },
