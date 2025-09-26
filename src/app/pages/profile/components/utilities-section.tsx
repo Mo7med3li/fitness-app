@@ -49,7 +49,10 @@ const UtilitiesSection = () => {
           <div className=" grid grid-cols-3 gap-10 px-8">
             {/* Change Password */}
             <div className={baseCard}>
-              <Link to="/change-password" className="flex flex-col items-center gap-4 text-center">
+              <Link
+                to="/profile/change-password"
+                className="flex flex-col items-center gap-4 text-center"
+              >
                 <RefreshCcw className="text-main" size={24} />
                 <h4 className={textCard}>{t("change-password")}</h4>
               </Link>

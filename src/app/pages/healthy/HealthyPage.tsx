@@ -35,13 +35,13 @@ export default function HealthyPage() {
 
         {/* Filter navigation  */}
         <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          <div className="max-w-7xl mx-auto flex justify-center">
+          <div className="px-10 mx-auto flex justify-center">
             <HealthyFilter />
           </div>
         </div>
 
         {/* Explore healthy section  */}
-        <div className="max-w-7xl mx-auto">
+        <div className="px-10 mx-auto">
           <div className="bg-gray-50 dark:bg-[#2a2a2a] rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 transition-colors duration-300 shadow-sm dark:shadow-none">
             <MealsExplore />
           </div>

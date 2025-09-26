@@ -1,6 +1,6 @@
-import Navbar from "../components/Navbar";
 import { useTranslation } from "react-i18next";
 import ChangePasswordForm from "./components/change-password-form";
+import Navbar from "../../components/Navbar";
 
 const ChangePasswordPage = () => {
   // Translation

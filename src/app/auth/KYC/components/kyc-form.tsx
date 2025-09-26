@@ -4,7 +4,7 @@ import {
   type RegisterFields,
   type RegisterValues,
   useRegisterSchema,
-} from "@/lib/schemas/register.schema";
+} from "@/lib/schemas/auth/register.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Gender from "./gender";
@@ -20,9 +20,10 @@ interface FormSteps {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   registerValues: RegisterValues;
+  setIsKYC: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function KycForm({ step, setStep, registerValues }: FormSteps) {
+export default function KycForm({ step, setStep, registerValues, setIsKYC }: FormSteps) {
   // Translation
   const { t } = useTranslation();
 
@@ -137,21 +138,27 @@ export default function KycForm({ step, setStep, registerValues }: FormSteps) {
           {error && <p className="font-medium text-main text-sm mt-2">{error.message}</p>}
 
           {/* Next / Submit button */}
-          <div className="mt-6 flex w-full gap-4">
-            {step > 1 && (
+          <div className="mt-6 flex w-full gap-4 px-2">
+            {step >= 1 && (
               <Button
                 type="button"
                 className="w-full bg-zinc-700 hover:bg-zinc-600"
-                onClick={() => setStep(step - 1)}
+                onClick={() => {
+                  if (step === 1) {
+                    setIsKYC(false);
+                  } else {
+                    setStep(step - 1);
+                  }
+                }}
                 disabled={isPending}
               >
-                {t("previos")}
+                {t("previous")}
               </Button>
             )}
 
             <Button
               type={step === 6 ? "button" : "submit"}
-              className={cn(step === 1 ? "w-1/2 mx-auto" : "w-full")}
+              className={cn("w-full")}
               disabled={disableNext() || isPending}
               onClick={() => {
                 if (step < 6) {

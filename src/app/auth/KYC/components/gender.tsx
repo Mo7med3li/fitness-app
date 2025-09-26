@@ -1,26 +1,21 @@
 import type { Control } from "react-hook-form";
-import {
-  FormField,
-  FormItem,
-  FormControl,
-  FormLabel,
-} from "@/components/ui/form";
+import { FormField, FormItem, FormControl, FormLabel } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Mars, Venus } from "lucide-react";
-import type { RegisterFieleds } from "@/lib/schemas/register.schema";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
+import type { RegisterFields } from "@/lib/schemas/auth/register.schema";
 
 interface Props {
-  control: Control<RegisterFieleds>;
+  control: Control<RegisterFields>;
 }
 
 export default function Gender({ control }: Props) {
   // Translation
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
-    <div className="w-full bg-red-">
+    <div className="w-full">
       <FormField
         control={control}
         name="gender"
@@ -37,17 +32,17 @@ export default function Gender({ control }: Props) {
                     field.value === "male"
                       ? "border-main [&_svg]:text-main text-main"
                       : "border-white",
-                    "bg-transparent border rounded-full size-22 [&_svg]:size-12 hover:bg-transparent hover:border-main flex flex-col"
+                    "bg-transparent border rounded-full size-22 [&_svg]:size-12 hover:bg-transparent hover:border-main flex flex-col",
                   )}
                 >
                   <Mars strokeWidth="1" />
                   <span
                     className={cn(
                       field.value === "male" ? "text-main" : "text-white",
-                      "font-semibold text-xs"
+                      "font-semibold text-xs",
                     )}
                   >
-                    {t('male')}
+                    {t("male")}
                   </span>
                 </Button>
 
@@ -56,20 +51,18 @@ export default function Gender({ control }: Props) {
                   size="icon"
                   onClick={() => field.onChange("female")}
                   className={cn(
-                    field.value === "female"
-                      ? "border-main [&_svg]:text-main"
-                      : "border-white",
-                    "bg-transparent border rounded-full size-22 [&_svg]:size-12 hover:bg-transparent hover:border-main flex flex-col"
+                    field.value === "female" ? "border-main [&_svg]:text-main" : "border-white",
+                    "bg-transparent border rounded-full size-22 [&_svg]:size-12 hover:bg-transparent hover:border-main flex flex-col",
                   )}
                 >
                   <Venus strokeWidth="1" />
                   <span
                     className={cn(
                       field.value === "female" ? "text-main" : "text-white",
-                      "font-semibold text-xs"
+                      "font-semibold text-xs",
                     )}
                   >
-                    {t('female')}
+                    {t("female")}
                   </span>
                 </Button>
               </div>

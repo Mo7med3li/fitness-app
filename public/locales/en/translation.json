@@ -209,5 +209,6 @@
   "email": "Email",
   "re-password": "Confirm Password",
   "forgot-password": "Forgot Password ?",
-  "change-password-successfully": "Password had been Changed Successfully"
+  "change-password-successfully": "Password had been Changed Successfully",
+  "previos": "Previous"
 }

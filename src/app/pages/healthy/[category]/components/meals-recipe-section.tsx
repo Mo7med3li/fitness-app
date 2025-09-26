@@ -10,7 +10,7 @@ import MealsDetailed from "./meals-detailed";
 import InfiniteScroll from "react-infinite-scroll-component";
 import MealCardSkeleton from "@/components/skeleton/meals/meal-card.skeleton";
 import { useTranslation } from "react-i18next";
-import HealthyFilter from "@/components/common/HealthyFilter";
+import MealsCategories from "../../components/meals-categories";
 
 const MealsRecipeSection = () => {
   // Translation
@@ -66,7 +66,8 @@ const MealsRecipeSection = () => {
       <div className="grid grid-cols-3 px-20 p-4 gap-4">
         <div className="lg:col-span-1 col-span-3 w-[420px] h-[700px] overflow-auto dark:bg-charcoal/50 bg-grayExtra/50 border-2 dark:border-[#282828] border-grayLight rounded-[20px] px-2 backdrop-blur-[20px] pt-4 hide-scroll">
           <div className=" space-y-4 ">
-            <HealthyFilter />
+            {/* <HealthyFilter /> */}
+            <MealsCategories />
             <InfiniteScroll
               next={fetchMoreData}
               hasMore={slicedMeals.length < CategoryMealsResponse?.meals?.length!}

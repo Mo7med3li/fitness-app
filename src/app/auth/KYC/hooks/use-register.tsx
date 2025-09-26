@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import type { RegisterFields } from "@/lib/schemas/register.schema";
+import type { RegisterFields } from "@/lib/schemas/auth/register.schema";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
