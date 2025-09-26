@@ -1,8 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
-import type { RegisterFieleds } from "@/lib/schemas/register.schema";
+import type { RegisterFields } from "@/lib/schemas/register.schema";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import type { RegisterSuccessResponse } from "@/lib/types/auth";
 
 export default function useRegister() {
   // Translation
@@ -12,17 +13,18 @@ export default function useRegister() {
   const navigate = useNavigate();
 
   const { isPending, error, mutate } = useMutation({
-    mutationFn: async (fields: RegisterFieleds) => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
+    mutationFn: async (fields: RegisterFields) => {
+      const res = await fetch("https://fitness.elevateegy.com/api/v1/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fields),
       });
 
       // If response failed or has an error
-      if (!res.ok) throw new Error(t("something-went-wrong"));
+      const payload = await res.json();
+      if ("error" in payload) throw new Error(payload.error);
 
-      return res.json();
+      return payload as RegisterSuccessResponse;
     },
 
     // Success toast

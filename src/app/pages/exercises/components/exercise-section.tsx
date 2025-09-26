@@ -86,7 +86,7 @@ const ExerciseSection = () => {
     <div className="space-y-4 font-rubik p-2 backdrop-blur-[84px] bg-[linear-gradient(#24242499,#242424),url('/assets/traidmails.jpg')] bg-cover">
       {/* Muscles Group */}
       <MusclesGroup />
-      <section className="grid grid-cols-4 gap-3 ">
+      <section className="grid grid-cols-4 gap-3">
         <section
           id="scrollableDiv"
           className="flex flex-col gap-4 lg:col-span-1 md:col-span-2 col-span-4 p-1 shadow-2xl border-2 rounded-[20px] pt-4 border-[#282828] h-[850px] overflow-y-auto backdrop-blur-[20px] hide-scroll"

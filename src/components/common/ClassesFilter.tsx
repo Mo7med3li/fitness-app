@@ -14,7 +14,7 @@ export default function ClassesFilter() {
 
   // Determine if we're on the full body route based on the current path
   const isFullBody =
-    location.pathname === "/classess" || (!muscleParam && location.pathname.includes("/classess"));
+    location.pathname === "/classes" || (!muscleParam && location.pathname.includes("/classess"));
 
   //  Make sure the data contains musclesGroup
   const muscles = isSuccess && data && "musclesGroup" in data ? data.musclesGroup : [];
@@ -41,7 +41,7 @@ export default function ClassesFilter() {
         {/* Full Body Button - Responsive */}
         <li
           onClick={() => {
-            navigate("/classess");
+            navigate("/classes");
           }}
           className={cn(
             "rounded-lg sm:rounded-xl px-2 sm:px-3 lg:px-2 py-1 sm:py-1.5 lg:py-1 cursor-pointer transition-colors duration-200 hover:bg-main text-sm sm:text-base lg:text-base font-medium min-w-fit",

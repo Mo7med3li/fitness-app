@@ -9,7 +9,7 @@ const PagesLayout = () => {
   const { pathname } = useLocation();
   return (
     <main className="flex flex-col">
-      {pathname !== "/" && pathname !== "/change-password" && <Navbar />}
+      {pathname !== "/" && pathname !== "/profile" && pathname !== "/change-password" && <Navbar />}
       <div>
         <Outlet />
       </div>
