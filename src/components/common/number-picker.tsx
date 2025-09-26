@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/carousel";
 import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import type { Control } from "react-hook-form";
-import type { RegisterFields } from "@/lib/schemas/register.schema";
+import type { RegisterFields } from "@/lib/schemas/auth/register.schema";
 import { useCallback, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Triangle } from "lucide-react";

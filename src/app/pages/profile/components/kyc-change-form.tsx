@@ -1,7 +1,7 @@
 import MultiRadio from "@/components/common/multi-radio";
 import NumberPicker from "@/components/common/number-picker";
 import { Button } from "@/components/ui/button";
-import type { RegisterFieleds } from "@/lib/schemas/register.schema";
+import type { RegisterFieleds } from "@/lib/schemas/auth/register.schema";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import useLevels from "@/lib/constants/KYC/levels.const";

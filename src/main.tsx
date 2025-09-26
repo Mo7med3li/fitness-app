@@ -18,11 +18,11 @@ import AuthLayout from "./app/auth/layout.tsx";
 import GuestRoute from "./components/common/GuestRoute/GuestRoute.tsx";
 import HealthyMealRecipePage from "./app/pages/healthy/[category]/page.tsx";
 import ExercisesPage from "./app/pages/exercises/page.tsx";
-import ProfilePage from "./app/profile/page.tsx";
-import ClassessPage from "./app/pages/classes/ClassessPage.tsx";
 import HealthyPage from "./app/pages/healthy/HealthyPage.tsx";
 import Register from "./app/auth/register/page.tsx";
-import ChangePasswordPage from "./app/pages/change-password/page.tsx";
+import ClassesPage from "./app/pages/classes/ClassesPage.tsx";
+import ProfilePage from "./app/pages/profile/page.tsx";
+import ChangePasswordPage from "./app/pages/profile/change-password/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         path: "classes",
         element: (
           <ProtectedRoute>
-            <ClassessPage />
+            <ClassesPage />
           </ProtectedRoute>
         ),
       },
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "change-password",
+        path: "profile/change-password",
         element: (
           <ProtectedRoute>
             <ChangePasswordPage />

@@ -6,7 +6,7 @@ import { Trans, useTranslation } from "react-i18next";
 import ClassesFilter from "@/components/common/ClassesFilter";
 
 //   Page Component
-export default function ClassessPage() {
+export default function ClassesPage() {
   const { t } = useTranslation();
 
   return (

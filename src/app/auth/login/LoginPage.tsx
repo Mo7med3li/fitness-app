@@ -17,7 +17,7 @@ import { Loader } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 // schemes & custom hook
-import { LoginSchema } from "@/lib/schemes/login.schema";
+import { LoginSchema } from "@/lib/schemas/auth/login.schema";
 import useLogin from "./hooks/uselogin";
 
 export default function LoginPage() {

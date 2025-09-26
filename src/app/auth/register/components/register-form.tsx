@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Form, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRegisterValuesSchema, type RegisterValues } from "@/lib/schemas/register.schema";
+import { useRegisterValuesSchema, type RegisterValues } from "@/lib/schemas/auth/register.schema";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -143,21 +143,21 @@ const RegisterForm = () => {
                 {t("forgot-password")}
               </Link>
               {form.formState.errors && <p>{form.formState.errors.firstName?.message}</p>}
-              <Button
-                className="w-full"
-                disabled={
-                  form.formState.isSubmitting ||
-                  form.formState.isSubmitSuccessful ||
-                  !form.formState.isValid
-                }
-              >
+              <Button className="w-full" disabled={!form.formState.isValid}>
                 {t("register")}
               </Button>
             </form>
           </Form>
         </>
       )}
-      {isKYC && <KycForm step={step} setStep={setStep} registerValues={registerValues} />}
+      {isKYC && (
+        <KycForm
+          step={step}
+          setStep={setStep}
+          registerValues={registerValues}
+          setIsKYC={setIsKYC}
+        />
+      )}
     </section>
   );
 };

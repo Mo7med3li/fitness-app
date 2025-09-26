@@ -11,7 +11,7 @@ import { Loader } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 // schemes
-import { OTPSchema } from "@/lib/schemes/OTP.schema";
+import { OTPSchema } from "@/lib/schemas/auth/OTP.schema";
 import useForgetPass from "@/app/auth/forget-password/hooks/useForgetPassword";
 import useOtp from "./hooks/useOtp";
 
@@ -34,87 +34,87 @@ export default function OtpPage() {
   }
 
   return (
-      <div className="flex flex-col items-center justify-center p-6 sm:p-12">
-        {/* Form Header */}
-        <div className="text-center mb-8 space-y-2">
-          <h3 className="text-3xl lg:text-5xl font-extrabold text-white drop-shadow-md">
-            {t("auth.otp-code")}
-          </h3>
-          <p className="text-gray-300 text-sm sm:text-base max-w-md mx-auto">
-            {t("auth.enter-the-otp-you-have-received")}
-          </p>
-        </div>
+    <div className="flex flex-col items-center justify-center p-6 sm:p-12">
+      {/* Form Header */}
+      <div className="text-center mb-8 space-y-2">
+        <h3 className="text-3xl lg:text-5xl font-extrabold text-white drop-shadow-md">
+          {t("auth.otp-code")}
+        </h3>
+        <p className="text-gray-300 text-sm sm:text-base max-w-md mx-auto">
+          {t("auth.enter-the-otp-you-have-received")}
+        </p>
+      </div>
 
-        {/* Form */}
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-6 w-full max-w-md p-6 sm:p-10
+      {/* Form */}
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-6 w-full max-w-md p-6 sm:p-10
                  border border-white/20 rounded-3xl bg-black/40
                  backdrop-blur-lg shadow-2xl"
+        >
+          {/* OTP input */}
+          <FormField
+            control={form.control}
+            name="resetCode"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <InputOTP
+                    {...field}
+                    maxLength={6}
+                    type="number"
+                    className="flex justify-center gap-2 sm:gap-3"
+                    onChange={(value: string) => {
+                      field.onChange(value);
+                      form.setValue("resetCode", value);
+                    }}
+                  >
+                    <InputOTPGroup>
+                      {[0, 1, 2, 3, 4, 5].map((i) => (
+                        <InputOTPSlot key={i} index={i} />
+                      ))}
+                    </InputOTPGroup>
+                  </InputOTP>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Confirm button */}
+          <Button
+            disabled={isPending || form.watch("resetCode").length < 6}
+            className="w-full disabled:bg-slate-600 rounded-xl py-6 text-lg font-semibold"
+            type="submit"
           >
-            {/* OTP input */}
-            <FormField
-              control={form.control}
-              name="resetCode"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <InputOTP
-                      {...field}
-                      maxLength={6}
-                      type="number"
-                      className="flex justify-center gap-2 sm:gap-3"
-                      onChange={(value: string) => {
-                        field.onChange(value);
-                        form.setValue("resetCode", value);
-                      }}
-                    >
-                      <InputOTPGroup>
-                        {[0, 1, 2, 3, 4, 5].map((i) => (
-                          <InputOTPSlot key={i} index={i} />
-                        ))}
-                      </InputOTPGroup>
-                    </InputOTP>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {isPending ? (
+              <span className="animate-spin">
+                <Loader />
+              </span>
+            ) : (
+              t("confirm")
+            )}
+          </Button>
 
-            {/* Confirm button */}
-            <Button
-              disabled={isPending || form.watch("resetCode").length < 6}
-              className="w-full disabled:bg-slate-600 rounded-xl py-6 text-lg font-semibold"
-              type="submit"
+          {/* Resend Code */}
+          <div className="text-center space-y-1">
+            <p className="text-sm sm:text-base text-gray-300">
+              {t("auth.didnt-receive-verification-code")}
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                const x = localStorage.getItem("email");
+                forgetPassword({ email: x });
+              }}
+              className="text-main hover:text-main/80 underline font-bold text-sm sm:text-base mt-2 transition-colors"
             >
-              {isPending ? (
-                <span className="animate-spin">
-                  <Loader />
-                </span>
-              ) : (
-                t("confirm")
-              )}
-            </Button>
-
-            {/* Resend Code */}
-            <div className="text-center space-y-1">
-              <p className="text-sm sm:text-base text-gray-300">
-                {t("auth.didnt-receive-verification-code")}
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  const x = localStorage.getItem("email");
-                  forgetPassword({ email: x });
-                }}
-                className="text-main hover:text-main/80 underline font-bold text-sm sm:text-base mt-2 transition-colors"
-              >
-                {t("auth.resend-code")}
-              </button>
-            </div>
-          </form>
-        </Form>
-      </div>
+              {t("auth.resend-code")}
+            </button>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 }

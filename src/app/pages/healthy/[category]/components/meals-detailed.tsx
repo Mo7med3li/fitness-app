@@ -68,7 +68,7 @@ const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
         {t("ingredients")}
       </h2>
       <div className="flex lg:flex-row flex-col items-center lg:items-start lg:justify-between dark:bg-charcoal/80 bg-grayExtra/80 backdrop-blur-[20px] shadow-md">
-        <div className="w-80">
+        <div className="w-96">
           {Array.from({ length: 5 }).map((_, index) => (
             <div key={index} className="flex justify-between border-b border-[#2d2d2d] pb-1">
               <span className="dark:text-grayExtra text-charcoal font-semibold font-baloo capitalize">
@@ -80,7 +80,7 @@ const MealsDetailed = ({ meal }: { meal: MealDetails }) => {
             </div>
           ))}
         </div>
-        <div className="w-80">
+        <div className="w-96">
           {Array.from({ length: 5 }).map(
             (_, index) =>
               meal[`strIngredient${index + 6}` as keyof MealDetails] && (
