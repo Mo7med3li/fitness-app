@@ -1,7 +1,7 @@
 import MultiRadio from "@/components/common/multi-radio";
 import NumberPicker from "@/components/common/number-picker";
 import { Button } from "@/components/ui/button";
-import type { RegisterFieleds } from "@/lib/schemas/auth/register.schema";
+import type { RegisterFields } from "@/lib/schemas/auth/register.schema";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import useLevels from "@/lib/constants/KYC/levels.const";
@@ -37,7 +37,7 @@ const KYCChangeForm = ({
   const { t } = useTranslation();
 
   // Form
-  const form = useForm<RegisterFieleds>({
+  const form = useForm<RegisterFields>({
     defaultValues: {
       activityLevel: "level1",
       goal: undefined,
@@ -49,9 +49,9 @@ const KYCChangeForm = ({
   useEffect(() => {
     if (data) {
       form.reset({
-        activityLevel: data.user.activityLevel as RegisterFieleds["activityLevel"],
-        goal: data.user.goal as RegisterFieleds["goal"],
-        weight: data.user.weight as RegisterFieleds["weight"],
+        activityLevel: data.user.activityLevel as RegisterFields["activityLevel"],
+        goal: data.user.goal as RegisterFields["goal"],
+        weight: data.user.weight as RegisterFields["weight"],
       });
     }
   }, [data, form]);
